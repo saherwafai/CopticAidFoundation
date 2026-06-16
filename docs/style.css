@@ -44,48 +44,65 @@ body {
 
 /* ── Nav ── */
 nav {
-  border-bottom: 3px solid var(--green);
-  padding: 18px 0;
+  border-bottom: 2px solid var(--green);
   background: var(--white);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
-nav .nav-inner {
+nav .nav-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
 }
-nav .site-name {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--green);
-  text-decoration: none;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+nav .nav-bottom {
+  display: flex;
+  align-items: center;
+  padding: 0;
 }
-nav ul {
+nav .nav-bottom ul {
   list-style: none;
   display: flex;
-  gap: 28px;
+  gap: 0;
   flex-wrap: wrap;
+  width: 100%;
 }
-nav ul a {
+nav .nav-bottom ul li a {
+  display: block;
+  padding: 11px 16px;
   text-decoration: none;
   color: var(--black);
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.02em;
-  padding-bottom: 2px;
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
   transition: color 0.2s, border-color 0.2s;
 }
-nav ul a:hover { color: var(--green); border-bottom-color: var(--green); }
-nav ul a.active { color: var(--green); border-bottom-color: var(--green); font-weight: 600; }
+nav .nav-bottom ul li a:hover { color: var(--green); border-bottom-color: var(--green); }
+nav .nav-bottom ul li a.active { color: var(--green); border-bottom-color: var(--green); font-weight: 600; }
+nav .nav-brand {
+  display: flex;
+  flex-direction: column;
+}
+nav .site-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--green);
+  text-decoration: none;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+nav .site-tagline {
+  font-size: 12px;
+  color: var(--grey-mid);
+  letter-spacing: 0.03em;
+  margin-top: 2px;
+}
 
 .lang-switcher {
   font-size: 12px;
