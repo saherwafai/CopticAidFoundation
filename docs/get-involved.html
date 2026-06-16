@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coptic Aid Foundation — Get Involved</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Role cards ── */
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .role-card {
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--green);
+      padding: 28px 24px;
+      background: var(--white);
+      transition: box-shadow 0.2s;
+    }
+    .role-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .role-card .role-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+    .role-card h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--black);
+      margin: 0 0 10px;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .role-card p { font-size: 15px; color: var(--grey-dark); margin: 0; }
+
+    /* ── Expression of interest form ── */
+    .interest-form {
+      background: var(--green-light);
+      border: 1px solid var(--green);
+      padding: 40px;
+      margin-top: 8px;
+    }
+    .interest-form h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.4rem;
+      color: var(--green);
+      margin: 0 0 8px;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .interest-form p { color: var(--grey-dark); margin-bottom: 24px; }
+    .form-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; flex: 1; min-width: 200px; }
+    .form-group label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 11px 14px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      font-family: 'Inter', Arial, sans-serif;
+      border-radius: 2px;
+      background: var(--white);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      background: var(--green);
+      color: #fff;
+      border: none;
+      padding: 13px 36px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--green-dark); }
+    .form-note { font-size: 12px; color: var(--grey-mid); margin-top: 12px; font-style: italic; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="site-name" href="index.html">Coptic Aid Foundation</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mission.html">Mission</a></li>
+      <li><a href="impact.html">Impact</a></li>
+      <li><a href="give.html">Give</a></li>
+      <li><a href="news.html">News &amp; Media</a></li>
+      <li><a href="get-involved.html" class="active">Get Involved</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <a href="get-involved.html" class="active">EN</a>
+      <a href="#">FR</a>
+      <a href="#">AR</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="container">
+    <h1>Get Involved</h1>
+    <p>The Coptic Aid Foundation runs entirely on volunteer effort. Join us — your time and skills make a real difference.</p>
+  </div>
+</section>
+
+<!-- WHY VOLUNTEER -->
+<section>
+  <div class="container">
+    <h2>Why Volunteer?</h2>
+    <p>Every person on our board of directors, every administrator, every communicator — all volunteers. No one receives a salary or compensation. This means that when you give your time to the Coptic Aid Foundation, every hour goes directly toward serving families in Egypt.</p>
+    <blockquote class="scripture">
+      "Therefore, knowing what is right to do and then not doing it, is sin."
+      <cite>— James 4:17</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- VOLUNTEER ROLES -->
+<section>
+  <div class="container">
+    <h2>How You Can Help</h2>
+    <p>We welcome volunteers with a wide range of skills and availability. All roles are remote-friendly and flexible.</p>
+
+    <div class="roles-grid">
+
+      <div class="role-card">
+        <div class="role-tag">Communications</div>
+        <h3>Social Media &amp; Content</h3>
+        <p>Help us tell our story — create content, manage social media channels, and share updates that connect donors to the families we serve.</p>
+      </div>
+
+      <div class="role-card">
+        <div class="role-tag">Communications</div>
+        <h3>Translation</h3>
+        <p>Help us reach our full community by translating content between English, French, and Arabic — newsletters, website pages, and donor communications.</p>
+      </div>
+
+      <div class="role-card">
+        <div class="role-tag">Technology</div>
+        <h3>Web &amp; Digital</h3>
+        <p>Support the maintenance and development of our website, digital tools, and online donation infrastructure.</p>
+      </div>
+
+      <div class="role-card">
+        <div class="role-tag">Administration</div>
+        <h3>Family Aid Administration</h3>
+        <p>Help manage and track the families we support — coordinating with field workers in Egypt to keep records current and aid flowing.</p>
+      </div>
+
+      <div class="role-card">
+        <div class="role-tag">Finance</div>
+        <h3>Accounting &amp; Bookkeeping</h3>
+        <p>Assist with financial record-keeping, donation tracking, and tax receipt preparation for our Canadian donors.</p>
+      </div>
+
+      <div class="role-card">
+        <div class="role-tag">Events</div>
+        <h3>Events &amp; Fundraising</h3>
+        <p>Help organize fundraising events, community gatherings, and outreach activities in the Montreal area and beyond.</p>
+      </div>
+
+      <div class="role-card">
+        <div class="role-tag">Field Work</div>
+        <h3>Egypt Field Support</h3>
+        <p>If you are based in Egypt or travel there regularly, help us connect with communities, verify needs, and support our local representatives.</p>
+      </div>
+
+      <div class="role-card">
+        <div class="role-tag">General</div>
+        <h3>Other Skills</h3>
+        <p>Have a skill not listed here? We are always open to new ideas. Tell us what you can offer — we will find the right fit.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPRESSION OF INTEREST FORM -->
+<section>
+  <div class="container">
+    <h2>Express Your Interest</h2>
+    <p>Fill in the form below and we will be in touch to discuss how you can contribute.</p>
+
+    <div class="interest-form">
+      <h3>Volunteer Expression of Interest</h3>
+      <p>All fields are optional except your name and email. We will never share your information.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" placeholder="Your full name" />
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" placeholder="your@email.com" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone (optional)</label>
+          <input type="tel" placeholder="(514) 000-0000" />
+        </div>
+        <div class="form-group">
+          <label>City / Country</label>
+          <input type="text" placeholder="e.g. Montreal, Canada" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Area of Interest</label>
+          <select>
+            <option value="">— Select a role —</option>
+            <option>Social Media &amp; Content</option>
+            <option>Translation (EN / FR / AR)</option>
+            <option>Web &amp; Digital</option>
+            <option>Family Aid Administration</option>
+            <option>Accounting &amp; Bookkeeping</option>
+            <option>Events &amp; Fundraising</option>
+            <option>Egypt Field Support</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Languages Spoken</label>
+          <input type="text" placeholder="e.g. English, French, Arabic" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Tell us about yourself</label>
+          <textarea placeholder="A few words about your background, availability, and why you'd like to volunteer with the Coptic Aid Foundation."></textarea>
+        </div>
+      </div>
+
+      <button type="button" class="form-submit">Submit Expression of Interest</button>
+      <p class="form-note">[DEMO ONLY — this form is not yet connected. Submissions will go to info@copticaidfoundation.org once wired up in WordPress.]</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT ALTERNATIVE -->
+<section>
+  <div class="container">
+    <h2>Prefer to Reach Out Directly?</h2>
+    <p>You are always welcome to contact us by phone or email:</p>
+    <ul>
+      <li><strong>Email:</strong> <a href="mailto:info@copticaidfoundation.org">info@copticaidfoundation.org</a></li>
+      <li><strong>Phone:</strong> (514) 334-9792</li>
+    </ul>
+  </div>
+</section>
+
+<!-- DONATE CTA -->
+<section>
+  <div class="container">
+    <div class="cta-block">
+      <h2>Can't Volunteer? You Can Still Help.</h2>
+      <p>A monthly donation of any amount supports families in Egypt directly. Every dollar reaches those who need it most.</p>
+      <a href="give.html" class="cta-primary">Make a Donation</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <h4>Coptic Aid Foundation</h4>
+        <p>Caring for Egypt's most vulnerable since 1992.<br/>Canadian registered charity.</p>
+        <a href="give.html" class="footer-donate">Donate</a>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="mission.html">Our Mission</a></li>
+          <li><a href="impact.html">Impact &amp; Programs</a></li>
+          <li><a href="give.html">Give</a></li>
+          <li><a href="news.html">News &amp; Media</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>9520 Boul. de l'Acadie, Bureau 229<br/>Montreal, QC H4N 1L8<br/>Tel: (514) 334-9792<br/>Fax: (514) 334-3653<br/><a href="mailto:info@copticaidfoundation.org">info@copticaidfoundation.org</a></p>
+      </div>
+      <div>
+        <h4>Language</h4>
+        <div class="lang-switcher" style="flex-direction:column; gap:6px;">
+          <a href="get-involved.html" class="active">English</a>
+          <a href="#">Français</a>
+          <a href="#">العربية</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Coptic Aid Foundation. All rights reserved. Registered Canadian Charity — BN 868786054RC0001
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
