@@ -25,7 +25,7 @@ Load this at the start of any session to pick up exactly where the team left off
 | Incorporation date | 2014-07-17 |
 | Registered address | 9520 Boul. L'Acadie # 229, Montreal, QC H4N1L8 Canada |
 | Phone | (514) 334-9792 |
-| Fax | (514) 334-3653 |
+| Fax | REMOVED — TBD (see TBD list) |
 | Website | www.copticaidfoundation.org |
 | General email | info@copticaidfoundation.org |
 | Donation email | donate@copticaidfoundation.org |
@@ -37,12 +37,30 @@ Load this at the start of any session to pick up exactly where the team left off
 
 ## 2. History & Founding
 
-- **Founded: 1989** — "جمعية المعونة القبطية تقوم بخدمة اخوة الرب في مصر من سنة ١٩٨٩" (serving the Lord's brothers and sisters in Egypt since 1989)
-- Incorporated under the Canada Not-for-profit Corporations Act in 2014
-- Founded in Montreal, Quebec, Canada
-- August 2022 newsletter = Year 33 → confirms 1989 founding
-- October 2023 newsletter = Year 34 → confirms 1989 founding
-- Tagline: "Caring for Egypt's most vulnerable since the 1980s" (website) / "since 1989" (formal documents)
+### Timeline
+- **1980s** — Service began in **Tanta, Gharbia (Delta region), Egypt**. Blessed servants were already caring for widows, orphans, and the poor — collecting small amounts (oil, sugar, rice, tea) and inviting the poor to attend church services and receive communion.
+- **Our late founder, Philip Girgis (deceased)** — lived in Montreal, knew the Tanta servants, began collecting donations from the Montreal Coptic community to support the work in Tanta. He was guided by James 1:27 as the founding scripture. He believed the work belonged to God, not to him.
+- **1989** — Coptic Aid Foundation formally registered in Canada
+- **2014** — Re-incorporated under the Canada Not-for-profit Corporations Act
+
+### Key facts
+- Started with **10–20 widows and orphan mothers** in Tanta
+- Grew gradually to hundreds, then thousands of families across all of Egypt
+- The work is seen as Spirit-led — attributed to the Holy Spirit, not human effort
+- Servants live alongside the people — they know their daily details and needs firsthand
+
+### Foundation motto
+- **English:** "Aid for the Poor"
+- **Arabic:** "معونة للمساكين"
+- **French:** "Aide aux Pauvres" *(TBD — verify with native French speaker)*
+- Taken directly from the Divine Liturgy prayer for the crops
+- Divine Liturgy prayer: *"Bless the fullness of the year out of your goodness, for the sake of the poor of your people, for the widow, the orphan, the stranger, and the visitor, and for us all who hope in you and seek your Holy Name."*
+
+### Public-facing date language
+- Tagline: **"since the 1980s"** (service began) — used on website
+- Footer: **"since the 1980s"** — updated from incorrect "since 1989"
+- Formal registration: **1989** — used in legal/about contexts
+- **Never use "since 1992"** — that is when Pope Shenouda's blessing was obtained, not the founding
 
 ---
 
@@ -50,28 +68,30 @@ Load this at the start of any session to pick up exactly where the team left off
 
 Support needy Coptic Christian families, orphans, widows, and university students in Egypt through:
 
-1. **Monthly financial aid** — regular monthly payments to active families
-2. **University student stipends** — equal monthly payment per enrolled student
-3. **Feast grants** — Christmas and Easter (EGP 1,300 × 2/year)
-4. **Emergency relief** — catastrophic illness, urgent needs
-5. **Small business / micro-projects** — tools and capital for financial independence
-6. **Medical support** — medicine and healthcare costs for families who cannot pay
-7. **Special life event grants** — marriage support, basic furniture, housing needs
+1. **Monthly financial aid** — regular monthly payments to active families + 2 annual feast grants (Christmas + Easter, EGP 1,300 each)
+2. **Education support** — university student stipends; 728+ currently active; thousands of graduates over 20 years
+3. **Emergency relief** — catastrophic illness, urgent needs, emergency cash transfers
+4. **Medical support** — medicine and healthcare costs for families who cannot pay
+5. **Small business / micro-projects** — $200–$500 CAD; sewing machines, workshop tools, grocery supplies, livestock raising
+6. **Community support** — marriage support (~10 years); basic housing needs (no roof, bathroom, door, bed)
 
 No political mandate. Sole goal: help vulnerable families survive with dignity while sustaining their faith.
 
 ---
 
-## 4. Key Statistics (current — June 2025)
+## 4. Key Statistics (current — June 2026)
 
 | Metric | Value | Source |
 |---|---|---|
 | Families receiving monthly aid | 7,150+ | Provided by team June 2025 |
-| University students supported | 728+ | Provided by team June 2025 |
-| Regions across Egypt | 48 | Website / documents |
-| Years active | 35+ (since 1989) | Confirmed |
+| University students currently supported | 728+ | Provided by team June 2025 |
+| University graduates over 20 years | Thousands | Founding story document |
+| Regions across Egypt | TBD — more than 48 | See TBD list |
+| Service since | The 1980s | Confirmed |
+| Registered in Canada since | 1989 | Confirmed |
 | Board remuneration | 100% volunteer | All newsletters |
 | Administrative overhead | Less than 2% | All newsletters |
+| Donor impact | 98¢ of every dollar reaches families | Derived from <2% overhead |
 
 ### Growth trajectory (from newsletters)
 | Date | Families | Students |
@@ -89,9 +109,11 @@ No political mandate. Sole goal: help vulnerable families survive with dignity w
 - **University student monthly stipend:** EGP 1,000/month (same as family)
 - **Feast grants:** EGP 1,300 × 2/year (Christmas + Easter)
 - **Annual support per family:** ~CAD 340/year (stated Oct 2023)
-- **Administrative overhead:** Less than 2% of funds
-- **Money transfers:** CAD or USD → EGP; deposited to diocese/bishop bank account (standard); covers 3–6 months per transfer
+- **Administrative overhead:** Less than 2% of funds — 98¢ of every dollar reaches families
+- **Small business project cost range:** $200–$500 CAD (updated periodically)
+- **Money transfers:** CAD or USD → EGP; deposited to diocese/bishop bank account; covers 3–6 months per transfer
 - **Special grants (Oct 2023 example):** ~CAD 22,000 for illness support, furniture, and marriages in one area alone
+- **Annual total disbursed to Egypt:** TBD — placeholder for 2025 figure to be confirmed with board
 
 ---
 
@@ -119,6 +141,8 @@ No political mandate. Sole goal: help vulnerable families survive with dignity w
 | His Grace Bishop Bakhomios | Elbeheira |
 | His Grace Bishop Hedra | Aswan |
 
+**Bishops video plan:** ~40% of bishop names to be made clickable, opening a lightbox popup with their endorsement video. Videos to be uploaded to YouTube first. Remaining names plain text until video available.
+
 ---
 
 ## 7. Board of Directors (confirm before publishing — 2-year terms)
@@ -142,7 +166,8 @@ No political mandate. Sole goal: help vulnerable families survive with dignity w
 
 ## 8. Geographic Coverage
 
-- **48 regions** across Egypt — Alexandria (north) to Aswan (south)
+- **Origin:** Tanta, Gharbia (Delta region) — where service began in the 1980s
+- **Current reach:** More than 48 regions — TBD exact count (see TBD list)
 - Rural Upper Egypt, urban Cairo, Nile Delta
 - Named areas in documents: Al-Omraniya, Abnoub al-Hama, Sohag, Tahta, Al-Kusheh, Rawdh al-Faraj, Al-Matariya, Al-Zawiya al-Hamra, Atfih, Al-Buhayra Governorate
 - Each service area anchored to the nearest local church
@@ -176,6 +201,7 @@ No political mandate. Sole goal: help vulnerable families survive with dignity w
 - Month cannot close until all active families covered in reports
 - Administrative expenses capped at less than 2%
 - No salary or compensation for any board member
+- Phone line available 7 days a week; office meetings by appointment (call to schedule)
 
 ---
 
@@ -218,8 +244,9 @@ This is the internal management system — separate from the public website.
 - Faith-rooted but polished enough to convert a first-time donor
 - Primary audience: donors (many are older — accessibility is a priority)
 
-### Government / registration logos
-Stored in `assets/brand/government/`. Same usage caution as all government wordmarks — only use with explicit permission or confirmed funding relationship.
+### Social media
+- **Facebook:** https://www.facebook.com/copticaidfoundation
+- **YouTube:** Coming soon — add link when channel created
 
 ---
 
@@ -243,13 +270,10 @@ CopticAidFoundation/
 ├── caf_skill/
 │   └── SKILL.md           ← this file
 └── docs/                  ← website (served by GitHub Pages)
+    ├── nav.html           ← global nav source of truth
+    ├── footer.html        ← global footer source of truth
+    └── (8 page files)
 ```
-
-### Git setup
-- Remote: `https://github.com/saherwafai/CopticAidFoundation.git`
-- Branch: `main`
-- Git user: Saher Azer <saherwafai@gmail.com>
-- GitHub Pages: served from `/docs` on `main`
 
 ### Technology decisions
 | Decision | Choice |
@@ -264,73 +288,109 @@ CopticAidFoundation/
 ### Site structure (8 pages)
 | Page | File | Status |
 |---|---|---|
-| Home | `index.html` | Complete |
-| Mission | `mission.html` | Complete |
-| Impact & Programs | `impact.html` | Complete |
-| Give | `give.html` | Complete |
-| News & Media | `news.html` | Complete — tabs: Newsletter, Events, Photos, Videos, Articles |
-| Get Involved | `get-involved.html` | Complete — 8 volunteer roles + expression of interest form |
-| About | `about.html` | Complete |
-| Contact | `contact.html` | Complete |
+| Home | `index.html` | Needs content updates (see pending changes) |
+| Mission | `mission.html` | Needs full founding story rewrite |
+| Impact & Programs | `impact.html` | Needs program reorder + new Program 6 |
+| Give | `give.html` | Needs overhead stat + in memoriam FAQ |
+| News & Media | `news.html` | Complete |
+| Get Involved | `get-involved.html` | Complete |
+| About | `about.html` | Needs founding date fixes |
+| Contact | `contact.html` | Needs fax removal + office hours update |
 
-### Programs on the website (in order)
-1. Monthly Financial Aid
-2. Education Support (728+ university students)
+### Programs (agreed order)
+1. Monthly Financial Aid (+ feast grants)
+2. Education Support
 3. Emergency Relief
-4. Small Business Projects
-5. Medical Support
+4. Medical Support
+5. Small Business Projects ($200–$500 CAD, includes livestock)
+6. Community Support (marriage support ~10 years + housing needs) ← NEW
 
 ### Design version
 - **v0 visual identity** applied — green primary, Cormorant Garamond headings, gold scripture accents
-- **Nav:** two-line (logo + tagline top row, centered links bottom row, hamburger on mobile)
+- **Nav:** two-line (logo + tagline top row, centered links fill width, hamburger on mobile), position sticky
 - **Container width:** 1200px
 - Still a prototype — visual design phase not finalized
 
 ---
 
-## 13. Outstanding Items
+## 13. Pending Website Changes (agreed in content review — not yet applied)
 
-### Content to confirm
-- [ ] Board of directors list — confirm current names and roles
-- [ ] Bishops list — confirm which are current and active
-- [ ] Family count — showing 7,150+ (confirm up to date)
+### Discrepancy fixes
+- [ ] About page: "since 1992" → "since the 1980s" (header + Accomplishments)
+- [ ] Home + Impact: "30+ Years of Service" → "Serving since the 1980s"
+- [ ] Impact page: reorder programs 1→2→3→4→5→6
+- [ ] Small Business: replace EGP reference with "$200–$500 CAD" range
 
-### Content to create
-- [ ] French translations — all 8 pages
-- [ ] Arabic translations — all 8 pages
-- [ ] One family/project story for Impact page
-- [ ] Medical support program details (numbers, delivery, partners)
-- [ ] Events to populate Events tab
-- [ ] Photos for all placeholder blocks
-- [ ] Videos (YouTube/Vimeo embeds)
-- [ ] Articles/press
+### Removals
+- [ ] Home: rename "Latest Announcement" → "Announcements"; update to 2025 tax receipts
+- [ ] Impact: remove bishops internal note; make ~40% of names clickable (placeholder popup)
+- [ ] Emergency Relief: remove "Support for new immigrants"
+- [ ] Education: remove "Support for children in primary and secondary school"
+- [ ] Contact: remove fax number; replace office hours with phone availability note
+- [ ] All pages: remove fax number from footer
 
-### Technical work remaining
-- [ ] Newsletter Canva → HTML rendering workflow (to be designed)
-- [ ] Mailing list service selection and subscribe form wiring
-- [ ] Final visual design phase
-- [ ] WordPress theme build + Polylang setup
-- [ ] Contact form wiring
-- [ ] PayPal donate button embed (ID: XHJU69N8X8RLU)
-- [ ] Final hosting + domain setup
+### Missing info to add
+- [ ] Give page: add "98¢ of every dollar reaches families" + "<2% administrative overhead"
+- [ ] Home impact bar: replace overhead stat with "98¢ of every dollar"
+- [ ] Impact page: add feast grants to Program 1
+- [ ] Mission page: update Coptic population to "10–15 million"
+- [ ] Mission + Impact: add "35% of Copts in poverty" impact claim (TBD verification)
+- [ ] Footer: add Facebook link + YouTube "coming soon"
+- [ ] Footer + About: add Arabic name جمعية المعونة القبطية
+- [ ] Give FAQ: add in memoriam / tribute giving placeholder
+- [ ] Impact: add annual disbursement placeholder (2025 figure TBD)
 
----
-
-## 14. Scripture References Used in the Foundation
-
-- Matthew 25:31–46 — seeing Christ in the poor (core mission scripture)
-- James 1:27 — caring for orphans and widows (home page quote)
-- James 4:17 — knowing what is right and not doing it is sin (Get Involved page)
-- Proverbs 14:31 — helping the poor honours God
-- Proverbs 19:17 — lending to the Lord (Give page)
-- 1 John 3:17 — shutting up your heart from a brother in need
-- Luke 2:14 — Glory to God (Dec 2025 newsletter)
-- Psalm 116 — What shall I render to the Lord (newsletter, French)
-- Fraction prayer of St. Cyril to the Son (Dec 2025 newsletter)
+### Strengthen
+- [ ] Home hero: update tagline to expanded version with university students
+- [ ] Mission: full rewrite of founding story (Tanta, Philip Girgis, 1989, motto)
+- [ ] Mission "Who We Serve": add marriage support + housing needs
+- [ ] Mission + Impact: add foundation motto in EN/AR/FR
+- [ ] Mission + Impact: add Divine Liturgy prayer connection
+- [ ] Impact Program 2: add "728+ currently active" + "thousands of graduates over 20 years"
+- [ ] Impact Program 5: add livestock to micro-project examples
+- [ ] Impact: add new Program 6 — Community Support
+- [ ] Impact Coverage: add Tanta origin sentence; update region count (TBD)
 
 ---
 
-## 15. How to Work on This with Claude
+## 14. TBD List (verify with board before publishing)
+
+- **Fax number** — confirm correct number; was (514) 334-3653 on redesign, original site showed truncated (514) 334-365
+- **New immigrant support** — confirm with board whether still an active service; removed from website pending verification
+- **Primary/secondary school support** — confirm with board whether offered; not in any document; removed pending verification
+- **Coptic population in Egypt** — currently using "10–15 million"; verify with credible current source
+- **35% of Copts in poverty served** — stated Oct 2023 newsletter; verify if still accurate given growth to 7,150+
+- **Annual total aid disbursed 2025** — confirm with board; placeholder on website
+- **In memoriam / tribute giving process** — confirm process: how donor notifies Foundation, is a card sent to family, minimum amount?
+- **YouTube channel** — add link to footer when channel is created
+- **French translation of motto** — "Aide aux Pauvres" — verify with native French speaker
+- **French translation of Divine Liturgy prayer** — use official Coptic Church French text if available
+- **Philip Girgis form of address** — currently "our late founder, Philip Girgis"; confirm board preference
+- **University graduates count** — confirm approximate number over 20 years; currently saying "thousands"
+- **Marriage support** — confirm approximate start year and annual number of families helped
+- **Housing support** — confirm approximate number of families helped per year
+- **Region/coverage count** — currently showing 48; confirm actual current count with board
+- **Foundation motto display** — confirm whether to display "معونة للمساكين" officially on website
+
+---
+
+## 15. Scripture References Used in the Foundation
+
+- **James 1:27** — founding scripture; caring for orphans and widows (home page, Get Involved)
+- **Matthew 25:31–46** — seeing Christ in the poor (core mission scripture)
+- **James 4:17** — knowing what is right and not doing it is sin (Get Involved page)
+- **Proverbs 14:31** — helping the poor honours God (Mission page)
+- **Proverbs 19:17** — lending to the Lord (Give page)
+- **1 John 3:17** — shutting up your heart from a brother in need
+- **Luke 2:14** — Glory to God (Dec 2025 newsletter)
+- **Psalm 116** — What shall I render to the Lord (newsletter, French)
+- **John 14:26** — The Holy Spirit teaches and reminds (founding story)
+- **Divine Liturgy prayer for the crops** — source of the Foundation's motto
+- **Fraction prayer of St. Cyril to the Son** (Dec 2025 newsletter)
+
+---
+
+## 16. How to Work on This with Claude
 
 1. **Start a session:** type `/caf_skill` — full context loads immediately
 2. **Make changes:** describe what to update; Claude edits the HTML files
@@ -342,15 +402,16 @@ CopticAidFoundation/
 
 ---
 
-## 16. Rules for Claude on This Project
+## 17. Rules for Claude on This Project
 
 - Never abbreviate to "CAF" in any deliverable or shared file
 - Always show locally before pushing when layout changes are involved
-- Stats to use: 7,150+ families, 728+ students, 48 regions, 35+ years, 100% volunteer, <2% overhead
-- Founded 1989 (incorporated 2014) — tagline uses "since the 1980s" on website
+- Never use "since 1992" — service began in the 1980s, registered 1989
+- Stats to use: 7,150+ families, 728+ active students, thousands of graduates, "more than 48 regions", serving since the 1980s, 100% volunteer, <2% overhead, 98¢ of every dollar
 - Container width: 1200px
 - Primary audience: donors, many older — accessibility and readability are priorities
 - All Figma mockup screens (when that phase starts): 1440×900px
 - Prototype files live in `docs/` — never move or rename this folder
 - Always push after approved changes so live site stays in sync
 - Update this SKILL.md whenever major decisions are made
+- When user asks to "bring up the TBD list" — present Section 14 for board verification
