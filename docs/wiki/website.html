@@ -38,6 +38,21 @@
   </style>
 </head>
 <body>
+<script>
+  (function() {
+    const PASS = '284191';
+    const SESSION_KEY = 'caf_wiki_auth';
+    if (sessionStorage.getItem(SESSION_KEY) !== PASS) {
+      const entered = prompt('This area is restricted to Coptic Aid Foundation team members.\n\nPlease enter the access code:');
+      if (entered !== PASS) {
+        alert('Incorrect code. You will be redirected to the website.');
+        window.location.href = '../index.html';
+        return;
+      }
+      sessionStorage.setItem(SESSION_KEY, PASS);
+    }
+  })();
+</script>
 
 <nav>
   <div class="container nav-top">
