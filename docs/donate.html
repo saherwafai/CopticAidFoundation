@@ -341,9 +341,13 @@
   (function() {
     const btn = document.getElementById('backToTop');
     if (!btn) return;
-    window.addEventListener('scroll', function() {
-      btn.classList.toggle('visible', window.scrollY > 300);
-    }, { passive: true });
+    function checkScroll() {
+      const scrolled = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      btn.classList.toggle('visible', scrolled > 300);
+    }
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    document.addEventListener('scroll', checkScroll, { passive: true });
+    checkScroll();
   })();
 </script>
 
