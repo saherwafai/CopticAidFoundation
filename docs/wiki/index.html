@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wiki | Coptic Aid Foundation</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .wiki-header {
+      background: var(--blue-dark);
+      color: #fff;
+      padding: 40px 0 32px;
+    }
+    .wiki-header h1 { color: #fff; font-size: 2rem; margin-bottom: 8px; }
+    .wiki-header p { color: rgba(255,255,255,0.75); font-size: 1rem; margin: 0; }
+    .wiki-badge {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .wiki-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .wiki-card {
+      border: 1px solid var(--border);
+      border-top: 5px solid var(--green);
+      padding: 32px;
+      background: var(--white);
+      text-decoration: none;
+      display: block;
+      transition: box-shadow 0.2s;
+    }
+    .wiki-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    .wiki-card .card-icon { font-size: 2rem; margin-bottom: 16px; }
+    .wiki-card h2 { color: var(--green); font-size: 1.4rem; margin: 0 0 10px; }
+    .wiki-card p { color: var(--grey-dark); font-size: 15px; margin: 0 0 16px; }
+    .wiki-card ul { font-size: 14px; color: var(--grey-dark); padding-left: 18px; margin: 0; }
+    .wiki-card ul li { margin-bottom: 4px; }
+    .wiki-card .card-cta { display: inline-block; margin-top: 20px; color: var(--green); font-weight: 600; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-top">
+    <div class="nav-brand">
+      <a href="../index.html"><img src="../CAF_Logo_Hor.svg" alt="Coptic Aid Foundation" class="nav-logo" /></a>
+      <span class="site-tagline">Caring for Egypt's most vulnerable since the 1980s</span>
+    </div>
+    <div class="lang-switcher">
+      <a href="index.html" class="active">EN</a>
+      <a href="#">AR</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu" onclick="toggleNav(this)">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="container nav-bottom" id="nav-bottom">
+    <ul>
+      <li><a href="../index.html">← Back to Website</a></li>
+      <li><a href="index.html" class="active">Wiki Home</a></li>
+      <li><a href="website.html">Website Docs</a></li>
+      <li><a href="database.html">Database Docs</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wiki-header">
+  <div class="container">
+    <span class="wiki-badge">Internal Documentation</span>
+    <h1>Coptic Aid Foundation — Wiki</h1>
+    <p>Internal knowledge base for the website redesign and database management system. For team use only.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="wiki-cards">
+
+      <a href="website.html" class="wiki-card">
+        <div class="card-icon">🌐</div>
+        <h2>Website Documentation</h2>
+        <p>Everything about the website redesign project — structure, content decisions, pending items, and how to maintain it.</p>
+        <ul>
+          <li>Site structure & page inventory</li>
+          <li>TBD list — items awaiting board verification</li>
+          <li>Pending content changes</li>
+          <li>Brand colors, logos & assets</li>
+          <li>How to update & deploy</li>
+        </ul>
+        <span class="card-cta">Open Website Docs →</span>
+      </a>
+
+      <a href="database.html" class="wiki-card">
+        <div class="card-icon">🗄️</div>
+        <h2>Database Documentation</h2>
+        <p>Technical and operational documentation for the Coptic Aid Foundation management system — roles, workflows, data model, and processes.</p>
+        <ul>
+          <li>System overview & goals</li>
+          <li>Team roles — Egypt & Canada</li>
+          <li>Beneficiary lifecycle & workflows</li>
+          <li>Financial transfer process</li>
+          <li>Technology stack</li>
+        </ul>
+        <span class="card-cta">Open Database Docs →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <h4>Coptic Aid Foundation</h4>
+        <p>Internal wiki — for team use only.</p>
+      </div>
+      <div>
+        <h4>Wiki</h4>
+        <ul>
+          <li><a href="index.html">Wiki Home</a></li>
+          <li><a href="website.html">Website Docs</a></li>
+          <li><a href="database.html">Database Docs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Website</h4>
+        <ul>
+          <li><a href="../index.html">Back to Website</a></li>
+          <li><a href="https://github.com/saherwafai/CopticAidFoundation" target="_blank" rel="noopener">GitHub Repository ↗</a></li>
+          <li><a href="https://saherwafai.github.io/CopticAidFoundation/" target="_blank" rel="noopener">Live Site ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2026 Coptic Aid Foundation. Internal documentation — not for public distribution.
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleNav(btn) {
+    btn.classList.toggle('open');
+    document.getElementById('nav-bottom').classList.toggle('open');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Documentation | Coptic Aid Foundation Wiki</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .wiki-header { background: var(--blue-dark); color: #fff; padding: 40px 0 32px; }
+    .wiki-header h1 { color: #fff; font-size: 2rem; margin-bottom: 8px; }
+    .wiki-header p { color: rgba(255,255,255,0.75); font-size: 1rem; margin: 0; }
+    .wiki-badge { display:inline-block; background:var(--green); color:#fff; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:2px; margin-bottom:12px; }
+
+    .lang-toggle { display:flex; gap:0; margin-bottom:32px; border:1px solid var(--border); border-radius:2px; width:fit-content; }
+    .lang-toggle button { background:none; border:none; padding:10px 24px; font-size:13px; font-weight:600; cursor:pointer; color:var(--grey-dark); letter-spacing:0.04em; transition:background 0.15s, color 0.15s; }
+    .lang-toggle button.active { background:var(--green); color:#fff; }
+
+    .lang-section { display:none; }
+    .lang-section.active { display:block; }
+
+    .page-subnav { position:sticky; top:185px; z-index:89; background:var(--white); border-bottom:2px solid var(--green-light); box-shadow:0 2px 6px rgba(0,0,0,0.04); }
+    .page-subnav ul { list-style:none; display:flex; gap:0; padding:0; margin:0; overflow-x:auto; }
+    .page-subnav ul li a { display:block; padding:12px 20px; font-size:13px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--grey-dark); text-decoration:none; border-bottom:3px solid transparent; white-space:nowrap; transition:color 0.2s,border-color 0.2s; }
+    .page-subnav ul li a:hover, .page-subnav ul li a.active { color:var(--green); border-bottom-color:var(--green); }
+    .anchor-target { scroll-margin-top: 200px; }
+
+    .tbd-item { border:1px solid var(--border); border-left:4px solid var(--gold); padding:16px 20px; margin-bottom:12px; background:var(--gold-light); }
+    .tbd-item .tbd-num { font-size:11px; font-weight:700; color:var(--gold); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px; }
+    .tbd-item h4 { margin:0 0 6px; font-size:15px; }
+    .tbd-item p { margin:0; font-size:14px; color:var(--grey-dark); }
+
+    .status-badge { display:inline-block; padding:2px 8px; border-radius:2px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-left:8px; }
+    .status-pending { background:#fff3cd; color:#856404; }
+    .status-done { background:#d4edda; color:#155724; }
+    .status-partial { background:#d1ecf1; color:#0c5460; }
+
+    code { background:var(--grey-light); padding:2px 6px; border-radius:2px; font-size:13px; font-family:monospace; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-top">
+    <div class="nav-brand">
+      <a href="../index.html"><img src="../CAF_Logo_Hor.svg" alt="Coptic Aid Foundation" class="nav-logo" /></a>
+      <span class="site-tagline">Caring for Egypt's most vulnerable since the 1980s</span>
+    </div>
+    <div class="lang-switcher">
+      <a href="website.html" class="active">EN</a>
+      <a href="#">AR</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu" onclick="toggleNav(this)">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="container nav-bottom" id="nav-bottom">
+    <ul>
+      <li><a href="../index.html">← Website</a></li>
+      <li><a href="index.html">Wiki Home</a></li>
+      <li><a href="website.html" class="active">Website Docs</a></li>
+      <li><a href="database.html">Database Docs</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wiki-header">
+  <div class="container">
+    <span class="wiki-badge">Website Documentation</span>
+    <h1>Website Redesign — Documentation</h1>
+    <p>Project knowledge base: structure, decisions, pending items, and maintenance guide.</p>
+  </div>
+</div>
+
+<div class="page-subnav">
+  <div class="container">
+    <ul>
+      <li><a href="#overview" class="active">Overview</a></li>
+      <li><a href="#structure">Site Structure</a></li>
+      <li><a href="#tbd">TBD List</a></li>
+      <li><a href="#pending">Pending Changes</a></li>
+      <li><a href="#brand">Brand & Assets</a></li>
+      <li><a href="#how-to-update">How to Update</a></li>
+    </ul>
+  </div>
+</div>
+
+<section id="main-content">
+  <div class="container" style="padding-top:16px; padding-bottom:8px;">
+    <div class="lang-toggle">
+      <button class="active" onclick="switchLang('en', this)">English</button>
+      <button onclick="switchLang('ar', this)">العربية</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- ENGLISH CONTENT                                   -->
+<!-- ══════════════════════════════════════════════════ -->
+<div id="lang-en" class="lang-section active">
+
+<section id="overview" class="anchor-target">
+  <div class="container">
+    <h2>Project Overview</h2>
+    <p>The Coptic Aid Foundation website is being redesigned from scratch. The original site (copticaidfoundation.org) was built in 2013 and is outdated, inconsistent, and has no clear donor journey.</p>
+
+    <h3>Goals</h3>
+    <ul>
+      <li><strong>Primary:</strong> Explain the mission clearly</li>
+      <li><strong>Secondary:</strong> Drive donations</li>
+      <li><strong>Audience:</strong> Donors — many are older, accessibility is a priority</li>
+    </ul>
+
+    <h3>Technology Stack</h3>
+    <table>
+      <tr><th>Component</th><th>Choice</th><th>Reason</th></tr>
+      <tr><td>CMS (final)</td><td>WordPress + Polylang</td><td>Familiar, easy content updates, best EN/FR/AR multilingual support</td></tr>
+      <tr><td>Languages</td><td>EN (complete), AR (pending)</td><td>FR dropped — EN and AR only</td></tr>
+      <tr><td>Prototype</td><td>Static HTML on GitHub Pages</td><td>Fast review, no server needed</td></tr>
+      <tr><td>Hosting (final)</td><td>TBD — shared hosting ~$10/month</td><td>Low cost, easy maintenance</td></tr>
+      <tr><td>Newsletter</td><td>Canva → HTML (to be designed)</td><td>Team already uses Canva</td></tr>
+      <tr><td>Mailing list</td><td>TBD (MailChimp / Mailerlite)</td><td>Not yet selected</td></tr>
+    </table>
+
+    <h3>Repository & Live Links</h3>
+    <ul>
+      <li><strong>GitHub repo:</strong> <a href="https://github.com/saherwafai/CopticAidFoundation" target="_blank" rel="noopener">github.com/saherwafai/CopticAidFoundation ↗</a></li>
+      <li><strong>Live prototype:</strong> <a href="https://saherwafai.github.io/CopticAidFoundation/" target="_blank" rel="noopener">saherwafai.github.io/CopticAidFoundation ↗</a></li>
+      <li><strong>Local files:</strong> <code>~/Desktop/Coptic Aid Foundation Database/website update/docs/</code></li>
+    </ul>
+
+    <h3>Current Status</h3>
+    <p><span class="status-badge status-partial">Draft V0.1</span> — Content prototype complete in English. Awaiting board content review before visual design phase.</p>
+  </div>
+</section>
+
+<section id="structure" class="anchor-target" style="background:var(--grey-light);">
+  <div class="container">
+    <h2>Site Structure</h2>
+    <p>7 pages, 6 main nav items. Each long page has a sticky sub-nav for in-page navigation.</p>
+    <table>
+      <tr><th>Page</th><th>File</th><th>Sub-nav sections</th><th>Status</th></tr>
+      <tr><td>Home</td><td><code>index.html</code></td><td>—</td><td><span class="status-badge status-done">Complete</span></td></tr>
+      <tr><td>About Us</td><td><code>about-us.html</code></td><td>Our Story · Who We Serve · Our Team · Transparency</td><td><span class="status-badge status-done">Complete</span></td></tr>
+      <tr><td>Our Work</td><td><code>our-work.html</code></td><td>Our Reach · 6 Programs · Coverage</td><td><span class="status-badge status-done">Complete</span></td></tr>
+      <tr><td>Donate</td><td><code>donate.html</code></td><td>How to Give · Tax Receipts · FAQ</td><td><span class="status-badge status-done">Complete</span></td></tr>
+      <tr><td>Get Involved</td><td><code>get-involved.html</code></td><td>Why Volunteer · How You Can Help · Express Interest · Contact</td><td><span class="status-badge status-done">Complete</span></td></tr>
+      <tr><td>News & Media</td><td><code>news.html</code></td><td>Newsletter · Events · Photos · Videos · Articles</td><td><span class="status-badge status-done">Complete</span></td></tr>
+      <tr><td>Contact</td><td><code>contact.html</code></td><td>Our Office · Send a Message · Find Us</td><td><span class="status-badge status-done">Complete</span></td></tr>
+    </table>
+
+    <h3>Programs (Our Work page — in order)</h3>
+    <ol>
+      <li>Monthly Financial Aid</li>
+      <li>Education Support</li>
+      <li>Emergency Relief</li>
+      <li>Medical Support</li>
+      <li>Small Business Projects ($200–$500 CAD)</li>
+      <li>Community Support (marriage & housing)</li>
+    </ol>
+
+    <h3>Retired pages (redirect to new URLs)</h3>
+    <ul>
+      <li><code>mission.html</code> → <code>about-us.html</code></li>
+      <li><code>about.html</code> → <code>about-us.html</code></li>
+      <li><code>give.html</code> → <code>donate.html</code></li>
+      <li><code>impact.html</code> → <code>our-work.html</code></li>
+    </ul>
+  </div>
+</section>
+
+<section id="tbd" class="anchor-target">
+  <div class="container">
+    <h2>TBD List <span style="font-size:14px; color:var(--grey-mid); font-family:'Inter',sans-serif; font-weight:400;">— Items requiring board verification before final publication</span></h2>
+
+    <div class="tbd-item">
+      <div class="tbd-num">TBD 01</div>
+      <h4>Fax Number</h4>
+      <p>Confirm correct fax number. Redesign used (514) 334-3653 but original site showed (514) 334-365 which appears truncated. Fax removed from site pending confirmation.</p>
+    </div>
+    <div class="tbd-item">
+      <div class="tbd-num">TBD 02</div>
+      <h4>New Immigrant Support</h4>
+      <p>Confirm with board whether support for new immigrants is still an active service. Was on original site, removed from redesign pending verification.</p>
+    </div>
+    <div class="tbd-item">
+      <div class="tbd-num">TBD 03</div>
+      <h4>Primary & Secondary School Support</h4>
+      <p>Confirm whether primary/secondary school support is offered. Not referenced in any document or newsletter. Removed pending verification.</p>
+    </div>
+    <div class="tbd-item">
+      <div class="tbd-num">TBD 04</div>
+      <h4>Coptic Population in Egypt</h4>
+      <p>Currently using "10–15 million." Verify with a credible current source before final publication.</p>
+    </div>
+    <div class="tbd-item">
+      <div class="tbd-num">TBD 05</div>
+      <h4>Annual Total Aid Disbursed — 2025</h4>
+      <p>Confirm total CAD amount sent to Egypt in 2025 with Treasurer. Placeholder exists on Donate page.</p>
+    </div>
+    <div class="tbd-item">
+      <div class="tbd-num">TBD 06</div>
+      <h4>In Memoriam / Tribute Giving Process</h4>
+      <p>Confirm: Is an acknowledgement card sent to the family? Is there a minimum donation amount? How does the donor notify the Foundation?</p>
+    </div>
+    <div class="tbd-item">
+      <div class="tbd-num">TBD 07</div>
+      <h4>YouTube Channel</h4>
+      <p>Add link to footer and schema once channel is created. Currently shows "YouTube — coming soon."</p>
+    </div>
+    <div class="tbd-item">
+      <div class="tbd-num">TBD 08</div>
+      <h4>Arabic Translation of Foundation Motto</h4>
+      <p>"معونة للمساكين" — French translation "Aide aux Pauvres" was dropped. Arabic confirmed. Verify motto display preference with board.</p>
+    </div>
+    <div class="tbd-item">
+      <div class="tbd-num">TBD 09</div>
+      <h4>Philip Girgis — Preferred Form of Address</h4>
+      <p>Currently using "our late founder, Philip Girgis." Confirm preferred form of address in English and Arabic.</p>
+    </div>
+    <div class="tbd-item">
+      <div class="tbd-num">TBD 10</div>
+      <h4>University Graduates Count</h4>
+      <p>Currently saying "thousands of graduates over the decades." Confirm approximate total with board for a more precise figure.</p>
+    </div>
+    <div class="tbd-item">
+      <div class="tbd-num">TBD 11</div>
+      <h4>Marriage Support — Start Year & Annual Numbers</h4>
+      <p>Confirm: approximate year marriage support began, and approximate number of families helped annually.</p>
+    </div>
+    <div class="tbd-item">
+      <div class="tbd-num">TBD 12</div>
+      <h4>Housing Support — Annual Numbers</h4>
+      <p>Confirm approximate number of families helped with housing needs per year.</p>
+    </div>
+    <div class="tbd-item">
+      <div class="tbd-num">TBD 13</div>
+      <h4>Geographic Coverage — Region Count</h4>
+      <p>Currently showing "48+ regions." Confirm current actual count with board and update everywhere.</p>
+    </div>
+    <div class="tbd-item">
+      <div class="tbd-num">TBD 14</div>
+      <h4>Board of Directors — Current List</h4>
+      <p>Confirm all 12 names and roles reflect the current board. Directors serve 2-year terms.</p>
+    </div>
+    <div class="tbd-item">
+      <div class="tbd-num">TBD 15</div>
+      <h4>Bishops List — Current & Active</h4>
+      <p>Confirm which bishops in the Our Work table are current and active. Some listings may be outdated. Also confirm preferred English spelling of diocese names.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pending" class="anchor-target" style="background:var(--grey-light);">
+  <div class="container">
+    <h2>Pending Changes</h2>
+    <p>Agreed decisions not yet applied to the website. To be implemented before WordPress build.</p>
+
+    <h3>Content</h3>
+    <ul>
+      <li>Arabic translations — all 7 pages</li>
+      <li>Photos — all placeholder blocks across all pages</li>
+      <li>One family/project story for Our Work page</li>
+      <li>Medical support details (numbers, delivery, partner clinics)</li>
+      <li>Events — populate Events tab in News & Media</li>
+      <li>Videos — upload bishop endorsements to YouTube, add to Our Work lightbox</li>
+      <li>Annual report / T3010 filing — link from About Us → Transparency</li>
+      <li>2025 annual disbursement total — add to Donate page FAQ</li>
+      <li>Charitable registration number on About Us page — confirm and update</li>
+    </ul>
+
+    <h3>Technical</h3>
+    <ul>
+      <li>Hreflang tags — implement via WordPress/Polylang XML sitemap when Arabic built</li>
+      <li>Google Search Console — verify domain and submit sitemap</li>
+      <li>Google Business Profile — confirm it shows correct info: <a href="https://maps.app.goo.gl/BnTFoNmPxT5uoN34A" target="_blank" rel="noopener">View profile ↗</a></li>
+      <li>BreadcrumbList schema — add to all interior pages</li>
+      <li>Green contrast ratio — verify #06a64f meets WCAG 4.5:1 on white for body text</li>
+      <li>PayPal donate button — embed (hosted button ID: XHJU69N8X8RLU)</li>
+      <li>Contact form — wire to info@copticaidfoundation.org in WordPress</li>
+      <li>Newsletter subscribe form — connect to mailing list service (TBD)</li>
+      <li>Newsletter Canva → HTML rendering workflow — design process TBD</li>
+    </ul>
+
+    <h3>Phase sequence</h3>
+    <ol>
+      <li>Board content review (current phase)</li>
+      <li>Content updates based on feedback</li>
+      <li>Arabic translation</li>
+      <li>SEO final pass</li>
+      <li>WordPress build + Polylang setup</li>
+      <li>Pre-launch QA</li>
+      <li>Launch</li>
+    </ol>
+  </div>
+</section>
+
+<section id="brand" class="anchor-target">
+  <div class="container">
+    <h2>Brand & Assets</h2>
+
+    <h3>Color Palette</h3>
+    <table>
+      <tr><th>Role</th><th>Hex</th><th>Used for</th></tr>
+      <tr><td>Green (primary)</td><td><code>#06a64f</code></td><td>Headings, nav, CTAs, icons</td></tr>
+      <tr><td>Blue (secondary)</td><td><code>#2e3690</code></td><td>Impact bar, footer</td></tr>
+      <tr><td>Red (CTA only)</td><td><code>#ec2227</code></td><td>Donate buttons only</td></tr>
+      <tr><td>Gold (scripture)</td><td><code>#c8a84b</code></td><td>Scripture quotes, featured blocks</td></tr>
+      <tr><td>Near-black (text)</td><td><code>#231f20</code></td><td>Body text</td></tr>
+    </table>
+
+    <h3>Logo Files</h3>
+    <ul>
+      <li>Vertical: <code>assets/brand/caf/CAF_Logo.svg</code></li>
+      <li>Horizontal: <code>assets/brand/caf/CAF_Logo_Hor.svg</code></li>
+      <li>Government logos: <code>assets/brand/government/</code> (Canada, CRA, Revenu Québec — use with permission only)</li>
+    </ul>
+
+    <h3>Typography</h3>
+    <ul>
+      <li>Headlines: Cormorant Garamond (Google Fonts)</li>
+      <li>Body: Inter (Google Fonts)</li>
+    </ul>
+
+    <h3>Tone</h3>
+    <ul>
+      <li>Warm & faithful + clean & credible</li>
+      <li>Faith-rooted but polished enough to convert a first-time donor</li>
+      <li>Primary audience: donors, many older — accessibility and readability are priorities</li>
+    </ul>
+  </div>
+</section>
+
+<section id="how-to-update" class="anchor-target" style="background:var(--grey-light);">
+  <div class="container">
+    <h2>How to Update the Website</h2>
+
+    <h3>Working with Claude</h3>
+    <ol>
+      <li>Start a Claude session and type <code>/caf_skill</code> — full project context loads</li>
+      <li>Describe the change you want — Claude edits the HTML files locally</li>
+      <li>Review in browser (open the file directly)</li>
+      <li>When happy, say "push" — Claude commits and pushes to GitHub</li>
+      <li>GitHub Pages deploys in ~1 minute. Hard refresh: <code>Cmd+Shift+R</code></li>
+    </ol>
+
+    <h3>Global nav & footer</h3>
+    <p>Edit <code>docs/nav.html</code> or <code>docs/footer.html</code> — then run the sync script or ask Claude to sync them to all pages.</p>
+
+    <h3>Git workflow</h3>
+    <ul>
+      <li>Repo: <code>github.com/saherwafai/CopticAidFoundation</code></li>
+      <li>Branch: <code>main</code></li>
+      <li>GitHub Pages: served from <code>/docs</code> on <code>main</code></li>
+      <li>Never rename or move the <code>docs/</code> folder</li>
+    </ul>
+
+    <h3>Installing Claude skills (for new team members)</h3>
+    <pre style="background:var(--grey-light); padding:16px; font-size:13px; overflow-x:auto;">mkdir -p ~/.claude/skills/caf_skill
+cp caf_skill/SKILL.md ~/.claude/skills/caf_skill/
+
+mkdir -p ~/.claude/skills/caf_seo_ia
+cp caf_seo_ia/SKILL.md ~/.claude/skills/caf_seo_ia/</pre>
+  </div>
+</section>
+
+</div><!-- end lang-en -->
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- ARABIC CONTENT                                    -->
+<!-- ══════════════════════════════════════════════════ -->
+<div id="lang-ar" class="lang-section" dir="rtl" lang="ar">
+<section class="anchor-target">
+  <div class="container">
+    <h2>توثيق الموقع الإلكتروني</h2>
+    <p style="color:var(--grey-mid); font-style:italic;">الترجمة العربية قيد الإعداد. يرجى الرجوع إلى النسخة الإنجليزية في الوقت الراهن.</p>
+    <a href="#" onclick="switchLang('en', document.querySelector('.lang-toggle button')); return false;" style="color:var(--green); font-weight:600;">← العودة إلى النسخة الإنجليزية</a>
+  </div>
+</section>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <h4>Coptic Aid Foundation</h4>
+        <p>Internal wiki — for team use only.</p>
+      </div>
+      <div>
+        <h4>Wiki</h4>
+        <ul>
+          <li><a href="index.html">Wiki Home</a></li>
+          <li><a href="website.html">Website Docs</a></li>
+          <li><a href="database.html">Database Docs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Website</h4>
+        <ul>
+          <li><a href="../index.html">Back to Website</a></li>
+          <li><a href="https://github.com/saherwafai/CopticAidFoundation" target="_blank" rel="noopener">GitHub Repository ↗</a></li>
+          <li><a href="https://saherwafai.github.io/CopticAidFoundation/" target="_blank" rel="noopener">Live Site ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2026 Coptic Aid Foundation. Internal documentation — not for public distribution.
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleNav(btn) {
+    btn.classList.toggle('open');
+    document.getElementById('nav-bottom').classList.toggle('open');
+  }
+  function switchLang(lang, btn) {
+    document.querySelectorAll('.lang-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.remove('active'));
+    document.getElementById('lang-' + lang).classList.add('active');
+    btn.classList.add('active');
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+  }
+  // Sub-nav scroll highlight
+  const sections = ['overview','structure','tbd','pending','brand','how-to-update'];
+  const subLinks = document.querySelectorAll('.page-subnav a');
+  window.addEventListener('scroll', () => {
+    let current = sections[0];
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 220) current = id;
+    });
+    subLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  }, { passive: true });
+  document.querySelectorAll('.page-subnav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 220, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

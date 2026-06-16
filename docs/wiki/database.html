@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Database Documentation | Coptic Aid Foundation Wiki</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .wiki-header { background: var(--blue-dark); color: #fff; padding: 40px 0 32px; }
+    .wiki-header h1 { color: #fff; font-size: 2rem; margin-bottom: 8px; }
+    .wiki-header p { color: rgba(255,255,255,0.75); font-size: 1rem; margin: 0; }
+    .wiki-badge { display:inline-block; background:var(--green); color:#fff; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:2px; margin-bottom:12px; }
+    .lang-toggle { display:flex; gap:0; margin-bottom:32px; border:1px solid var(--border); border-radius:2px; width:fit-content; }
+    .lang-toggle button { background:none; border:none; padding:10px 24px; font-size:13px; font-weight:600; cursor:pointer; color:var(--grey-dark); letter-spacing:0.04em; transition:background 0.15s, color 0.15s; }
+    .lang-toggle button.active { background:var(--green); color:#fff; }
+    .lang-section { display:none; }
+    .lang-section.active { display:block; }
+    .page-subnav { position:sticky; top:185px; z-index:89; background:var(--white); border-bottom:2px solid var(--green-light); box-shadow:0 2px 6px rgba(0,0,0,0.04); }
+    .page-subnav ul { list-style:none; display:flex; gap:0; padding:0; margin:0; overflow-x:auto; }
+    .page-subnav ul li a { display:block; padding:12px 20px; font-size:13px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--grey-dark); text-decoration:none; border-bottom:3px solid transparent; white-space:nowrap; transition:color 0.2s,border-color 0.2s; }
+    .page-subnav ul li a:hover, .page-subnav ul li a.active { color:var(--green); border-bottom-color:var(--green); }
+    .anchor-target { scroll-margin-top: 200px; }
+    .role-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:16px; margin-top:16px; }
+    .role-card { border:1px solid var(--border); border-top:3px solid var(--green); padding:20px; background:var(--white); }
+    .role-card .role-tag { font-size:11px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px; }
+    .role-card h4 { margin:0 0 8px; font-size:15px; }
+    .role-card p { margin:0; font-size:13px; color:var(--grey-dark); }
+    .workflow-item { border-left:3px solid var(--green); padding:12px 16px; margin-bottom:12px; background:var(--green-light); }
+    .workflow-item h4 { margin:0 0 4px; font-size:14px; font-weight:600; }
+    .workflow-item p { margin:0; font-size:13px; color:var(--grey-dark); }
+    [dir="rtl"] .workflow-item { border-left:none; border-right:3px solid var(--green); }
+    code { background:var(--grey-light); padding:2px 6px; border-radius:2px; font-size:13px; font-family:monospace; }
+    .rtl-note { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-top">
+    <div class="nav-brand">
+      <a href="../index.html"><img src="../CAF_Logo_Hor.svg" alt="Coptic Aid Foundation" class="nav-logo" /></a>
+      <span class="site-tagline">Caring for Egypt's most vulnerable since the 1980s</span>
+    </div>
+    <div class="lang-switcher">
+      <a href="database.html" class="active">EN</a>
+      <a href="#">AR</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu" onclick="toggleNav(this)">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="container nav-bottom" id="nav-bottom">
+    <ul>
+      <li><a href="../index.html">← Website</a></li>
+      <li><a href="index.html">Wiki Home</a></li>
+      <li><a href="website.html">Website Docs</a></li>
+      <li><a href="database.html" class="active">Database Docs</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wiki-header">
+  <div class="container">
+    <span class="wiki-badge">Database Documentation</span>
+    <h1>Management System — Documentation</h1>
+    <p>Technical and operational documentation for the Coptic Aid Foundation internal management system.</p>
+  </div>
+</div>
+
+<div class="page-subnav">
+  <div class="container">
+    <ul>
+      <li><a href="#db-overview" class="active">Overview</a></li>
+      <li><a href="#db-roles">Roles</a></li>
+      <li><a href="#db-programs">Programs</a></li>
+      <li><a href="#db-lifecycle">Beneficiary Lifecycle</a></li>
+      <li><a href="#db-workflows">Workflows</a></li>
+      <li><a href="#db-financial">Financial Transfers</a></li>
+      <li><a href="#db-rules">System Rules</a></li>
+      <li><a href="#db-tech">Technology</a></li>
+    </ul>
+  </div>
+</div>
+
+<section id="main-content">
+  <div class="container" style="padding-top:16px; padding-bottom:8px;">
+    <div class="lang-toggle">
+      <button class="active" onclick="switchLang('en', this)">English</button>
+      <button onclick="switchLang('ar', this)">العربية</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- ENGLISH                                           -->
+<!-- ══════════════════════════════════════════════════ -->
+<div id="lang-en" class="lang-section active">
+
+<section id="db-overview" class="anchor-target">
+  <div class="container">
+    <h2>System Overview</h2>
+    <p>The Coptic Aid Foundation management system is a planned internal web application that will replace the current manual tracking processes. It manages the full lifecycle of beneficiary families and university students across Egypt — from initial screening through monthly payments, annual reviews, and graduation.</p>
+    <ul>
+      <li><strong>System URL:</strong> <code>app.copticaidfoundation.org</code> (planned)</li>
+      <li><strong>Login:</strong> Google Workspace accounts (<code>@copticaidfoundation.org</code>) — no separate passwords</li>
+      <li><strong>Status:</strong> In design phase — not yet built</li>
+      <li><strong>Estimated cost:</strong> ~$0 to start / ~$25–50 USD/month at scale</li>
+    </ul>
+    <h3>Geographic Hierarchy</h3>
+    <p>The system mirrors Egypt's administrative structure, anchored to the Coptic Church network:</p>
+    <p><strong>Governorate → City/District → Neighbourhood/Village → Church → Family</strong></p>
+    <p>Each service area is anchored to the nearest local Coptic church. Money transfers go to the diocese or bishop's bank account as standard practice. When starting a new area, a temporary manager from another area can be assigned until the local structure is complete.</p>
+  </div>
+</section>
+
+<section id="db-roles" class="anchor-target" style="background:var(--grey-light);">
+  <div class="container">
+    <h2>Team Roles</h2>
+    <p>A person's title (Father, Deacon, Bishop, Mr., Ms.) is their ecclesiastical or civil title and is entirely separate from their functional system role. Any person with any title can hold any system role.</p>
+    <h3>Egypt Team</h3>
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-tag">Egypt</div>
+        <h4>Volunteer</h4>
+        <p>Field work, data entry, beneficiary profile completion. Prints and submits monthly reports and expense invoices to Coordinator.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">Egypt</div>
+        <h4>Coordinator</h4>
+        <p>Manages volunteers, assigns cases, reviews reports and expenses, monitors area budget. Submits all requests to Canadian Sponsor. Never submits directly to the board.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">Egypt</div>
+        <h4>Area Director</h4>
+        <p>Area authority — usually a bishop, sometimes a priest. Receives money transfers, records exchange rate. Full visibility of area data. Can delegate but retains override rights.</p>
+      </div>
+    </div>
+    <h3 style="margin-top:32px;">Canada Team</h3>
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-tag">Canada</div>
+        <h4>Sponsor</h4>
+        <p>Manages 1+ areas. Reviews and approves/rejects individual beneficiaries. Monitors balance. Submits transfer requests. Foundation-wide analytics.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">Canada</div>
+        <h4>Board Member</h4>
+        <p>All Sponsor capabilities plus ability to increase area quota directly. Implicitly includes Sponsor role — no need to assign both.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">Canada</div>
+        <h4>President</h4>
+        <p>Full access. Approves transfer requests and quota changes. Fast-tracks urgent or private cases directly.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">Canada</div>
+        <h4>Treasurer</h4>
+        <p>Full financial visibility. Executes transfers after President approval. Notifies Sponsors of transfer status. Generates PDF documentation. Updates system-wide payment amounts (with board approval).</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">Canada</div>
+        <h4>Secretary</h4>
+        <p>Uploads and archives board meeting minutes PDFs with meeting date. System auto-links approvals to minutes.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">Canada</div>
+        <h4>Admin</h4>
+        <p>Unrestricted access. System configuration. User and role management. Manages field library, expense categories, life event types, rejection reason codes.</p>
+      </div>
+    </div>
+    <h3 style="margin-top:32px;">User Creation Approval Chain</h3>
+    <table>
+      <tr><th>Role to create</th><th>Who approves</th></tr>
+      <tr><td>Admin, President, Board Member, Treasurer, Secretary, Sponsor</td><td>Admin only</td></tr>
+      <tr><td>Area Director, Coordinator</td><td>Sponsor / Board Member / President / Admin</td></tr>
+      <tr><td>Volunteer</td><td>Coordinator / Area Director / Admin</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="db-programs" class="anchor-target">
+  <div class="container">
+    <h2>Programs & Services</h2>
+    <table>
+      <tr><th>Program</th><th>Details</th></tr>
+      <tr><td><strong>Monthly Financial Aid</strong></td><td>EGP 1,000/month per family. Disbursed at start of each month without interruption — even if a donor stops giving.</td></tr>
+      <tr><td><strong>University Student Stipend</strong></td><td>Equal to monthly family payment (EGP 1,000/month). Activated on university enrollment, stopped on graduation or dropout. No cap on students per family — each receives a full stipend.</td></tr>
+      <tr><td><strong>Feast Grants</strong></td><td>EGP 1,300 × 2/year — Christmas and Easter.</td></tr>
+      <tr><td><strong>Emergency Relief</strong></td><td>Emergency cash transfers, clothing, shelter for acute need.</td></tr>
+      <tr><td><strong>Small Business Projects</strong></td><td>$200–$500 CAD per project. Sewing machines, tools, livestock, grocery supplies. Goal: family independence.</td></tr>
+      <tr><td><strong>Community Support</strong></td><td>Marriage support (~10 years active). Housing needs (no roof, no sanitation, no furnishings).</td></tr>
+    </table>
+    <h3>Financial Summary</h3>
+    <ul>
+      <li>Monthly payment per family: <strong>EGP 1,000/month</strong></li>
+      <li>Annual support per family: <strong>~CAD 340/year</strong></li>
+      <li>Administrative overhead: <strong>less than 2%</strong> — 98¢ of every dollar reaches families</li>
+    </ul>
+  </div>
+</section>
+
+<section id="db-lifecycle" class="anchor-target" style="background:var(--grey-light);">
+  <div class="container">
+    <h2>Beneficiary Lifecycle</h2>
+    <h3>Family Status Values</h3>
+    <table>
+      <tr><th>Status</th><th>Meaning</th></tr>
+      <tr><td>Pending Bulk Approval</td><td>Awaiting board vote on area quota</td></tr>
+      <tr><td>Pending Screening</td><td>Bulk approved; individual profile submitted, awaiting Sponsor review</td></tr>
+      <tr><td>Active</td><td>Fully approved and receiving regular monthly payments</td></tr>
+      <tr><td>One-time</td><td>Received a single grant with no recurring commitment</td></tr>
+      <tr><td>Transferred</td><td>Family relocated — full history moves to new area</td></tr>
+      <tr><td>Graduated</td><td>Conditions improved, no longer eligible (reversible)</td></tr>
+      <tr><td>Archived</td><td>All family members deceased</td></tr>
+    </table>
+    <h3>Acceptance Process (Two-Stage)</h3>
+    <ol>
+      <li><strong>Stage 1 — Budget Approval:</strong> Coordinator submits bulk request (number of families + estimated cost) → Board votes (majority) or President approves for urgent cases</li>
+      <li><strong>Stage 2 — Individual Screening:</strong> Egypt collects full data → Coordinator submits to Sponsor → Sponsor reviews each case individually and approves or rejects</li>
+    </ol>
+    <h3>Beneficiary Data Collected</h3>
+    <ul>
+      <li><strong>Family head:</strong> Full name, address, DOB, marital status, employment, National ID, linked church, sponsoring priest, assigned follower, aid distribution method</li>
+      <li><strong>Dependants:</strong> Name, DOB, relationship, employment/income, education level, medical conditions, monthly medical costs</li>
+      <li><strong>Housing:</strong> Ownership type, property type, condition, monthly rent</li>
+      <li><strong>Income & Expenses:</strong> Sources (government welfare, pension, employment, other charities), monthly medical expenses per member</li>
+    </ul>
+  </div>
+</section>
+
+<section id="db-workflows" class="anchor-target">
+  <div class="container">
+    <h2>Key Workflows</h2>
+    <div class="workflow-item"><h4>1. New Area Activation</h4><p>Identify geographic area → identify nearest church → build local org structure. Temporary manager from another area can be assigned until local structure is complete.</p></div>
+    <div class="workflow-item"><h4>2. Accepting a New Family</h4><p>Coordinator submits bulk request → Board vote (or President for urgent) → individual screening by Sponsor → activation. Coordinator never submits directly to the board.</p></div>
+    <div class="workflow-item"><h4>3. University Student Stipend Activation</h4><p>Follower flags university enrollment → system notifies → Follower attaches student ID card → stipend activated. Stopped on graduation or dropout.</p></div>
+    <div class="workflow-item"><h4>4. Special Grant Request (Life Event)</h4><p>Coordinator submits with notes, suggested amount, supporting documents → Sponsor/Board Member can reject directly → Board approval required for approval → President can approve urgent/private cases directly.</p></div>
+    <div class="workflow-item"><h4>5. Monthly Reporting & Aid Distribution</h4><p>Area Director builds reports → aid distributed via home visits or monthly gathering → signed reports scanned and uploaded → Sponsor closes the month. System prevents any family appearing in more than one report.</p></div>
+    <div class="workflow-item"><h4>6. Financial Transfer</h4><p>System alerts when balance approaches minimum → Sponsor submits transfer request → President approves → Treasurer executes (CAD/USD → EGP) and sends PDF → Area Director records: date, exchange rate, amount.</p></div>
+    <div class="workflow-item"><h4>7. Periodic Re-evaluation</h4><p>Follower reviews full family list → updates status (graduated, deceased, transferred) → reason, date, follower name logged → area budget updated.</p></div>
+    <div class="workflow-item"><h4>8. Family Transfer to Another Area</h4><p>Family relocates → follower updates record → full history moves to new area → new follower assigned → vacated slot immediately available without new board vote.</p></div>
+    <div class="workflow-item"><h4>9. Rejection & Resubmission</h4><p>Every rejection archived permanently with reason code. System auto-flags when same National ID resubmitted. Resubmission allowed — no new board vote required.</p></div>
+    <div class="workflow-item"><h4>10. Quota Management</h4><p>Board approves number of beneficiaries per area (not individuals). Quota permanent by default. Increase requires board vote or Board Member/President direct action — logged with meeting minutes.</p></div>
+  </div>
+</section>
+
+<section id="db-financial" class="anchor-target" style="background:var(--grey-light);">
+  <div class="container">
+    <h2>Financial Transfers</h2>
+    <ul>
+      <li>Transfers sent in CAD or USD, received in EGP (or partially held in foreign currency)</li>
+      <li>Deposited to diocese or bishop's bank account (standard); priest's personal account in rare temporary exceptions</li>
+      <li>Each transfer covers 3–6 months of expected spending</li>
+      <li>System tracks balance in EGP, CAD, and USD simultaneously</li>
+      <li>Every exchange transaction recorded with rate and fees</li>
+      <li>System alerts when area balance approaches minimum threshold</li>
+    </ul>
+    <h3>Transfer Approval Chain</h3>
+    <ol>
+      <li>System alert → Sponsor submits justified transfer request</li>
+      <li>President approves</li>
+      <li>Treasurer executes transfer and sends PDF documentation</li>
+      <li>Area Director records: date, exchange rate, amount received</li>
+    </ol>
+    <h3>Payment Values</h3>
+    <p>Payment amounts can only be updated by Treasurer, President, or Admin — with board approval, board meeting minutes reference, and effective date. System retains full history of all value changes for accurate historical calculations.</p>
+  </div>
+</section>
+
+<section id="db-rules" class="anchor-target">
+  <div class="container">
+    <h2>System Rules</h2>
+    <ul>
+      <li>National ID is the unique identifier for every person — no duplicates allowed</li>
+      <li>Every vacated slot (death, transfer, rejection) is immediately available without new board vote</li>
+      <li>A family cannot appear in more than one monthly report — system enforces this technically</li>
+      <li>Month cannot close until all active families are covered in reports or explicitly skipped with documented reason</li>
+      <li>Every rejection permanently archived with reason code, optional comment, date, and name of decision-maker</li>
+      <li>Custom fields: users can add extra fields from an admin-managed library — fields cannot be invented freely</li>
+      <li>Audit trail: every major action (status change, transfer, approval, rejection, role change) logged with name and timestamp</li>
+      <li>Minor profile edits (phone number, address) are NOT logged in audit trail</li>
+      <li>Notifications configured per role by Admin — both in-app and email channels</li>
+    </ul>
+  </div>
+</section>
+
+<section id="db-tech" class="anchor-target" style="background:var(--grey-light);">
+  <div class="container">
+    <h2>Technology Stack</h2>
+    <table>
+      <tr><th>Component</th><th>Choice</th><th>Notes</th></tr>
+      <tr><td>User Interface</td><td>Next.js</td><td>React-based, fast, SEO-friendly</td></tr>
+      <tr><td>Database & Storage</td><td>Supabase (PostgreSQL)</td><td>SOC 2 certified, encrypted, region-configurable. Standard PostgreSQL — fully portable.</td></tr>
+      <tr><td>Hosting</td><td>Vercel</td><td>Free tier available, scales with usage</td></tr>
+      <tr><td>Login</td><td>Google Workspace</td><td><code>@copticaidfoundation.org</code> accounts — no separate passwords</td></tr>
+      <tr><td>System URL</td><td><code>app.copticaidfoundation.org</code></td><td>Separate from public website</td></tr>
+      <tr><td>Estimated cost</td><td>~$0 to start</td><td>~$25–50 USD/month when scaled</td></tr>
+    </table>
+    <h3>Open Items</h3>
+    <p>The following are not yet finalised and will be addressed in upcoming sessions:</p>
+    <ul>
+      <li>Full list of expense categories (to be provided by team)</li>
+      <li>Full list of life event types and special grant types (to be provided by team)</li>
+      <li>Complete notification triggers per role</li>
+      <li>MVP planning and project roadmap</li>
+      <li>Database schema design</li>
+    </ul>
+  </div>
+</section>
+
+</div><!-- end lang-en -->
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- ARABIC                                            -->
+<!-- ══════════════════════════════════════════════════ -->
+<div id="lang-ar" class="lang-section rtl-note" dir="rtl" lang="ar">
+
+<section id="db-overview-ar" class="anchor-target">
+  <div class="container">
+    <h2>نظرة عامة على النظام</h2>
+    <p>جمعية المعونة القبطية هي منظمة خيرية كندية تقدّم دعماً مالياً منتظماً للأسر المحتاجة في مصر. الهدف من هذا المشروع هو بناء نظام إلكتروني متكامل يضمن وصول المساعدات إلى مستحقيها بشكل موثّق وشفاف.</p>
+    <p>يتيح النظام ما يلي:</p>
+    <ul>
+      <li>تسجيل بيانات الأسر المستفيدة والمتابعة الدورية لأوضاعهم</li>
+      <li>إدارة طلبات الدعم وسير عمليات الموافقة من مصر وكندا</li>
+      <li>تتبع التحويلات المالية وإدارة ميزانية كل منطقة خدمية</li>
+      <li>توليد التقارير الشهرية وحفظ السجلات والمستندات</li>
+      <li>ضمان عدم تكرار المستفيدين ومنع الاحتيال عبر التحقق من الرقم القومي</li>
+    </ul>
+    <h3>التسلسل الجغرافي والكنسي</h3>
+    <p>عندما تقرر الجمعية تقديم خدماتها في منطقة جديدة، تبدأ بتحديد أقرب كنيسة لتكون النقطة المحورية للعمل الميداني.</p>
+    <p><strong>المحافظة ← المدينة/الحي ← الحيّ السكني/القرية ← الكنيسة ← الأسرة</strong></p>
+    <p>الأبرشية الواحدة قد تمتد على أكثر من محافظة. عند البدء في منطقة جديدة، يمكن تعيين مدير مؤقت من منطقة أخرى حتى يكتمل الهيكل التنظيمي.</p>
+  </div>
+</section>
+
+<section class="anchor-target" style="background:var(--grey-light);">
+  <div class="container">
+    <h2>الأشخاص والأدوار</h2>
+    <p>لقب الشخص (أب، شماس، الأنبا...) هو لقبه الكنسي أو المدني، وهو مستقل تماماً عن دوره الوظيفي في المؤسسة. أي شخص بأي لقب يمكنه شغل أي دور وظيفي.</p>
+
+    <h3>الفريق المصري</h3>
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-tag">مصر</div>
+        <h4>متطوع</h4>
+        <p>العمل الميداني، إدخال البيانات، إكمال ملفات المستفيدين، طباعة وإرسال التقارير الشهرية وفواتير المصروفات للمنسق.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">مصر</div>
+        <h4>منسّق</h4>
+        <p>يُدير المتطوعين، يُوزّع الحالات، يُراجع التقارير والمصروفات، يرصد ميزانية المنطقة. يُقدّم جميع الطلبات للراعي الكندي — لا يُقدّم مباشرة للمجلس.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">مصر</div>
+        <h4>مدير المنطقة</h4>
+        <p>سلطة المنطقة (عادةً أسقف، وأحياناً كاهن أو خادم). يستلم التحويلات المالية، رؤية كاملة على المنطقة. يمكنه التفويض لكنه يحتفظ بحق التجاوز.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:32px;">الفريق الكندي</h3>
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-tag">كندا</div>
+        <h4>راعي</h4>
+        <p>يُدير منطقة أو أكثر. يوافق/يرفض المستفيدين الأفراد. يرصد الرصيد. يُقدّم طلبات التحويل. تحليلات على مستوى المؤسسة.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">كندا</div>
+        <h4>عضو المجلس</h4>
+        <p>كل ما يفعله الراعي + صلاحية رفع حصة المنطقة مباشرة. دور عضو المجلس يشمل ضمنياً دور الراعي.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">كندا</div>
+        <h4>الرئيس</h4>
+        <p>صلاحية كاملة على كل شيء. يوافق على طلبات التحويل وتغييرات الحصة. يُسرِّع الحالات العاجلة أو الخاصة.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">كندا</div>
+        <h4>أمين الصندوق</h4>
+        <p>رؤية كاملة على البيانات المالية. ينفّذ التحويلات بعد موافقة الرئيس. يُصدر وثائق PDF. يُحدّث قيم المدفوعات بموافقة المجلس.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">كندا</div>
+        <h4>السكرتير</h4>
+        <p>يرفع ويحفظ محاضر اجتماعات المجلس بصيغة PDF مع تاريخ الاجتماع. النظام يربط تلقائياً.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">كندا</div>
+        <h4>المسؤول (Admin)</h4>
+        <p>صلاحيات غير محدودة. إعداد النظام. إدارة المستخدمين والأدوار. مكتبة الحقول وفئات المصروفات وأكواد الرفض.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="anchor-target">
+  <div class="container">
+    <h2>البرامج والخدمات</h2>
+    <table>
+      <tr><th>البرنامج</th><th>التفاصيل</th></tr>
+      <tr><td><strong>الدعم المالي الشهري</strong></td><td>1000 جنيه مصري شهرياً لكل أسرة. يُصرف في بداية كل شهر دون انقطاع — حتى لو توقف الممول.</td></tr>
+      <tr><td><strong>منحة الطالب الجامعي</strong></td><td>تعادل الراتب الشهري للأسرة. تُفعَّل عند التسجيل الجامعي وتوقف عند التخرج أو الانقطاع. لا حد أقصى للطلاب.</td></tr>
+      <tr><td><strong>منح الأعياد</strong></td><td>1300 جنيه مصري × مرتان في السنة — عيد الميلاد وعيد القيامة.</td></tr>
+      <tr><td><strong>الإغاثة الطارئة</strong></td><td>تحويلات نقدية عاجلة، ملابس، مأوى للاحتياجات الحادة.</td></tr>
+      <tr><td><strong>المشاريع الصغيرة</strong></td><td>200–500 دولار كندي للمشروع. ماكينات خياطة، أدوات ورش، مواشي، بقالة. الهدف: الاستقلالية.</td></tr>
+      <tr><td><strong>دعم المجتمع</strong></td><td>مساندة تجهيز بيت العروس (~10 سنوات). احتياجات السكن (بدون سقف أو صرف صحي أو أثاث).</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="anchor-target" style="background:var(--grey-light);">
+  <div class="container">
+    <h2>دورة حياة المستفيد</h2>
+    <h3>حالات الأسرة</h3>
+    <table>
+      <tr><th>الحالة</th><th>المعنى</th></tr>
+      <tr><td>في انتظار الموافقة المبدئية</td><td>في انتظار تصويت المجلس على حصة المنطقة</td></tr>
+      <tr><td>في انتظار المراجعة الفردية</td><td>تمت الموافقة المبدئية؛ الملف مُقدَّم وبانتظار مراجعة الراعي</td></tr>
+      <tr><td>فاعل</td><td>موافقة كاملة ويتلقى مدفوعات منتظمة</td></tr>
+      <tr><td>دعم لمرة واحدة</td><td>تلقى منحة واحدة دون التزام شهري</td></tr>
+      <tr><td>منقول</td><td>انتقلت الأسرة؛ السجل الكامل ينتقل معها</td></tr>
+      <tr><td>خرج من الاستحقاق</td><td>تحسّنت ظروفه ولم يعد مؤهلاً (قابل للعودة)</td></tr>
+      <tr><td>مؤرشف</td><td>جميع أفراد الأسرة متوفون</td></tr>
+    </table>
+    <h3>مرحلتا قبول مستفيد جديد</h3>
+    <ol>
+      <li><strong>المرحلة الأولى — موافقة مبدئية:</strong> المنسق يُقدّم عدد الأسر والتكلفة المقدّرة ← المجلس يصوّت أو الرئيس يوافق في الحالات العاجلة</li>
+      <li><strong>المرحلة الثانية — مراجعة فردية:</strong> جمع البيانات التفصيلية ← الراعي يراجع كل حالة على حدة ويوافق أو يرفض</li>
+    </ol>
+  </div>
+</section>
+
+<section class="anchor-target">
+  <div class="container">
+    <h2>سير العمل الرئيسي</h2>
+    <div class="workflow-item"><h4>١. تفعيل منطقة خدمية جديدة</h4><p>تحديد المنطقة الجغرافية ← تحديد أقرب كنيسة ← بناء الهيكل التنظيمي المحلي. إمكانية تعيين مدير مؤقت.</p></div>
+    <div class="workflow-item"><h4>٢. قبول أسرة مستفيدة جديدة</h4><p>طلب جماعي من المنسق ← تصويت المجلس ← جمع البيانات ← مراجعة الراعي ← تفعيل الأسرة.</p></div>
+    <div class="workflow-item"><h4>٣. تفعيل منحة الطالب الجامعي</h4><p>إعلام المتابع عن التسجيل ← إشعار النظام ← إرفاق بطاقة الطالب ← تفعيل المنحة. تُوقَف عند التخرج أو الانقطاع.</p></div>
+    <div class="workflow-item"><h4>٤. طلب منحة استثنائية</h4><p>المنسق يُقدّم الطلب ← الراعي/عضو المجلس يمكنهما الرفض مباشرة ← الموافقة تستلزم قرار المجلس ← الرئيس يوافق على الحالات العاجلة.</p></div>
+    <div class="workflow-item"><h4>٥. التقارير الشهرية وتوزيع المساعدات</h4><p>مدير المنطقة يُعدّ التقارير ← التوزيع (زيارة منزلية أو تجمّع شهري) ← رفع التقارير الموقّعة ← الراعي يُغلق الشهر.</p></div>
+    <div class="workflow-item"><h4>٦. طلب تحويل مالي</h4><p>تنبيه النظام ← الراعي يُقدّم الطلب ← الرئيس يوافق ← أمين الصندوق ينفّذ ← المدير يُسجّل التفاصيل.</p></div>
+    <div class="workflow-item"><h4>٧. إعادة التقييم الدوري</h4><p>المتابع يراجع قائمة أسره ← يُحدّث الحالة مع السبب والتاريخ ← تتأثر ميزانية المنطقة.</p></div>
+    <div class="workflow-item"><h4>٨. نقل أسرة إلى منطقة أخرى</h4><p>تحديث السجل ← السجل الكامل ينتقل ← تعيين متابع جديد ← المقعد الشاغر متاح فوراً.</p></div>
+    <div class="workflow-item"><h4>٩. الرفض وإعادة التقديم</h4><p>كل رفض يُحفظ بشكل دائم. النظام يُنبّه عند إعادة تقديم نفس الرقم القومي. إعادة التقديم ممكنة دون تصويت جديد.</p></div>
+    <div class="workflow-item"><h4>١٠. إدارة حصة المنطقة</h4><p>المجلس يوافق على عدد المستفيدين (وليس أفراداً بعينهم). الحصة مفتوحة دائماً. الزيادة تستلزم تصويت المجلس أو قرار مباشر من عضو المجلس/الرئيس.</p></div>
+  </div>
+</section>
+
+<section class="anchor-target" style="background:var(--grey-light);">
+  <div class="container">
+    <h2>تدفق المال</h2>
+    <ul>
+      <li>يُرسَل التحويل بالكاد أو الدولار الأمريكي ويُستلم بالجنيه المصري</li>
+      <li>يُودَع في حساب الأبرشية أو الأسقف (القاعدة)</li>
+      <li>كل تحويل يغطي من 3 إلى 6 أشهر من الإنفاق المتوقع</li>
+      <li>النظام يتتبع الرصيد بالجنيه المصري والكاد والدولار في آن واحد</li>
+      <li>كل عملية صرف تُسجَّل مع سعر الصرف والرسوم</li>
+    </ul>
+    <h3>سلسلة الموافقة على التحويل</h3>
+    <ol>
+      <li>تنبيه النظام ← الراعي يُقدّم طلب التحويل</li>
+      <li>الرئيس يوافق على الطلب</li>
+      <li>أمين الصندوق ينفّذ التحويل ويُرسل وثيقة PDF للتوثيق</li>
+      <li>المدير يُسجّل التحويل المستلم: التاريخ وسعر الصرف والمبلغ</li>
+    </ol>
+  </div>
+</section>
+
+<section class="anchor-target">
+  <div class="container">
+    <h2>قواعد النظام</h2>
+    <ul>
+      <li>الرقم القومي هو المعرّف الفريد لكل شخص — لا يُسمح بالتكرار في قاعدة البيانات</li>
+      <li>كل مقعد شاغر (وفاة، نقل، رفض) يُتاح فوراً دون تصويت جديد</li>
+      <li>لا يمكن إدراج أسرة في أكثر من تقرير شهري واحد — النظام يمنع ذلك تقنياً</li>
+      <li>لا يمكن إغلاق الشهر إلا بعد تغطية جميع الأسر الفاعلة أو استثنائها بسبب موثّق</li>
+      <li>كل رفض يُحفظ بشكل دائم مع كود السبب والتاريخ واسم صاحب القرار</li>
+      <li>سجل التدقيق: كل إجراء رئيسي يُسجَّل مع اسم المنفّذ وتوقيت التنفيذ</li>
+    </ul>
+  </div>
+</section>
+
+<section class="anchor-target" style="background:var(--grey-light);">
+  <div class="container">
+    <h2>التقنية</h2>
+    <table>
+      <tr><th>المكوّن</th><th>التفاصيل</th></tr>
+      <tr><td>واجهة المستخدم</td><td>Next.js</td></tr>
+      <tr><td>قاعدة البيانات والتخزين</td><td>Supabase (PostgreSQL) — معتمد SOC 2، مشفّر</td></tr>
+      <tr><td>الاستضافة</td><td>Vercel</td></tr>
+      <tr><td>تسجيل الدخول</td><td>Google Workspace (@copticaidfoundation.org) — لا كلمات مرور منفصلة</td></tr>
+      <tr><td>عنوان النظام</td><td>app.copticaidfoundation.org</td></tr>
+      <tr><td>التكلفة التقديرية</td><td>صفر تقريباً في البداية / 25–50 دولاراً شهرياً عند التوسع</td></tr>
+    </table>
+    <h3>البنود المفتوحة</h3>
+    <ul>
+      <li>قائمة تفصيلية بفئات المصروفات (ستُقدَّم من الفريق)</li>
+      <li>قائمة كاملة بأنواع الأحداث الحياتية والمنح الاستثنائية (ستُقدَّم من الفريق)</li>
+      <li>قائمة كاملة بإشعارات النظام لكل دور</li>
+      <li>تخطيط مراحل التطوير (MVP) وخارطة الطريق</li>
+      <li>تصميم مخطط قاعدة البيانات</li>
+    </ul>
+    <p style="margin-top:16px; font-style:italic; color:var(--grey-mid);">هذه الوثيقة مسودة أولى للمراجعة الداخلية. أي ملاحظات أو تصحيحات يُرجى إرسالها للفريق المعني.</p>
+  </div>
+</section>
+
+</div><!-- end lang-ar -->
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <h4>Coptic Aid Foundation</h4>
+        <p>Internal wiki — for team use only.</p>
+      </div>
+      <div>
+        <h4>Wiki</h4>
+        <ul>
+          <li><a href="index.html">Wiki Home</a></li>
+          <li><a href="website.html">Website Docs</a></li>
+          <li><a href="database.html">Database Docs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Website</h4>
+        <ul>
+          <li><a href="../index.html">Back to Website</a></li>
+          <li><a href="https://github.com/saherwafai/CopticAidFoundation" target="_blank" rel="noopener">GitHub Repository ↗</a></li>
+          <li><a href="https://saherwafai.github.io/CopticAidFoundation/" target="_blank" rel="noopener">Live Site ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2026 Coptic Aid Foundation. Internal documentation — not for public distribution.
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleNav(btn) {
+    btn.classList.toggle('open');
+    document.getElementById('nav-bottom').classList.toggle('open');
+  }
+  function switchLang(lang, btn) {
+    document.querySelectorAll('.lang-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.remove('active'));
+    document.getElementById('lang-' + lang).classList.add('active');
+    btn.classList.add('active');
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+  }
+  const sections = ['db-overview','db-roles','db-programs','db-lifecycle','db-workflows','db-financial','db-rules','db-tech'];
+  const subLinks = document.querySelectorAll('.page-subnav a');
+  window.addEventListener('scroll', () => {
+    let current = sections[0];
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 220) current = id;
+    });
+    subLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  }, { passive: true });
+  document.querySelectorAll('.page-subnav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 220, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
