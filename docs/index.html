@@ -25,13 +25,12 @@
   </div>
   <div class="container nav-bottom" id="nav-bottom">
     <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="mission.html">Mission</a></li>
-      <li><a href="impact.html">Impact</a></li>
-      <li><a href="give.html">Give</a></li>
-      <li><a href="news.html">News &amp; Media</a></li>
+      <li><a href="index.html"  class="active">Home</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="our-work.html">Our Work</a></li>
+      <li><a href="donate.html">Donate</a></li>
       <li><a href="get-involved.html">Get Involved</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="news.html">News &amp; Media</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>
@@ -41,8 +40,8 @@
 <div class="hero">
   <div class="container">
     <h1>Caring for Egypt's Most Vulnerable</h1>
-    <p class="tagline">The Coptic Aid Foundation supports needy Coptic families, orphans, widows, and university students in Egypt — through monthly aid, education support, and emergency relief. A Montreal charity. 100% volunteer since the 1980s.</p>
-    <a href="give.html" class="cta-primary">Donate Now</a>
+    <p class="tagline">The Coptic Aid Foundation supports needy Coptic families, orphans, widows, and university students in Egypt — through monthly aid, education support, and emergency relief. A Montreal charity, run entirely by volunteers since 1989.</p>
+    <a href="donate.html" class="cta-primary">Donate Now</a>
   </div>
 </div>
 
@@ -94,19 +93,19 @@
         <div class="placeholder-photo">[ICON or PHOTO: Financial aid / family]</div>
         <h3>Monthly Financial Aid</h3>
         <p>We send regular monthly support to needy families, widows, and orphans selected by clergy of the Coptic Orthodox Church across Egypt.</p>
-        <a href="impact.html">Learn more →</a>
+        <a href="our-work.html">Learn more →</a>
       </div>
       <div class="pillar">
         <div class="placeholder-photo">[ICON or PHOTO: Students / university]</div>
         <h3>University Student Support</h3>
         <p>We support 728+ university students from low-income Coptic families — giving them the chance to build a future and lift their families out of poverty.</p>
-        <a href="impact.html">Learn more →</a>
+        <a href="our-work.html">Learn more →</a>
       </div>
       <div class="pillar">
         <div class="placeholder-photo">[ICON or PHOTO: Emergency / relief]</div>
         <h3>Emergency Relief</h3>
         <p>When crisis strikes, we mobilize quickly to provide emergency funds, medicine, and essentials to the most vulnerable.</p>
-        <a href="impact.html">Learn more →</a>
+        <a href="our-work.html">Learn more →</a>
       </div>
     </div>
   </div>
@@ -129,7 +128,7 @@
       <h2>Your Gift Reaches Egypt This Month</h2>
       <p>Every dollar you give is sent directly to families in need. Our board is entirely volunteer — no salaries, no overhead deductions. You give, they receive.</p>
       <p><strong>Tax receipts issued for all Canadian donations.</strong></p>
-      <a href="give.html" class="cta-primary">Make a Donation</a>
+      <a href="donate.html" class="cta-primary">Make a Donation</a>
     </div>
   </div>
 </section>
@@ -140,8 +139,6 @@
     <h2>Announcements</h2>
     <p><strong>2025 Tax Receipts:</strong> All 2025 tax receipts have been issued and mailed. If you have not received yours, please call (514) 334-9792.</p>
     <p style="color:#888; font-size:14px;">This section is used for tax receipt notices, Annual General Assembly announcements, annual reports, and other donor communications.</p>
-  </div>
-</section>
   </div>
 </section>
 
@@ -156,18 +153,17 @@
           <span lang="ar" dir="rtl">جمعية المعونة القبطية</span>
         </p>
         <p style="margin-top:8px;">Caring for Egypt's most vulnerable since the 1980s.<br/>Canadian registered charity.</p>
-        <a href="/CopticAidFoundation/give.html" class="footer-donate">Donate</a>
+        <a href="donate.html" class="footer-donate">Donate</a>
       </div>
       <div>
         <h4>Navigate</h4>
         <ul>
-          <li><a href="/CopticAidFoundation/mission.html">Our Mission</a></li>
-          <li><a href="/CopticAidFoundation/impact.html">Impact &amp; Programs</a></li>
-          <li><a href="/CopticAidFoundation/give.html">Give</a></li>
-          <li><a href="/CopticAidFoundation/news.html">News &amp; Media</a></li>
-          <li><a href="/CopticAidFoundation/get-involved.html">Get Involved</a></li>
-          <li><a href="/CopticAidFoundation/about.html">About Us</a></li>
-          <li><a href="/CopticAidFoundation/contact.html">Contact</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="our-work.html">Our Work</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+          <li><a href="news.html">News &amp; Media</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div>
@@ -199,6 +195,18 @@
     btn.classList.toggle('open');
     document.getElementById('nav-bottom').classList.toggle('open');
   }
+</script>
+
+<!-- Back to top button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+  (function() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+    window.addEventListener('scroll', function() {
+      btn.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+  })();
 </script>
 </body>
 </html>

@@ -168,12 +168,11 @@
   <div class="container nav-bottom" id="nav-bottom">
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="mission.html">Mission</a></li>
-      <li><a href="impact.html">Impact</a></li>
-      <li><a href="give.html">Give</a></li>
-      <li><a href="news.html" class="active">News &amp; Media</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="our-work.html">Our Work</a></li>
+      <li><a href="donate.html">Donate</a></li>
       <li><a href="get-involved.html">Get Involved</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="news.html"  class="active">News &amp; Media</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>
@@ -302,7 +301,7 @@
       <div class="event-item">
         <div class="event-date">
           <span class="day">TBD</span>
-          <span class="month">2025</span>
+          <span class="month">2026</span>
         </div>
         <div class="event-info">
           <h4>[EVENT NAME — e.g. Annual Fundraising Dinner]</h4>
@@ -369,7 +368,7 @@
           <div class="media-thumb">[VIDEO EMBED — YouTube / Vimeo]</div>
           <div class="media-info">
             <span class="media-type">Video</span>
-            <h4>[Video title — e.g. Message from Bishop Boulous]</h4>
+            <h4>[Video title — e.g. Message from His Grace Bishop Boulous]</h4>
             <div class="media-date">[Date]</div>
           </div>
         </div>
@@ -403,7 +402,7 @@
     <div class="cta-block">
       <h2>Want to Make a Difference?</h2>
       <p>Every donation goes directly to families in Egypt. No overhead. No salaries. Just help.</p>
-      <a href="give.html" class="cta-primary">Donate Now</a>
+      <a href="donate.html" class="cta-primary">Donate Now</a>
     </div>
   </div>
 </section>
@@ -419,18 +418,17 @@
           <span lang="ar" dir="rtl">جمعية المعونة القبطية</span>
         </p>
         <p style="margin-top:8px;">Caring for Egypt's most vulnerable since the 1980s.<br/>Canadian registered charity.</p>
-        <a href="/CopticAidFoundation/give.html" class="footer-donate">Donate</a>
+        <a href="donate.html" class="footer-donate">Donate</a>
       </div>
       <div>
         <h4>Navigate</h4>
         <ul>
-          <li><a href="/CopticAidFoundation/mission.html">Our Mission</a></li>
-          <li><a href="/CopticAidFoundation/impact.html">Impact &amp; Programs</a></li>
-          <li><a href="/CopticAidFoundation/give.html">Give</a></li>
-          <li><a href="/CopticAidFoundation/news.html">News &amp; Media</a></li>
-          <li><a href="/CopticAidFoundation/get-involved.html">Get Involved</a></li>
-          <li><a href="/CopticAidFoundation/about.html">About Us</a></li>
-          <li><a href="/CopticAidFoundation/contact.html">Contact</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="our-work.html">Our Work</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+          <li><a href="news.html">News &amp; Media</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div>
@@ -471,6 +469,18 @@
     btn.classList.toggle('open');
     document.getElementById('nav-bottom').classList.toggle('open');
   }
+</script>
+
+<!-- Back to top button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+  (function() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+    window.addEventListener('scroll', function() {
+      btn.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+  })();
 </script>
 </body>
 </html>

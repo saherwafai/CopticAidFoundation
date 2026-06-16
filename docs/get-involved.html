@@ -93,6 +93,27 @@
     }
     .form-submit:hover { background: var(--green-dark); }
     .form-note { font-size: 12px; color: var(--grey-mid); margin-top: 12px; font-style: italic; }
+
+    /* ── Page sub-nav ── */
+    .page-subnav {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 185px;
+      z-index: 89;
+      background: var(--white);
+      border-bottom: 2px solid var(--green-light);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .page-subnav ul { list-style:none; display:flex; gap:0; padding:0; margin:0; overflow-x:auto; }
+    .page-subnav ul li a {
+      display:block; padding:12px 24px; font-size:13px; font-weight:600;
+      letter-spacing:0.04em; text-transform:uppercase; color:var(--grey-dark);
+      text-decoration:none; border-bottom:3px solid transparent;
+      white-space:nowrap; transition:color 0.2s,border-color 0.2s;
+    }
+    .page-subnav ul li a:hover { color:var(--green); border-bottom-color:var(--green); }
+    .page-subnav ul li a.active { color:var(--green); border-bottom-color:var(--green); }
+    .anchor-target { scroll-margin-top: 240px; }
   </style>
 </head>
 <body>
@@ -115,12 +136,11 @@
   <div class="container nav-bottom" id="nav-bottom">
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="mission.html">Mission</a></li>
-      <li><a href="impact.html">Impact</a></li>
-      <li><a href="give.html">Give</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="our-work.html">Our Work</a></li>
+      <li><a href="donate.html">Donate</a></li>
+      <li><a href="get-involved.html"  class="active">Get Involved</a></li>
       <li><a href="news.html">News &amp; Media</a></li>
-      <li><a href="get-involved.html" class="active">Get Involved</a></li>
-      <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>
@@ -134,8 +154,20 @@
   </div>
 </section>
 
+
+<!-- PAGE SUB-NAV -->
+<div class="page-subnav">
+  <div class="container">
+    <ul>
+      <li><a href="#why-volunteer" class="active">Why Volunteer</a></li>
+      <li><a href="#how-to-help">How You Can Help</a></li>
+      <li><a href="#express-interest">Express Your Interest</a></li>
+      <li><a href="#reach-out">Contact Us</a></li>
+    </ul>
+  </div>
+</div>
 <!-- WHY VOLUNTEER -->
-<section>
+<section id="why-volunteer" class="anchor-target">
   <div class="container">
     <h2>Why Volunteer?</h2>
     <p>Every person on our board of directors, every administrator, every communicator — all volunteers. No one receives a salary or compensation. This means that when you give your time to the Coptic Aid Foundation, every hour goes directly toward serving families in Egypt.</p>
@@ -147,7 +179,7 @@
 </section>
 
 <!-- VOLUNTEER ROLES -->
-<section>
+<section id="how-to-help" class="anchor-target">
   <div class="container">
     <h2>How You Can Help</h2>
     <p>We welcome volunteers with a wide range of skills and availability. All roles are remote-friendly and flexible.</p>
@@ -207,7 +239,7 @@
 </section>
 
 <!-- EXPRESSION OF INTEREST FORM -->
-<section>
+<section id="express-interest" class="anchor-target">
   <div class="container">
     <h2>Express Your Interest</h2>
     <p>Fill in the form below and we will be in touch to discuss how you can contribute.</p>
@@ -273,7 +305,7 @@
 </section>
 
 <!-- CONTACT ALTERNATIVE -->
-<section>
+<section id="reach-out" class="anchor-target">
   <div class="container">
     <h2>Prefer to Reach Out Directly?</h2>
     <p>You are always welcome to contact us by phone or email:</p>
@@ -290,7 +322,7 @@
     <div class="cta-block">
       <h2>Can't Volunteer? You Can Still Help.</h2>
       <p>A monthly donation of any amount supports families in Egypt directly. Every dollar reaches those who need it most.</p>
-      <a href="give.html" class="cta-primary">Make a Donation</a>
+      <a href="donate.html" class="cta-primary">Make a Donation</a>
     </div>
   </div>
 </section>
@@ -306,18 +338,17 @@
           <span lang="ar" dir="rtl">جمعية المعونة القبطية</span>
         </p>
         <p style="margin-top:8px;">Caring for Egypt's most vulnerable since the 1980s.<br/>Canadian registered charity.</p>
-        <a href="/CopticAidFoundation/give.html" class="footer-donate">Donate</a>
+        <a href="donate.html" class="footer-donate">Donate</a>
       </div>
       <div>
         <h4>Navigate</h4>
         <ul>
-          <li><a href="/CopticAidFoundation/mission.html">Our Mission</a></li>
-          <li><a href="/CopticAidFoundation/impact.html">Impact &amp; Programs</a></li>
-          <li><a href="/CopticAidFoundation/give.html">Give</a></li>
-          <li><a href="/CopticAidFoundation/news.html">News &amp; Media</a></li>
-          <li><a href="/CopticAidFoundation/get-involved.html">Get Involved</a></li>
-          <li><a href="/CopticAidFoundation/about.html">About Us</a></li>
-          <li><a href="/CopticAidFoundation/contact.html">Contact</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="our-work.html">Our Work</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+          <li><a href="news.html">News &amp; Media</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div>
@@ -349,6 +380,49 @@
     btn.classList.toggle('open');
     document.getElementById('nav-bottom').classList.toggle('open');
   }
+</script>
+
+<!-- Back to top button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+  (function() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+    window.addEventListener('scroll', function() {
+      btn.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+  })();
+</script>
+
+<script>
+  (function() {
+    const sections = ['why-volunteer','how-to-help','express-interest','reach-out'];
+    const subLinks = document.querySelectorAll('.page-subnav a');
+
+    document.querySelectorAll('.page-subnav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        const offset = 240;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      let current = sections[0];
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 250) current = id;
+      });
+      subLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    }, { passive: true });
+  })();
 </script>
 </body>
 </html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Work | Coptic Aid Foundation</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-subnav {
+      position: sticky;
+      top: 185px;
+      z-index: 90;
+      background: var(--white);
+      border-bottom: 2px solid var(--green-light);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .page-subnav ul {
+      list-style: none;
+      display: flex;
+      gap: 0;
+      padding: 0;
+      margin: 0;
+      overflow-x: auto;
+    }
+    .page-subnav ul li a {
+      display: block;
+      padding: 12px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--grey-dark);
+      text-decoration: none;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .page-subnav ul li a:hover { color: var(--green); border-bottom-color: var(--green); }
+    .page-subnav ul li a.active { color: var(--green); border-bottom-color: var(--green); }
+    .anchor-target { scroll-margin-top: var(--scroll-offset, 165px); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-top">
+    <div class="nav-brand">
+      <a href="index.html"><img src="CAF_Logo_Hor.svg" alt="Coptic Aid Foundation" class="nav-logo" /></a>
+      <span class="site-tagline">Caring for Egypt's most vulnerable since the 1980s</span>
+    </div>
+    <div class="lang-switcher">
+      <a href="our-work.html" class="active">EN</a>
+      <a href="#">FR</a>
+      <a href="#">AR</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu" onclick="toggleNav(this)">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="container nav-bottom" id="nav-bottom">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="our-work.html" class="active">Our Work</a></li>
+      <li><a href="donate.html">Donate</a></li>
+      <li><a href="get-involved.html">Get Involved</a></li>
+      <li><a href="news.html">News &amp; Media</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="container">
+    <h1>Our Work</h1>
+    <p style="font-size:1.1rem; color:#444;">How your donations reach families across Egypt — and what they make possible.</p>
+  </div>
+</section>
+
+<!-- PAGE SUB-NAV -->
+<div class="page-subnav">
+  <div class="container">
+    <ul>
+      <li><a href="#our-reach" class="active">Our Reach</a></li>
+      <li><a href="#monthly-aid">Monthly Aid</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#emergency-relief">Emergency Relief</a></li>
+      <li><a href="#medical">Medical</a></li>
+      <li><a href="#small-business">Small Business</a></li>
+      <li><a href="#community">Community Support</a></li>
+      <li><a href="#coverage">Coverage</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- OUR REACH -->
+<section id="our-reach" class="anchor-target">
+  <div class="container">
+    <h2>Our Reach</h2>
+    <div class="impact-bar" style="border-radius:4px; padding:24px 0; margin-top:16px;">
+      <div class="container">
+        <div class="stat">
+          <span class="stat-number">7,150+</span>
+          <span class="stat-label">Families Receiving Monthly Aid</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">728+</span>
+          <span class="stat-label">University Students Supported</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">48+</span>
+          <span class="stat-label">Regions Across Egypt</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">98&#162;</span>
+          <span class="stat-label">Of Every Dollar to Families</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM 1: MONTHLY AID -->
+<section id="monthly-aid" class="anchor-target" style="background:var(--grey-light);">
+  <div class="container">
+    <h2>Program 1 — Monthly Financial Aid</h2>
+    <div class="placeholder-photo">[PHOTO: Family receiving aid, or dignified portrait of recipient family. To be provided.]</div>
+    <p>Our core program provides a regular monthly payment to needy families, widows, and orphans identified and vetted by clergy of the Coptic Orthodox Church in Egypt.</p>
+    <h3>How it works</h3>
+    <ul>
+      <li>Families are selected by local priests who know their circumstances directly</li>
+      <li>Aid is disbursed at the beginning of each month without interruption</li>
+      <li>Families continue to receive support even if a donor is temporarily unable to give</li>
+      <li>Field workers visit recipients annually and send updated reports</li>
+      <li>Two annual feast grants — Christmas and Easter — in addition to regular monthly support</li>
+    </ul>
+    <h3>Who is supported</h3>
+    <ul>
+      <li>Needy families unable to cover basic living expenses</li>
+      <li>Widows without income</li>
+      <li>Orphaned children</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROGRAM 2: EDUCATION -->
+<section id="education" class="anchor-target">
+  <div class="container">
+    <h2>Program 2 — Education Support</h2>
+    <div class="placeholder-photo">[PHOTO: University students in Egypt. To be provided.]</div>
+    <p>Education is the most lasting investment in a family's future. Today, <strong>728+ university students</strong> are actively receiving monthly support from the Coptic Aid Foundation. Over 20 years, thousands of students have graduated with the Foundation's help over the decades — many going on to find employment and lift their entire families out of poverty.</p>
+    <ul>
+      <li>University students from low-income Coptic families</li>
+      <li>Monthly stipend equal to the family support amount</li>
+      <li>Recipients selected by local clergy based on need and academic potential</li>
+      <li>Support continues through graduation — stopped upon completion or dropout</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROGRAM 3: EMERGENCY RELIEF -->
+<section id="emergency-relief" class="anchor-target" style="background:var(--grey-light);">
+  <div class="container">
+    <h2>Program 3 — Emergency Relief</h2>
+    <div class="placeholder-photo">[PHOTO: Community support or relief context. To be provided.]</div>
+    <p>When crisis strikes — whether natural disaster, sudden illness, displacement, or sectarian violence — we mobilize quickly to provide emergency funds and essentials to the families who need it most.</p>
+    <h3>What emergency relief covers</h3>
+    <ul>
+      <li>Emergency cash transfers to families in acute need</li>
+      <li>Clothing and essential items</li>
+      <li>Shelter assistance for the homeless</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROGRAM 4: MEDICAL SUPPORT -->
+<section id="medical" class="anchor-target">
+  <div class="container">
+    <h2>Program 4 — Medical Support</h2>
+    <div class="placeholder-photo">[PHOTO: Medical care or healthcare context in Egypt. To be provided.]</div>
+    <p>Access to healthcare is out of reach for many poor Coptic families in Egypt. Universal medical care is non-existent, leaving the most vulnerable with no support when illness strikes. We help bridge that gap — supporting dozens of families annually with serious and chronic illness costs that are beyond the means of the family or their local church.</p>
+    <h3>What medical support covers</h3>
+    <ul>
+      <li>Medicine and basic healthcare essentials for families in need</li>
+      <li>Support for families facing acute or chronic illness without means to pay</li>
+      <li>Coordination through local clergy who identify urgent medical needs</li>
+    </ul>
+    <p style="color:#888; font-size:14px;">[PLACEHOLDER: Add specific details — approximate numbers supported annually, any partner clinics or doctors. To be provided by the team.]</p>
+  </div>
+</section>
+
+<!-- PROGRAM 5: SMALL BUSINESS -->
+<section id="small-business" class="anchor-target" style="background:var(--grey-light);">
+  <div class="container">
+    <h2>Program 5 — Small Business Projects</h2>
+    <div class="placeholder-photo">[PHOTO: Person working at small trade — sewing, bakery, market stall, livestock. To be provided.]</div>
+    <p>We believe the most dignified path out of poverty is self-sufficiency. For families who are willing and able to work, we fund small business projects that provide the tools or capital they need to earn their own income.</p>
+    <h3>How it works</h3>
+    <ul>
+      <li>Projects typically cost between <strong>$200–$500 CAD</strong></li>
+      <li>Examples include: sewing machines, workshop tools, grocery supplies, livestock — whatever gives a family the means to earn their own income</li>
+      <li>Families are selected based on capacity and willingness to work</li>
+      <li>The goal is independence — families graduate out of the monthly aid program when able</li>
+    </ul>
+    <p style="color:#888; font-size:14px;">[PLACEHOLDER: Add a short story of one family or project here — a specific example makes this section powerful for donors.]</p>
+  </div>
+</section>
+
+<!-- PROGRAM 6: COMMUNITY SUPPORT -->
+<section id="community" class="anchor-target">
+  <div class="container">
+    <h2>Program 6 — Community Support</h2>
+    <div class="placeholder-photo">[PHOTO: Family in their home, or community gathering. To be provided.]</div>
+    <p>Over the past decade, the Foundation has expanded its support to address life's most fundamental needs — helping families through pivotal moments that no family should face alone.</p>
+    <h3>Marriage support</h3>
+    <p>For approximately the last 10 years, we have helped poor families furnish a basic home for their daughters starting a new life. A simple home — a bed, basic appliances, essential furnishings — can mean everything to a young couple beginning their life together in Christ.</p>
+    <h3>Housing needs</h3>
+    <p>We support families living in homes without a roof, without sanitation, without a door, or without a bed to sleep on. Every year, dozens of families receive help to meet these most basic human needs.</p>
+    <p style="color:#888; font-size:14px;">[PLACEHOLDER: Confirm approximate annual number of families helped through marriage support and housing support — to be provided by the team.]</p>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section id="coverage" class="anchor-target" style="background:var(--grey-light);">
+  <div class="container">
+    <h2>Coverage in Egypt</h2>
+    <p>Our work began in <strong>Tanta, Gharbia</strong> in the 1980s — with 10 to 20 widows and orphan mothers. Today our network spans more than 48 regions across Egypt, from Alexandria in the north to Aswan in the south. Aid reaches families in rural Upper Egypt, urban Cairo, the Nile Delta, and everywhere in between.</p>
+    <div class="placeholder-photo">[MAP or PHOTO: Map of Egypt showing coverage regions — to be created or sourced]</div>
+
+    <h3>Church Partners &amp; Supporting Bishops</h3>
+    <p>Our work is made possible by the trust and cooperation of bishops and priests throughout Egypt. Click on a bishop's name to hear their endorsement:</p>
+    <!-- TODO: confirm all bishops are current; add YouTube lightbox links when videos uploaded (~40% to be linked) -->
+    <table>
+      <tr><th>Name</th><th>Diocese</th></tr>
+      <tr><td>His Holiness Pope Tawadros II</td><td>Pope of Alexandria and Patriarch of All Africa</td></tr>
+      <tr><td><a href="#" onclick="showBishopVideo('His Grace Bishop Paula', event)">His Grace Bishop Paula</a></td><td>Bishop of Gharbia</td></tr>
+      <tr><td>His Grace Bishop Aghabius</td><td>Bishop of Deir Mawas</td></tr>
+      <tr><td><a href="#" onclick="showBishopVideo('His Grace Bishop Fam', event)">His Grace Bishop Fam</a></td><td>Bishop of Tema</td></tr>
+      <tr><td>His Grace Bishop Befnotius</td><td>Bishop of Samalut</td></tr>
+      <tr><td><a href="#" onclick="showBishopVideo('His Grace Bishop Athanasius', event)">His Grace Bishop Athanasius</a></td><td>Bishop of Beni Sweif</td></tr>
+      <tr><td>His Grace Bishop Domadius</td><td>Bishop of Giza</td></tr>
+      <tr><td>His Grace Bishop Bissada</td><td>Bishop of Akhmeem</td></tr>
+      <tr><td><a href="#" onclick="showBishopVideo('His Grace Bishop Bakhomios', event)">His Grace Bishop Bakhomios</a></td><td>Bishop of El Beheira</td></tr>
+      <tr><td>His Grace Bishop Hedra</td><td>Bishop of Aswan</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- BISHOP VIDEO LIGHTBOX -->
+<div id="bishop-lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); z-index:1000; align-items:center; justify-content:center;">
+  <div style="background:#fff; padding:32px; max-width:560px; width:90%; position:relative; border-radius:2px;">
+    <button onclick="closeBishopVideo()" style="position:absolute; top:12px; right:16px; background:none; border:none; font-size:24px; cursor:pointer; color:#888;">&times;</button>
+    <h3 id="bishop-lightbox-name" style="font-family:'Cormorant Garamond',Georgia,serif; color:var(--green); margin-bottom:16px;"></h3>
+    <div style="background:var(--grey-light); border:2px dashed #ccc; height:200px; display:flex; align-items:center; justify-content:center; color:var(--grey-mid); font-size:14px; font-style:italic;">
+      Video coming soon — upload to YouTube and replace this placeholder
+    </div>
+    <p style="font-size:13px; color:var(--grey-mid); margin-top:12px; text-align:center;">Thank you for your patience as we gather these endorsements.</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<section>
+  <div class="container">
+    <div class="cta-block">
+      <h2>Support a Family This Month</h2>
+      <p>A monthly gift of any amount helps a family in Egypt know that someone cares. 98&#162; of every dollar goes directly to the families we serve.</p>
+      <a href="donate.html" class="cta-primary">Donate Now</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <h4>Coptic Aid Foundation</h4>
+        <p>Coptic Aid Foundation<br/>Fondation d'Aide Copte<br/><span lang="ar" dir="rtl">جمعية المعونة القبطية</span></p>
+        <p style="margin-top:8px;">Caring for Egypt's most vulnerable since the 1980s.<br/>Canadian registered charity.</p>
+        <a href="donate.html" class="footer-donate">Donate</a>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="our-work.html">Our Work</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+          <li><a href="news.html">News &amp; Media</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>9520 Boul. de l'Acadie, Bureau 229<br/>Montreal, QC H4N 1L8<br/>Tel: (514) 334-9792<br/><a href="mailto:info@copticaidfoundation.org">info@copticaidfoundation.org</a></p>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/copticaidfoundation" target="_blank" rel="noopener">Facebook &#8599;</a></li>
+          <li><span style="color:#666;">YouTube — coming soon</span></li>
+        </ul>
+        <h4 style="margin-top:16px;">Language</h4>
+        <div class="lang-switcher" style="flex-direction:column; gap:6px;">
+          <a href="our-work.html" class="active">English</a>
+          <a href="#">Fran&#231;ais</a>
+          <a href="#">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2026 Coptic Aid Foundation. All rights reserved. Registered Canadian Charity &mdash; BN 868786054RC0001
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleNav(btn) {
+    btn.classList.toggle('open');
+    document.getElementById('nav-bottom').classList.toggle('open');
+  }
+  function showBishopVideo(name, e) {
+    e.preventDefault();
+    document.getElementById('bishop-lightbox-name').textContent = name;
+    document.getElementById('bishop-lightbox').style.display = 'flex';
+  }
+  function closeBishopVideo() {
+    document.getElementById('bishop-lightbox').style.display = 'none';
+  }
+  const sections = ['our-reach','monthly-aid','education','emergency-relief','medical','small-business','community','coverage'];
+  const subLinks = document.querySelectorAll('.page-subnav a');
+  window.addEventListener('scroll', () => {
+    let current = sections[0];
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 140) current = id;
+    });
+    subLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+
+
+<!-- Back to top button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+  (function() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+    window.addEventListener('scroll', function() {
+      btn.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+  })();
+</script>
+</body>
+</html>

@@ -35,3 +35,14 @@
     document.getElementById('nav-bottom').classList.toggle('open');
   }
 </script>
+
+<!-- Back to top button — global, appears on all pages -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+  (function() {
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+      btn.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+  })();
+</script>
