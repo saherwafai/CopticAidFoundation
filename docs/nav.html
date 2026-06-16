@@ -1,0 +1,37 @@
+<!-- ============================================================
+     GLOBAL NAV — edit this file to update nav on all pages
+     ============================================================ -->
+<nav>
+  <div class="container nav-top">
+    <div class="nav-brand">
+      <a href="/CopticAidFoundation/index.html"><img src="/CopticAidFoundation/CAF_Logo_Hor.svg" alt="Coptic Aid Foundation" class="nav-logo" /></a>
+      <span class="site-tagline">Caring for Egypt's most vulnerable since the 1980s</span>
+    </div>
+    <div class="lang-switcher">
+      <a href="#" class="active">EN</a>
+      <a href="#">FR</a>
+      <a href="#">AR</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu" onclick="toggleNav(this)">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="container nav-bottom" id="nav-bottom">
+    <ul>
+      <li><a href="/CopticAidFoundation/index.html">Home</a></li>
+      <li><a href="/CopticAidFoundation/mission.html">Mission</a></li>
+      <li><a href="/CopticAidFoundation/impact.html">Impact</a></li>
+      <li><a href="/CopticAidFoundation/give.html">Give</a></li>
+      <li><a href="/CopticAidFoundation/news.html">News &amp; Media</a></li>
+      <li><a href="/CopticAidFoundation/get-involved.html">Get Involved</a></li>
+      <li><a href="/CopticAidFoundation/about.html">About</a></li>
+      <li><a href="/CopticAidFoundation/contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<script>
+  function toggleNav(btn) {
+    btn.classList.toggle('open');
+    document.getElementById('nav-bottom').classList.toggle('open');
+  }
+</script>

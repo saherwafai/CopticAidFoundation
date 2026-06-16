@@ -12,10 +12,10 @@
   <div class="container nav-top">
     <div class="nav-brand">
       <a href="index.html"><img src="CAF_Logo_Hor.svg" alt="Coptic Aid Foundation" class="nav-logo" /></a>
-      <span class="site-tagline">Caring for Egypt\'s most vulnerable since the 1980s</span>
+      <span class="site-tagline">Caring for Egypt's most vulnerable since the 1980s</span>
     </div>
     <div class="lang-switcher">
-      <a href="about.html" class="active">EN</a>
+      <a href="#" class="active">EN</a>
       <a href="#">FR</a>
       <a href="#">AR</a>
     </div>
@@ -30,6 +30,7 @@
       <li><a href="impact.html">Impact</a></li>
       <li><a href="give.html">Give</a></li>
       <li><a href="news.html">News &amp; Media</a></li>
+      <li><a href="get-involved.html">Get Involved</a></li>
       <li><a href="about.html" class="active">About</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
@@ -146,7 +147,7 @@
     <div class="footer-inner">
       <div>
         <h4>Coptic Aid Foundation</h4>
-        <p>Caring for Egypt's most vulnerable since 1992.<br/>Canadian registered charity.</p>
+        <p>Caring for Egypt's most vulnerable since 1989.<br/>Canadian registered charity.</p>
         <a href="give.html" class="footer-donate">Donate</a>
       </div>
       <div>
@@ -156,6 +157,7 @@
           <li><a href="impact.html">Impact &amp; Programs</a></li>
           <li><a href="give.html">Give</a></li>
           <li><a href="news.html">News &amp; Media</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -167,7 +169,7 @@
       <div>
         <h4>Language</h4>
         <div class="lang-switcher" style="flex-direction:column; gap:6px;">
-          <a href="about.html" class="active">English</a>
+          <a href="#" class="active">English</a>
           <a href="#">Français</a>
           <a href="#">العربية</a>
         </div>
@@ -179,5 +181,11 @@
   </div>
 </footer>
 
+<script>
+  function toggleNav(btn) {
+    btn.classList.toggle('open');
+    document.getElementById('nav-bottom').classList.toggle('open');
+  }
+</script>
 </body>
 </html>
