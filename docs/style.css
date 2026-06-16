@@ -40,7 +40,7 @@ body {
 }
 
 /* ── Layout ── */
-.container { max-width: 960px; margin: 0 auto; padding: 0 28px; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 
 /* ── Nav ── */
 nav {
@@ -55,8 +55,27 @@ nav .nav-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 0;
+  padding: 14px 0;
   border-bottom: 1px solid var(--border);
+}
+nav .nav-brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+}
+nav .nav-logo {
+  height: 64px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+nav .site-tagline {
+  font-size: 13px;
+  color: var(--grey-mid);
+  letter-spacing: 0.02em;
+  font-style: italic;
 }
 nav .nav-bottom {
   display: flex;
@@ -67,12 +86,16 @@ nav .nav-bottom ul {
   list-style: none;
   display: flex;
   gap: 0;
-  flex-wrap: wrap;
   width: 100%;
+  justify-content: space-between;
+}
+nav .nav-bottom ul li {
+  flex: 1;
+  text-align: center;
 }
 nav .nav-bottom ul li a {
   display: block;
-  padding: 11px 16px;
+  padding: 12px 8px;
   text-decoration: none;
   color: var(--black);
   font-size: 14px;
@@ -80,28 +103,66 @@ nav .nav-bottom ul li a {
   letter-spacing: 0.02em;
   border-bottom: 3px solid transparent;
   transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
 }
 nav .nav-bottom ul li a:hover { color: var(--green); border-bottom-color: var(--green); }
 nav .nav-bottom ul li a.active { color: var(--green); border-bottom-color: var(--green); font-weight: 600; }
-nav .nav-brand {
-  display: flex;
+
+/* ── Hamburger ── */
+.nav-hamburger {
+  display: none;
   flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  background: none;
+  border: none;
 }
-nav .site-name {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 19px;
-  font-weight: 700;
-  color: var(--green);
-  text-decoration: none;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  line-height: 1.2;
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--black);
+  transition: all 0.25s;
 }
-nav .site-tagline {
-  font-size: 12px;
-  color: var(--grey-mid);
-  letter-spacing: 0.03em;
-  margin-top: 2px;
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  nav .nav-logo { height: 48px; }
+  nav .site-tagline { display: none; }
+  .nav-hamburger { display: flex; }
+
+  nav .nav-bottom {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    border-top: 1px solid var(--border);
+  }
+  nav .nav-bottom.open { display: flex; }
+
+  nav .nav-bottom ul {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  nav .nav-bottom ul li { flex: none; text-align: left; }
+  nav .nav-bottom ul li a {
+    padding: 14px 20px;
+    font-size: 16px;
+    border-bottom: 1px solid var(--border);
+    border-left: 4px solid transparent;
+  }
+  nav .nav-bottom ul li a:hover,
+  nav .nav-bottom ul li a.active {
+    border-bottom-color: var(--border);
+    border-left-color: var(--green);
+    background: var(--green-light);
+  }
+
+  .lang-switcher { gap: 6px; }
+  nav .nav-top { flex-wrap: nowrap; gap: 12px; }
 }
 
 .lang-switcher {
