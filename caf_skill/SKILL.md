@@ -244,8 +244,9 @@ This is the internal management system — separate from the public website.
 - Faith-rooted but polished enough to convert a first-time donor
 - Primary audience: donors (many are older — accessibility is a priority)
 
-### Social media
+### Social media & local
 - **Facebook:** https://www.facebook.com/copticaidfoundation
+- **Google Business Profile:** https://maps.app.goo.gl/BnTFoNmPxT5uoN34A
 - **YouTube:** Coming soon — add link when channel created
 
 ---
