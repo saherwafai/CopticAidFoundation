@@ -1,0 +1,242 @@
+/* Prototype stylesheet — structure and readability only, no final visual design */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Georgia, serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #1a1a1a;
+  background: #fff;
+}
+
+/* ── Layout ── */
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+/* ── Nav ── */
+nav {
+  border-bottom: 3px solid #2e3690;
+  padding: 16px 0;
+  background: #fff;
+}
+nav .nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+nav .site-name {
+  font-size: 15px;
+  font-weight: bold;
+  color: #2e3690;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+nav ul a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+nav ul a:hover { color: #2e3690; }
+nav ul a.active { color: #ec2227; font-weight: bold; }
+.lang-switcher {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  display: flex;
+  gap: 8px;
+}
+.lang-switcher a {
+  text-decoration: none;
+  color: #555;
+  border: 1px solid #ccc;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+.lang-switcher a.active, .lang-switcher a:hover {
+  background: #2e3690;
+  color: #fff;
+  border-color: #2e3690;
+}
+
+/* ── Page sections ── */
+section {
+  padding: 48px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+section:last-of-type { border-bottom: none; }
+
+h1 { font-size: 2rem; color: #2e3690; margin-bottom: 16px; }
+h2 { font-size: 1.5rem; color: #2e3690; margin-bottom: 12px; margin-top: 32px; }
+h3 { font-size: 1.15rem; color: #1a1a1a; margin-bottom: 8px; margin-top: 24px; }
+p { margin-bottom: 14px; }
+ul, ol { margin: 12px 0 14px 24px; }
+li { margin-bottom: 6px; }
+
+/* ── Hero ── */
+.hero {
+  background: #f0f2f8;
+  border-left: 6px solid #2e3690;
+  padding: 40px 32px;
+  margin-bottom: 0;
+}
+.hero h1 { font-size: 2.4rem; }
+.hero .tagline { font-size: 1.15rem; color: #444; margin-bottom: 24px; }
+.hero .cta-primary {
+  display: inline-block;
+  background: #ec2227;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 32px;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+/* ── Impact bar ── */
+.impact-bar {
+  background: #2e3690;
+  color: #fff;
+  padding: 24px 0;
+  border-bottom: none;
+}
+.impact-bar .container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 16px;
+  text-align: center;
+}
+.impact-bar .stat { font-family: Arial, sans-serif; }
+.impact-bar .stat-number { font-size: 1.8rem; font-weight: bold; color: #06a64f; display: block; }
+.impact-bar .stat-label { font-size: 13px; opacity: 0.85; }
+
+/* ── Pillars ── */
+.pillars { display: flex; gap: 24px; flex-wrap: wrap; }
+.pillar {
+  flex: 1 1 240px;
+  border: 1px solid #ddd;
+  border-top: 4px solid #2e3690;
+  padding: 20px;
+}
+.pillar h3 { color: #2e3690; margin-top: 0; }
+
+/* ── Photo placeholder ── */
+.placeholder-photo {
+  background: #e8eaf0;
+  border: 2px dashed #aab;
+  color: #667;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  padding: 24px;
+  text-align: center;
+  margin: 16px 0;
+}
+
+/* ── Scripture ── */
+.scripture {
+  background: #fafafa;
+  border-left: 4px solid #06a64f;
+  padding: 24px 32px;
+  font-style: italic;
+  font-size: 1.05rem;
+}
+.scripture cite {
+  display: block;
+  margin-top: 10px;
+  font-style: normal;
+  font-size: 0.9rem;
+  color: #555;
+  font-family: Arial, sans-serif;
+}
+
+/* ── Donor CTA block ── */
+.cta-block {
+  background: #f0f2f8;
+  border: 1px solid #2e3690;
+  padding: 32px;
+  text-align: center;
+}
+.cta-block h2 { margin-top: 0; }
+.cta-block .cta-primary {
+  display: inline-block;
+  background: #ec2227;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 32px;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 3px;
+  margin-top: 12px;
+}
+
+/* ── Table ── */
+table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+th { background: #2e3690; color: #fff; text-align: left; padding: 10px 14px; font-family: Arial, sans-serif; font-size: 14px; }
+td { padding: 10px 14px; border-bottom: 1px solid #e5e5e5; font-size: 15px; }
+tr:hover td { background: #f8f8f8; }
+
+/* ── Donate steps ── */
+.donate-method {
+  border: 1px solid #ddd;
+  border-top: 4px solid #ec2227;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.donate-method h3 { color: #ec2227; margin-top: 0; }
+ol.steps { margin-left: 20px; }
+ol.steps li { margin-bottom: 8px; }
+
+/* ── Footer ── */
+footer {
+  background: #1a1a2e;
+  color: #ccc;
+  padding: 40px 0 24px;
+  margin-top: 0;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+footer .footer-inner {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+footer h4 { color: #fff; margin-bottom: 10px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+footer ul { list-style: none; padding: 0; }
+footer ul li { margin-bottom: 6px; }
+footer a { color: #aac; text-decoration: none; }
+footer a:hover { color: #fff; }
+.footer-donate {
+  display: inline-block;
+  background: #ec2227;
+  color: #fff !important;
+  padding: 10px 24px;
+  border-radius: 3px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+footer .copyright {
+  border-top: 1px solid #333;
+  padding-top: 16px;
+  color: #888;
+  font-size: 12px;
+}
+
+/* ── RTL support (Arabic) ── */
+[dir="rtl"] body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; }
+[dir="rtl"] .hero { border-left: none; border-right: 6px solid #2e3690; }
+[dir="rtl"] .scripture { border-left: none; border-right: 4px solid #06a64f; }
+[dir="rtl"] .pillar { border-top: 4px solid #2e3690; }
+[dir="rtl"] ul, [dir="rtl"] ol { margin-left: 0; margin-right: 24px; }
+[dir="rtl"] nav ul { flex-direction: row-reverse; }
