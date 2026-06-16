@@ -255,6 +255,7 @@ This is the internal management system — separate from the public website.
 
 ### URLs
 - **Prototype (live):** https://saherwafai.github.io/CopticAidFoundation/
+- **Wiki (passcode protected):** https://saherwafai.github.io/CopticAidFoundation/wiki/ — passcode: **284191**
 - **GitHub repo:** https://github.com/saherwafai/CopticAidFoundation
 - **Local files:** `/Users/i573101/Desktop/Coptic Aid Foundation Database/website update/`
 
@@ -263,115 +264,141 @@ This is the internal management system — separate from the public website.
 CopticAidFoundation/
 ├── assets/
 │   ├── brand/
-│   │   ├── caf/           ← CAF logos
+│   │   ├── caf/           ← CAF logos (vertical + horizontal SVG)
 │   │   └── government/    ← Canada, CRA, Revenu Québec logos
 │   ├── photos/            ← to be added
 │   ├── icons/             ← to be added
 │   └── fonts/             ← to be added
 ├── caf_skill/
 │   └── SKILL.md           ← this file
+├── caf_seo_ia/
+│   └── SKILL.md           ← SEO/GEO/AEO/IA audit skill
 └── docs/                  ← website (served by GitHub Pages)
     ├── nav.html           ← global nav source of truth
     ├── footer.html        ← global footer source of truth
-    └── (8 page files)
+    ├── sitemap.xml
+    ├── robots.txt
+    ├── CAF_Logo_Hor.svg   ← logo copy for nav
+    ├── wiki/              ← internal wiki (passcode: 284191)
+    │   ├── index.html
+    │   ├── website.html
+    │   └── database.html
+    └── (7 page files)
 ```
 
 ### Technology decisions
 | Decision | Choice |
 |---|---|
 | CMS (final) | WordPress + Polylang |
-| Languages | EN (complete), FR (pending), AR (pending, RTL ready) |
+| Languages | EN (complete), AR (pending) — FR dropped |
 | Prototype | Static HTML on GitHub Pages |
 | Hosting (final) | TBD — shared hosting ~$10/month |
 | Newsletter | Canva → HTML rendering (to be designed) |
-| Mailing list | TBD (MailChimp / Mailerlite / Brevo) |
+| Mailing list | TBD (MailChimp / Mailerlite) |
 
-### Site structure (8 pages)
-| Page | File | Status |
-|---|---|---|
-| Home | `index.html` | Needs content updates (see pending changes) |
-| Mission | `mission.html` | Needs full founding story rewrite |
-| Impact & Programs | `impact.html` | Needs program reorder + new Program 6 |
-| Give | `give.html` | Needs overhead stat + in memoriam FAQ |
-| News & Media | `news.html` | Complete |
-| Get Involved | `get-involved.html` | Complete |
-| About | `about.html` | Needs founding date fixes |
-| Contact | `contact.html` | Needs fax removal + office hours update |
+### Site structure (7 pages — current as of June 2026)
+| Page | File | Sub-nav | Status |
+|---|---|---|---|
+| Home | `index.html` | — | ✅ Complete |
+| About Us | `about-us.html` | Our Story · Who We Serve · Our Team · Transparency | ✅ Complete |
+| Our Work | `our-work.html` | Our Reach · 6 Programs · Coverage | ✅ Complete |
+| Donate | `donate.html` | How to Give · Tax Receipts · FAQ | ✅ Complete |
+| Get Involved | `get-involved.html` | Why Volunteer · How You Can Help · Express Interest · Contact | ✅ Complete |
+| News & Media | `news.html` | Newsletter · Events · Photos · Videos · Articles | ✅ Complete |
+| Contact | `contact.html` | Our Office · Send a Message · Find Us | ✅ Complete |
 
-### Programs (agreed order)
-1. Monthly Financial Aid (+ feast grants)
-2. Education Support
+### Retired pages (redirect to new URLs)
+- `mission.html` → `about-us.html`
+- `about.html` → `about-us.html`
+- `give.html` → `donate.html`
+- `impact.html` → `our-work.html`
+
+### Programs (in order on Our Work page)
+1. Monthly Financial Aid (+ Christmas & Easter feast grants)
+2. Education Support (728+ active students, thousands of graduates over the decades)
 3. Emergency Relief
 4. Medical Support
 5. Small Business Projects ($200–$500 CAD, includes livestock)
-6. Community Support (marriage support ~10 years + housing needs) ← NEW
+6. Community Support (marriage support ~10 years + housing needs)
 
-### Design version
-- **v0 visual identity** applied — green primary, Cormorant Garamond headings, gold scripture accents
-- **Nav:** two-line (logo + tagline top row, centered links fill width, hamburger on mobile), position sticky
-- **Container width:** 1200px
-- Still a prototype — visual design phase not finalized
+### Design version — Draft V0.1
+- Green primary `#06a64f`, Cormorant Garamond headings, gold scripture accents
+- Two-line nav: logo + tagline top row, links fill full width, hamburger on mobile
+- Page sub-nav (sticky) on: About Us, Our Work, Donate, Get Involved, Contact
+- Container width: 1200px, position: sticky nav
+- Back-to-top button on all pages
+- Google Maps embed on Contact page
+- Wiki passcode-protected with session storage
+
+### SEO — applied (June 2026)
+- Meta descriptions on all 7 pages ✅
+- Canonical tags on all 7 pages ✅
+- Organization + WebSite + FAQPage schema on all pages ✅
+- sitemap.xml + robots.txt ✅
+- Skip-to-content links ✅
+- Google Business Profile in schema sameAs: https://maps.app.goo.gl/BnTFoNmPxT5uoN34A ✅
+- Title tags optimized ✅
+
+### Important rules
+- Never push without explicit "push" instruction from user
+- Always show locally first when layout changes are involved
+- Never use "since 1992" — service began in the 1980s, registered 1989
+- Never use "CAF" abbreviation in any deliverable
+- Footer Wiki link: bottom-right copyright line, links to `wiki/index.html`
+- Wiki passcode: **284191** — share privately, not in public briefings
 
 ---
 
-## 13. Pending Website Changes (agreed in content review — not yet applied)
+## 13. Pending Website Changes
 
-### Discrepancy fixes
-- [ ] About page: "since 1992" → "since the 1980s" (header + Accomplishments)
-- [ ] Home + Impact: "30+ Years of Service" → "Serving since the 1980s"
-- [ ] Impact page: reorder programs 1→2→3→4→5→6
-- [ ] Small Business: replace EGP reference with "$200–$500 CAD" range
+### Content still needed (not yet applied)
+- [ ] Arabic translations — all 7 pages
+- [ ] Photos — all placeholder blocks
+- [ ] One family/project story for Our Work page
+- [ ] Medical support details (numbers, delivery, partner clinics)
+- [ ] Events — populate Events tab
+- [ ] Videos — bishop endorsements to YouTube, add to Our Work lightbox
+- [ ] Annual report / T3010 filing — link from About Us → Transparency
+- [ ] 2025 annual disbursement total — confirm with board, add to Donate FAQ
 
-### Removals
-- [ ] Home: rename "Latest Announcement" → "Announcements"; update to 2025 tax receipts
-- [ ] Impact: remove bishops internal note; make ~40% of names clickable (placeholder popup)
-- [ ] Emergency Relief: remove "Support for new immigrants"
-- [ ] Education: remove "Support for children in primary and secondary school"
-- [ ] Contact: remove fax number; replace office hours with phone availability note
-- [ ] All pages: remove fax number from footer
+### Technical still needed
+- [ ] Hreflang — implement when Arabic pages built (WordPress/Polylang XML sitemap)
+- [ ] Google Search Console — verify domain, submit sitemap
+- [ ] BreadcrumbList schema — add to all interior pages
+- [ ] Green contrast ratio — verify #06a64f meets WCAG 4.5:1 on white
+- [ ] PayPal donate button embed (hosted button ID: XHJU69N8X8RLU)
+- [ ] Contact form — wire to info@copticaidfoundation.org (WordPress)
+- [ ] Newsletter subscribe form — connect to mailing list service (TBD)
+- [ ] Canva → HTML newsletter rendering workflow
 
-### Missing info to add
-- [ ] Give page: add "98¢ of every dollar reaches families" + "<2% administrative overhead"
-- [ ] Home impact bar: replace overhead stat with "98¢ of every dollar"
-- [ ] Impact page: add feast grants to Program 1
-- [ ] Mission page: update Coptic population to "10–15 million"
-- [ ] Mission + Impact: add "35% of Copts in poverty" impact claim (TBD verification)
-- [ ] Footer: add Facebook link + YouTube "coming soon"
-- [ ] Footer + About: add Arabic name جمعية المعونة القبطية
-- [ ] Give FAQ: add in memoriam / tribute giving placeholder
-- [ ] Impact: add annual disbursement placeholder (2025 figure TBD)
-
-### Strengthen
-- [ ] Home hero: update tagline to expanded version with university students
-- [ ] Mission: full rewrite of founding story (Tanta, Philip Girgis, 1989, motto)
-- [ ] Mission "Who We Serve": add marriage support + housing needs
-- [ ] Mission + Impact: add foundation motto in EN/AR/FR
-- [ ] Mission + Impact: add Divine Liturgy prayer connection
-- [ ] Impact Program 2: add "728+ currently active" + "thousands of graduates over 20 years"
-- [ ] Impact Program 5: add livestock to micro-project examples
-- [ ] Impact: add new Program 6 — Community Support
-- [ ] Impact Coverage: add Tanta origin sentence; update region count (TBD)
+### Phase sequence
+1. Board content review (current phase — Draft V0.1)
+2. Content updates based on feedback
+3. Arabic translation
+4. SEO final pass
+5. WordPress build + Polylang
+6. Pre-launch QA
+7. Launch
 
 ---
 
 ## 14. TBD List (verify with board before publishing)
 
-- **Fax number** — confirm correct number; was (514) 334-3653 on redesign, original site showed truncated (514) 334-365
-- **New immigrant support** — confirm with board whether still an active service; removed from website pending verification
-- **Primary/secondary school support** — confirm with board whether offered; not in any document; removed pending verification
-- **Coptic population in Egypt** — currently using "10–15 million"; verify with credible current source
-- **35% of Copts in poverty served** — stated Oct 2023 newsletter; verify if still accurate given growth to 7,150+
-- **Annual total aid disbursed 2025** — confirm with board; placeholder on website
-- **In memoriam / tribute giving process** — confirm process: how donor notifies Foundation, is a card sent to family, minimum amount?
-- **YouTube channel** — add link to footer when channel is created
-- **French translation of motto** — "Aide aux Pauvres" — verify with native French speaker
-- **French translation of Divine Liturgy prayer** — use official Coptic Church French text if available
+- **Fax number** — removed from site; was (514) 334-3653 on redesign, original showed truncated (514) 334-365
+- **New immigrant support** — confirm with board whether still an active service
+- **Primary/secondary school support** — confirm with board whether offered; removed pending verification
+- **Coptic population in Egypt** — currently "10–15 million"; verify with credible source
+- **Annual total aid disbursed 2025** — confirm with Treasurer; placeholder on Donate page
+- **In memoriam / tribute giving process** — confirm: acknowledgement card? minimum amount? notification process?
+- **YouTube channel** — add link to footer and schema once created
 - **Philip Girgis form of address** — currently "our late founder, Philip Girgis"; confirm board preference
-- **University graduates count** — confirm approximate number over 20 years; currently saying "thousands"
-- **Marriage support** — confirm approximate start year and annual number of families helped
-- **Housing support** — confirm approximate number of families helped per year
-- **Region/coverage count** — currently showing 48; confirm actual current count with board
-- **Foundation motto display** — confirm whether to display "معونة للمساكين" officially on website
+- **University graduates count** — currently "thousands over the decades"; confirm more precise figure
+- **Marriage support** — confirm start year and annual families helped
+- **Housing support** — confirm annual families helped
+- **Region/coverage count** — currently "48+"; confirm actual count with board
+- **Foundation motto display** — confirm official use of "معونة للمساكين" on website
+- **Bishops list** — confirm all 9 bishops current and active; confirm preferred English spelling of dioceses
+- **Board of directors list** — confirm all 12 names and roles current (2-year terms)
 
 ---
 
@@ -405,14 +432,16 @@ CopticAidFoundation/
 
 ## 17. Rules for Claude on This Project
 
-- Never abbreviate to "CAF" in any deliverable or shared file
-- Always show locally before pushing when layout changes are involved
-- Never use "since 1992" — service began in the 1980s, registered 1989
-- Stats to use: 7,150+ families, 728+ active students, thousands of graduates, "more than 48 regions", serving since the 1980s, 100% volunteer, <2% overhead, 98¢ of every dollar
-- Container width: 1200px
-- Primary audience: donors, many older — accessibility and readability are priorities
-- All Figma mockup screens (when that phase starts): 1440×900px
-- Prototype files live in `docs/` — never move or rename this folder
-- Always push after approved changes so live site stays in sync
-- Update this SKILL.md whenever major decisions are made
-- When user asks to "bring up the TBD list" — present Section 14 for board verification
+- **Never abbreviate to "CAF"** in any deliverable or shared file
+- **Never push without explicit "push" instruction** from the user — always show locally first
+- **Never use "since 1992"** — service began in the 1980s, registered 1989
+- **FR dropped** — languages are EN + AR only (no French)
+- **Stats to use:** 7,150+ families, 728+ active students, thousands of graduates over the decades, "more than 48 regions", serving since the 1980s, 100% volunteer, less than 2% overhead, 98¢ of every dollar
+- **Container width:** 1200px
+- **Primary audience:** donors, many older — accessibility and readability are priorities
+- **All Figma mockup screens** (when that phase starts): 1440×900px
+- **Prototype files live in `docs/`** — never move or rename this folder
+- **Wiki passcode: 284191** — never share in public briefings
+- **Wiki logo** links to `./index.html` (wiki home), website logo links to `index.html` (website home)
+- **Update this SKILL.md** whenever major decisions are made and push
+- **When user asks to "bring up the TBD list"** — present Section 14 for board verification
