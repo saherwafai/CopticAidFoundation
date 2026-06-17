@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Coptic Aid Foundation is a Montreal-based Canadian registered charity supporting 7,150+ needy Coptic families, orphans, and university students in Egypt. 98¢ of every dollar reaches those we serve." />
+  <link rel="canonical" href="https://copticaidfoundation.org/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NonprofitOrganization",
+    "name": "Coptic Aid Foundation",
+    "alternateName": ["Fondation d'Aide Copte", "\u062c\u0645\u0639\u064a\u0629 \u0627\u0644\u0645\u0639\u0648\u0646\u0629 \u0627\u0644\u0642\u0628\u0637\u064a\u0629"],
+    "url": "https://copticaidfoundation.org",
+    "logo": "https://copticaidfoundation.org/CAF_Logo_Hor.svg",
+    "description": "Montreal-based Canadian registered charity supporting needy Coptic families, orphans, widows, and university students in Egypt since the 1980s.",
+    "foundingDate": "1989",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "9520 Boul. de l'Acadie, Bureau 229",
+      "addressLocality": "Montreal",
+      "addressRegion": "QC",
+      "postalCode": "H4N 1L8",
+      "addressCountry": "CA"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-514-334-9792",
+      "contactType": "customer service",
+      "availableLanguage": ["English", "French", "Arabic"]
+    },
+    "sameAs": [
+      "https://www.facebook.com/copticaidfoundation",
+      "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/chrtydtls/868786054RR0001",
+      "https://maps.app.goo.gl/BnTFoNmPxT5uoN34A"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Coptic Aid Foundation",
+    "url": "https://copticaidfoundation.org"
+  }
+  </script>
+
+  <title>Coptic Aid Foundation | Help Coptic Families in Egypt</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:4px;z-index:999;padding:8px 16px;background:var(--green);color:#fff;font-size:14px;border-radius:2px;text-decoration:none;">Skip to main content</a>
+
+<nav>
+  <div class="container nav-top">
+    <div class="nav-brand">
+      <a href="index.html"><img src="CAF_Logo_Hor.svg" alt="Coptic Aid Foundation" class="nav-logo" /></a>
+      <span class="site-tagline">Caring for Egypt's most vulnerable since the 1980s</span>
+    </div>
+    <div class="lang-switcher">
+      <a href="#" class="active">EN</a>
+      <a href="#">FR</a>
+      <a href="#">AR</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu" onclick="toggleNav(this)">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="container nav-bottom" id="nav-bottom">
+    <ul>
+      <li><a href="index.html"  class="active">Home</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="our-work.html">Our Work</a></li>
+      <li><a href="donate.html">Donate</a></li>
+      <li><a href="get-involved.html">Get Involved</a></li>
+      <li><a href="news.html">News &amp; Media</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="main-content" class="hero">
+  <div class="container">
+    <h1>Caring for Egypt's Most Vulnerable</h1>
+    <p class="tagline">The Coptic Aid Foundation supports needy Coptic families, orphans, widows, and university students in Egypt — through monthly aid, education support, and emergency relief. A Montreal charity, run entirely by volunteers since 1989.</p>
+    <a href="donate.html" class="cta-primary">Donate Now</a>
+  </div>
+</div>
+
+<!-- IMPACT BAR -->
+<div class="impact-bar">
+  <div class="container">
+    <div class="stat">
+      <span class="stat-number">7,150+</span>
+      <span class="stat-label">Families Supported</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">728+</span>
+      <span class="stat-label">University Students</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">48+</span>
+      <span class="stat-label">Regions Across Egypt</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">98¢</span>
+      <span class="stat-label">Of Every Dollar to Families</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">100%</span>
+      <span class="stat-label">Volunteer Board</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">1980s</span>
+      <span class="stat-label">Serving Since</span>
+    </div>
+  </div>
+</div>
+
+<!-- PLACEHOLDER PHOTO HERO -->
+<section style="padding: 0; border-bottom: none;">
+  <div class="container" style="padding-top: 40px; padding-bottom: 8px;">
+    <div class="placeholder-photo" style="height: 280px; display: flex; align-items: center; justify-content: center;">
+      [PHOTO: Families or communities in Egypt — warm, dignified, real. Approximately 1200×500px. To be provided.]
+    </div>
+  </div>
+</section>
+
+<!-- THREE PILLARS -->
+<section>
+  <div class="container">
+    <h2>What We Do</h2>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="placeholder-photo">[ICON or PHOTO: Financial aid / family]</div>
+        <h3>Monthly Financial Aid</h3>
+        <p>We send regular monthly support to needy families, widows, and orphans selected by clergy of the Coptic Orthodox Church across Egypt.</p>
+        <a href="our-work.html">Learn more →</a>
+      </div>
+      <div class="pillar">
+        <div class="placeholder-photo">[ICON or PHOTO: Students / university]</div>
+        <h3>University Student Support</h3>
+        <p>We support 728+ university students from low-income Coptic families — giving them the chance to build a future and lift their families out of poverty.</p>
+        <a href="our-work.html">Learn more →</a>
+      </div>
+      <div class="pillar">
+        <div class="placeholder-photo">[ICON or PHOTO: Emergency / relief]</div>
+        <h3>Emergency Relief</h3>
+        <p>When crisis strikes, we mobilize quickly to provide emergency funds, medicine, and essentials to the most vulnerable.</p>
+        <a href="our-work.html">Learn more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRIPTURE -->
+<section>
+  <div class="container">
+    <blockquote class="scripture">
+      "Religion that God our Father accepts as pure and faultless is this: to look after orphans and widows in their distress."
+      <cite>— James 1:27</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- DONOR CTA -->
+<section>
+  <div class="container">
+    <div class="cta-block">
+      <h2>Your Gift Reaches Egypt This Month</h2>
+      <p>Every dollar you give is sent directly to families in need. Our board is entirely volunteer — no salaries, no overhead deductions. You give, they receive.</p>
+      <p><strong>Tax receipts issued for all Canadian donations.</strong></p>
+      <a href="donate.html" class="cta-primary">Make a Donation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ANNOUNCEMENTS -->
+<section>
+  <div class="container">
+    <h2>Announcements</h2>
+    <p><strong>2025 Tax Receipts:</strong> All 2025 tax receipts have been issued and mailed. If you have not received yours, please call (514) 334-9792.</p>
+    <p style="color:#888; font-size:14px;">This section is used for tax receipt notices, Annual General Assembly announcements, annual reports, and other donor communications.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <h4>Coptic Aid Foundation</h4>
+        <p>
+          Coptic Aid Foundation<br/>
+          Fondation d'Aide Copte<br/>
+          <span lang="ar" dir="rtl">جمعية المعونة القبطية</span>
+        </p>
+        <p style="margin-top:8px;">Caring for Egypt's most vulnerable since the 1980s.<br/>Canadian registered charity.</p>
+        <a href="donate.html" class="footer-donate">Donate</a>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="our-work.html">Our Work</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+          <li><a href="news.html">News &amp; Media</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>9520 Boul. de l'Acadie, Bureau 229<br/>Montreal, QC H4N 1L8<br/>Tel: (514) 334-9792<br/><a href="mailto:info@copticaidfoundation.org">info@copticaidfoundation.org</a><br/><a href="https://maps.app.goo.gl/BnTFoNmPxT5uoN34A" target="_blank" rel="noopener">Google Maps ↗</a></p>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/copticaidfoundation" target="_blank" rel="noopener">Facebook ↗</a></li>
+          <li><span style="color:#666;">YouTube — coming soon</span></li>
+        </ul>
+        <h4 style="margin-top:16px;">Language</h4>
+        <div class="lang-switcher" style="flex-direction:column; gap:6px;">
+          <a href="#" class="active">English</a>
+          <a href="#">Français</a>
+          <a href="#">العربية</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2026 Coptic Aid Foundation. All rights reserved. Registered Canadian Charity — BN 868786054RC0001 <span style="float:right;"><a href="wiki/index.html" style="color:#555; text-decoration:none;">Wiki</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleNav(btn) {
+    btn.classList.toggle('open');
+    document.getElementById('nav-bottom').classList.toggle('open');
+  }
+</script>
+
+<!-- Back to top button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+  (function() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+    function checkScroll() {
+      const scrolled = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      btn.classList.toggle('visible', scrolled > 300);
+    }
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    document.addEventListener('scroll', checkScroll, { passive: true });
+    checkScroll();
+  })();
+</script>
+</body>
+</html>

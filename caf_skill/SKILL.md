@@ -349,6 +349,100 @@ CopticAidFoundation/
 
 ---
 
+## Design System Rules (visual-design-v1 branch)
+
+### Shared stylesheet
+All styles live in `docs/theme.css` — never add inline styles or `<style>` blocks to HTML pages. Every visual change is a component class change in theme.css.
+
+### Typography hierarchy
+- **H1, H2** — Cormorant Garamond (serif) — editorial, emotional
+- **H3** — Inter (sans-serif), uppercase, bold, green-dark — functional section label. Components that intentionally need serif H3 (pillars, CTA blocks, callout boxes) must override with an explicit CSS comment explaining why.
+- **H4** — Inter serif (inherits global) — card-level headings
+- **Body** — Inter, 1rem / 18px base, line-height 1.8
+
+### CTA button tokens (change one line to update everywhere)
+```css
+--cta-bg: #c8a84b          /* gold Option B — 7.11:1 contrast AAA */
+--cta-text: #231f20        /* dark text */
+--cta-on-dark-bg: #ffffff  /* white on hero/dark backgrounds */
+```
+- `.btn-primary` / `.cta-primary` — gold, dark text (all interior pages)
+- `.btn-donate-hero` — white fill (hero gradient background only)
+- `.footer-donate-btn` — gold tokens
+
+### CTA block components
+- `.cta-block` — cream bg `#fdfaf5`, mid gold `1px` border, dark gold h2 (secondary CTAs)
+- `.cta-block.cta-block--primary` — cream bg, dark gold `2px` border (primary donate CTAs: Our Work, Donate page)
+
+### Section alternating backgrounds
+- Inner pages use alternating `bg-light` on sections: 1st=white, 2nd=grey, 3rd=white, etc.
+- Applied via `class="anchor-target bg-light"` on even-indexed sections
+- Home page keeps its own layout — do NOT apply alternating pattern there
+- News page uses tabs — skip alternating pattern
+
+### Donate method cards
+- `.donate-method` — green top border, green h3 (not red — red is alarming)
+
+### Key component classes
+| Class | Purpose |
+|---|---|
+| `.cta-block` / `.cta-block--primary` | CTA sections |
+| `.callout-box` | Motto / highlighted content |
+| `.stat-highlight` | 98¢ transparency block |
+| `.featured-block` | News page featured section |
+| `.trust-indicators` | Inline trust checkmarks |
+| `.modal` + `.modal-inner` + `.modal-close` | Lightbox (bishop videos) |
+| `.placeholder` + `.placeholder-sm/md/lg` | Dev placeholder boxes |
+| `.btn-group` | Paired buttons |
+| `.helper-text` | Small grey supporting text |
+| `.text-muted` | Opacity 0.4 muted text |
+| `.map-wrapper` | Google Maps embed container |
+| `.address-block` | Indented address formatting |
+| `.faq-list` + `.faq-item` + `.faq-q` + `.faq-a` | FAQ accordion |
+| `.nav-controls` | Nav top-right wrapper |
+| `.section-intro` | Eyebrow + H2 section header |
+
+---
+
+## Consistency & Sanity Check Rules
+
+Run before every push. Check for:
+
+### Content checks
+1. **Program count references** — if programs are merged/removed, update all text that mentions a number (e.g. "6 programs" → "5 programs" or "See All Programs")
+2. **Stat consistency** — 7,150+ families, 728+ students, 48+ regions, 98¢ must match everywhere
+3. **Page name references** — no "Give", "Mission", "Impact", "About" — use "Donate", "About Us", "Our Work"
+4. **Date references** — never "since 1992", "30+ years" — always "since the 1980s" or "since 1989"
+5. **Broken hrefs** — no double-URL `href="url1","url2"` patterns — split into separate links
+6. **Program numbering** — verify sequential, no gaps after merges
+7. **Anchor IDs** — if a section is removed/renamed, check all `href="#id"` references
+8. **Meta descriptions** — must not reference outdated content (e.g. "6 programs" when 5 exist)
+9. **Section backgrounds** — alternating pattern is automatic via CSS `nth-of-type` — no manual `bg-light` needed
+10. **Component h3 fonts** — functional h3s must be sans/uppercase; decorative h3s (pillars, CTAs) may be serif with explicit override comment
+
+### Footer component audit (run on every footer change)
+The footer is copy-pasted across all 7 pages. Until WordPress, every change must be applied to all files. Verify:
+
+11. **Navigation links** — all 6 nav items present: About Us · Our Work · Donate · Get Involved · News & Media · Contact
+12. **Donate button URL** — `href="donate.html"` on `.footer-donate-btn`
+13. **Language list** — must match nav header exactly: English · Français · العربية (3 languages)
+14. **Contact details** — address, phone, email all consistent: 9520 Boul. de l'Acadie, Bureau 229 · (514) 334-9792 · info@copticaidfoundation.org
+15. **Social links** — Facebook URL correct: https://www.facebook.com/copticaidfoundation
+16. **Google Maps link** — https://maps.app.goo.gl/BnTFoNmPxT5uoN34A
+17. **Copyright year** — currently 2026, update annually
+18. **BN number** — 868786054RC0001 in copyright line
+19. **Wiki link** — `href="wiki/index.html"` present in footer-bottom
+20. **Org names** — all 3 language names present: Coptic Aid Foundation · Fondation d'Aide Copte · جمعية المعونة القبطية
+
+### Nav header audit (run on every nav change)
+21. **Language switcher** — EN / FR / AR all present with slash separators
+22. **Active page** — correct page marked `class="active" aria-current="page"`
+23. **All 7 nav items** — Home · About Us · Our Work · Donate · Get Involved · News & Media · Contact
+24. **Mobile lang switcher** — same 3 languages as desktop, appears at bottom of hamburger menu
+25. **Logo link** — points to `index.html` on all website pages, `./index.html` on wiki pages
+
+---
+
 ## 13. Pending Website Changes
 
 ### Content still needed (not yet applied)

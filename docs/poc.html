@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAF Design POC — Component Sandbox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green:#06a64f; --green-dark:#057a3a; --green-light:#e8f5ee;
+      --blue:#2e3690; --blue-dark:#1e2460;
+      --red:#ec2227;
+      --gold:#c8a84b; --gold-light:#fdf8ec;
+      --black:#231f20; --grey-700:#374151; --grey-500:#6b7280;
+      --grey-300:#d1d5db; --grey-100:#f3f4f6; --white:#ffffff;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --sans:'Inter',system-ui,sans-serif;
+      --t:150ms ease;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:18px;}
+    body{font-family:var(--sans);background:#fafafa;color:var(--black);padding:0 0 80px;}
+
+    /* POC SHELL */
+    .poc-header{background:var(--blue-dark);color:#fff;padding:24px 40px;display:flex;align-items:center;justify-content:space-between;}
+    .poc-header h1{font-family:var(--serif);font-size:1.5rem;color:#fff;}
+    .poc-header p{font-size:.8rem;color:rgba(255,255,255,.6);margin-top:4px;}
+    .poc-badge{background:var(--green);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px;}
+
+    .poc-nav{background:#fff;border-bottom:1px solid var(--grey-300);padding:0 40px;display:flex;gap:0;overflow-x:auto;}
+    .poc-nav a{display:block;padding:14px 20px;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--grey-500);text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap;}
+    .poc-nav a:hover,.poc-nav a.active{color:var(--green);border-bottom-color:var(--green);}
+
+    .poc-section{padding:48px 40px;border-bottom:1px solid var(--grey-300);background:#fff;margin:0;}
+    .poc-section:nth-child(odd){background:#fafafa;}
+    .poc-section h2{font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--grey-500);margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--grey-300);}
+    .poc-row{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;}
+    .poc-item{display:flex;flex-direction:column;gap:8px;}
+    .poc-label{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--grey-500);}
+
+    /* ═══════════════════════════════════
+       LANGUAGE SWITCHER VARIANTS
+    ═══════════════════════════════════ */
+
+    /* A — Underline only */
+    .lang-a{display:flex;gap:0;}
+    .lang-a a{display:flex;align-items:center;justify-content:center;padding:8px 14px;font-size:.8rem;font-weight:600;letter-spacing:.08em;color:var(--grey-500);text-decoration:none;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);}
+    .lang-a a:hover{color:var(--black);}
+    .lang-a a.active{color:var(--green);border-bottom-color:var(--green);}
+
+    /* B — Pill group */
+    .lang-b{display:inline-flex;background:var(--grey-100);border-radius:100px;padding:3px;gap:2px;}
+    .lang-b a{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:36px;padding:6px 14px;font-size:.8rem;font-weight:600;letter-spacing:.06em;border-radius:100px;color:var(--grey-500);text-decoration:none;transition:background var(--t),color var(--t),box-shadow var(--t);}
+    .lang-b a:hover{color:var(--black);}
+    .lang-b a.active{background:var(--white);color:var(--green);box-shadow:0 1px 4px rgba(0,0,0,0.12);}
+
+    /* C — Outlined separate (current) */
+    .lang-c{display:flex;gap:6px;}
+    .lang-c a{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:36px;padding:6px 12px;font-size:.8rem;font-weight:600;letter-spacing:.06em;color:var(--grey-700);border:1px solid var(--grey-300);border-radius:4px;text-decoration:none;transition:background var(--t),color var(--t),border-color var(--t);}
+    .lang-c a:hover{border-color:var(--green);color:var(--green);}
+    .lang-c a.active{background:var(--green);color:var(--white);border-color:var(--green);}
+
+    /* D — Slash separator */
+    .lang-d{display:flex;align-items:center;gap:0;}
+    .lang-d a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:6px 12px;font-size:.8rem;font-weight:600;letter-spacing:.06em;color:var(--grey-500);text-decoration:none;transition:color var(--t);}
+    .lang-d a:hover{color:var(--black);}
+    .lang-d a.active{color:var(--green);font-weight:700;}
+    .lang-d span{color:var(--grey-300);font-size:.7rem;}
+
+    /* E — Green outline active */
+    .lang-e{display:flex;gap:4px;}
+    .lang-e a{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:36px;padding:6px 14px;font-size:.8rem;font-weight:600;letter-spacing:.06em;color:var(--grey-500);border:1.5px solid transparent;border-radius:4px;text-decoration:none;transition:all var(--t);}
+    .lang-e a:hover{color:var(--green);border-color:var(--green-light);}
+    .lang-e a.active{color:var(--green);border-color:var(--green);background:var(--green-light);}
+
+    /* Show in nav context */
+    .nav-preview{background:var(--white);border:1px solid var(--grey-300);border-radius:4px;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;max-width:600px;}
+    .nav-preview-logo{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--green);letter-spacing:.1em;text-transform:uppercase;}
+
+    /* ═══════════════════════════════════
+       BUTTONS
+    ═══════════════════════════════════ */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:14px 32px;font-family:var(--sans);font-size:1rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;border-radius:4px;border:2px solid transparent;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t),transform var(--t),box-shadow var(--t);}
+    .btn:hover{transform:translateY(-1px);}.btn:active{transform:translateY(0);}
+    .btn-primary{background:var(--red);color:#fff;box-shadow:0 4px 14px rgba(236,34,39,.30);}
+    .btn-primary:hover{background:#c8191e;color:#fff;box-shadow:0 6px 20px rgba(236,34,39,.40);}
+    .btn-green{background:var(--green);color:#fff;box-shadow:0 4px 14px rgba(6,166,79,.25);}
+    .btn-green:hover{background:var(--green-dark);color:#fff;}
+    .btn-outline-green{background:transparent;color:var(--green);border-color:var(--green);}
+    .btn-outline-green:hover{background:var(--green-light);}
+    .btn-ghost{background:transparent;color:var(--grey-700);border-color:var(--grey-300);}
+    .btn-ghost:hover{background:var(--grey-100);color:var(--black);}
+    .btn-sm{min-height:40px;padding:10px 20px;font-size:.875rem;}
+    .btn-lg{min-height:60px;padding:18px 40px;font-size:1.1rem;}
+
+    /* ═══════════════════════════════════
+       TYPOGRAPHY SCALE
+    ═══════════════════════════════════ */
+    .type-sample{padding:12px 0;border-bottom:1px solid var(--grey-100);}
+    .type-sample:last-child{border-bottom:none;}
+    .type-meta{font-size:.7rem;color:var(--grey-500);font-family:var(--sans);margin-top:4px;}
+
+    /* ═══════════════════════════════════
+       STAT CARDS
+    ═══════════════════════════════════ */
+    .stat-card-a{background:var(--blue-dark);border-radius:8px;padding:20px 24px;display:flex;align-items:center;gap:16px;width:260px;}
+    .stat-card-a .num{font-family:var(--serif);font-size:2.4rem;font-weight:700;color:#fff;line-height:1;flex-shrink:0;}
+    .stat-card-a .lbl{font-size:.875rem;color:rgba(255,255,255,.82);line-height:1.4;}
+    .stat-card-a .accent{color:#7ee8a2;font-weight:700;}
+
+    .stat-card-b{background:var(--white);border:1px solid var(--grey-300);border-top:4px solid var(--green);border-radius:4px;padding:20px 24px;width:200px;text-align:center;}
+    .stat-card-b .num{font-family:var(--serif);font-size:2.8rem;font-weight:700;color:var(--green);line-height:1;}
+    .stat-card-b .lbl{font-size:.8rem;color:var(--grey-500);margin-top:4px;text-transform:uppercase;letter-spacing:.06em;}
+
+    .stat-card-c{background:var(--green-light);border-radius:8px;padding:24px;width:200px;}
+    .stat-card-c .num{font-family:var(--serif);font-size:2.6rem;font-weight:700;color:var(--green);line-height:1;}
+    .stat-card-c .lbl{font-size:.85rem;color:var(--grey-700);margin-top:8px;line-height:1.4;}
+
+    /* ═══════════════════════════════════
+       COLORS
+    ═══════════════════════════════════ */
+    .color-swatch{width:80px;height:56px;border-radius:4px;border:1px solid rgba(0,0,0,.08);}
+    .color-item{display:flex;flex-direction:column;gap:6px;align-items:center;}
+    .color-name{font-size:.65rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--grey-500);}
+    .color-hex{font-size:.7rem;font-family:monospace;color:var(--grey-500);}
+
+    /* ═══════════════════════════════════
+       SCRIPTURE
+    ═══════════════════════════════════ */
+    .scripture-a{background:var(--gold-light);border-left:5px solid var(--gold);padding:24px 32px;}
+    .scripture-a blockquote{font-family:var(--serif);font-size:1.2rem;font-style:italic;line-height:1.7;color:var(--black);}
+    .scripture-a cite{display:block;margin-top:10px;font-style:normal;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-500);font-family:var(--sans);}
+
+    .scripture-b{text-align:center;padding:32px;max-width:600px;}
+    .scripture-b .mark{font-family:var(--serif);font-size:5rem;color:var(--gold);line-height:.4;opacity:.5;}
+    .scripture-b blockquote{font-family:var(--serif);font-size:1.3rem;font-style:italic;line-height:1.65;color:var(--black);margin-top:8px;}
+    .scripture-b cite{display:block;margin-top:12px;font-style:normal;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-500);font-family:var(--sans);}
+    /* ═══════════════════════════════════
+       SLIDERS
+    ═══════════════════════════════════ */
+
+    /* A: Card Carousel */
+    .carousel{position:relative;overflow:hidden;border:1px solid var(--grey-300);border-radius:8px;background:var(--white);}
+    .carousel-track{display:flex;transition:transform 350ms ease;padding:24px;}
+    .carousel-card{flex:0 0 calc(33.33% - 16px);margin-right:24px;border:1px solid var(--grey-300);border-top:3px solid var(--green);border-radius:4px;padding:24px;background:var(--white);}
+    .carousel-card:last-child{margin-right:0;}
+    .carousel-card-tag{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px;}
+    .carousel-card h4{font-family:var(--serif);font-size:1.1rem;margin-bottom:8px;color:var(--black);}
+    .carousel-card p{font-size:.85rem;color:var(--grey-700);margin:0;line-height:1.6;}
+    .carousel-controls{display:flex;align-items:center;justify-content:center;gap:16px;padding:16px;border-top:1px solid var(--grey-300);}
+    .carousel-btn{width:36px;height:36px;border:1px solid var(--grey-300);border-radius:50%;background:var(--white);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background 150ms,border-color 150ms;}
+    .carousel-btn:hover{background:var(--green);border-color:var(--green);color:#fff;}
+    .carousel-dots{display:flex;gap:6px;}
+    .carousel-dot{width:8px;height:8px;border-radius:50%;background:var(--grey-300);border:none;cursor:pointer;padding:0;transition:background 150ms;}
+    .carousel-dot.active{background:var(--green);}
+
+    /* B: Hero Slider */
+    .hero-slider{position:relative;height:280px;border-radius:8px;overflow:hidden;}
+    .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 500ms ease;display:flex;align-items:center;}
+    .hero-slide.active{opacity:1;}
+    .hero-slide-inner{padding:40px 48px;max-width:600px;}
+    .hero-slide-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.7);display:block;margin-bottom:10px;}
+    .hero-slide-inner h2{margin-bottom:10px;line-height:1.2;}
+    .hero-slide-inner p{margin-bottom:20px;font-size:.9rem;}
+    .slider-btn-primary{display:inline-block;padding:10px 24px;background:var(--red);color:#fff;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;text-decoration:none;transition:background 150ms;}
+    .slider-btn-primary:hover{background:#c8191e;color:#fff;}
+    .slider-btn-outline{display:inline-block;padding:10px 24px;border:2px solid rgba(255,255,255,.7);color:#fff;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;text-decoration:none;transition:all 150ms;}
+    .slider-btn-outline:hover{background:rgba(255,255,255,.15);color:#fff;}
+    .hero-slider-nav{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;}
+    .hero-slider-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);border:none;cursor:pointer;padding:0;transition:background 150ms;}
+    .hero-slider-dot.active{background:#fff;}
+    .hero-slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.25);color:#fff;border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background 150ms;}
+    .hero-slider-arrow:hover{background:rgba(0,0,0,.45);}
+    .hero-slider-arrow.left{left:16px;}
+    .hero-slider-arrow.right{right:16px;}
+
+    /* C: Quote Slider */
+    .quote-slider{background:var(--gold-light);border-radius:8px;padding:40px;max-width:700px;text-align:center;overflow:hidden;}
+    .quote-track{position:relative;}
+    .quote-slide{display:none;animation:fadeIn 400ms ease;}
+    .quote-slide.active{display:block;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+    .quote-mark{font-family:var(--serif);font-size:4rem;color:var(--gold);line-height:.5;margin-bottom:12px;opacity:.5;}
+    .quote-text{font-family:var(--serif);font-size:1.2rem;font-style:italic;line-height:1.7;color:var(--black);margin-bottom:12px;}
+    .quote-cite{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-500);font-style:normal;}
+    .quote-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:20px;}
+    .quote-dots{display:flex;gap:6px;}
+    .quote-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);opacity:.3;border:none;cursor:pointer;padding:0;transition:opacity 150ms;}
+    .quote-dot.active{opacity:1;}
+
+    /* D: Donation Slider */
+    .donation-slider-box{background:var(--white);border:1px solid var(--grey-300);border-radius:8px;padding:32px;}
+    .donation-presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+    .donation-preset{padding:8px 18px;border:1.5px solid var(--grey-300);border-radius:100px;background:transparent;font-size:.875rem;font-weight:600;cursor:pointer;color:var(--grey-700);transition:all 150ms;}
+    .donation-preset:hover{border-color:var(--green);color:var(--green);}
+    .donation-preset.active{background:var(--green);border-color:var(--green);color:#fff;}
+    .donation-range-wrap{margin-bottom:8px;}
+    .donation-range{width:100%;height:4px;border-radius:2px;appearance:none;background:var(--grey-300);cursor:pointer;outline:none;}
+    .donation-range::-webkit-slider-thumb{appearance:none;width:22px;height:22px;border-radius:50%;background:var(--green);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.2);cursor:pointer;}
+    .donation-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--green);border:2px solid #fff;cursor:pointer;}
+    .donation-range-labels{display:flex;justify-content:space-between;font-size:.7rem;color:var(--grey-500);margin-top:4px;}
+    .donation-display{display:flex;align-items:baseline;gap:10px;margin:20px 0 16px;}
+    .donation-amount{font-family:var(--serif);font-size:2.8rem;font-weight:700;color:var(--green);line-height:1;}
+    .donation-note{font-size:.8rem;color:var(--grey-500);}
+    .btn-donate-now{display:block;width:100%;padding:14px;background:var(--red);color:#fff;text-align:center;font-weight:700;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;text-decoration:none;margin-bottom:12px;transition:background 150ms;}
+    .btn-donate-now:hover{background:#c8191e;color:#fff;}
+    .donation-impact{font-size:.8rem;color:var(--grey-500);text-align:center;font-style:italic;}
+    /* ═══════════════════════════════════
+       DROPDOWNS
+    ═══════════════════════════════════ */
+
+    /* Shared nav preview bar for dropdowns */
+    .dd-nav{background:#fff;border:1px solid var(--grey-300);border-radius:4px;padding:0 24px;display:flex;align-items:center;gap:0;position:relative;}
+
+    /* A — Hover dropdown */
+    .dd-a-item{position:relative;}
+    .dd-a-item > a{display:flex;align-items:center;gap:5px;padding:14px 12px;font-size:.875rem;font-weight:500;color:var(--black);text-decoration:none;border-bottom:3px solid transparent;transition:color 150ms,border-color 150ms;white-space:nowrap;}
+    .dd-a-item:hover > a,.dd-a-item.active > a{color:var(--green);border-bottom-color:var(--green);}
+    .dd-a-item > a .chevron{font-size:.6rem;transition:transform 150ms;}
+    .dd-a-item:hover > a .chevron{transform:rotate(180deg);}
+    .dd-a-panel{position:absolute;top:calc(100% + 2px);left:0;min-width:220px;background:#fff;border:1px solid var(--grey-300);border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,0.10);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity 200ms ease,transform 200ms ease,visibility 200ms;z-index:50;}
+    .dd-a-item:hover .dd-a-panel{opacity:1;visibility:visible;transform:translateY(0);}
+    .dd-a-panel a{display:block;padding:11px 18px;font-size:.85rem;color:var(--grey-700);text-decoration:none;transition:background 150ms,color 150ms;border-left:3px solid transparent;}
+    .dd-a-panel a:hover{background:var(--green-light);color:var(--green);border-left-color:var(--green);}
+    .dd-a-panel .dd-divider{height:1px;background:var(--grey-300);margin:4px 0;}
+
+    /* B — Click dropdown */
+    .dd-b-item{position:relative;}
+    .dd-b-item > button{display:flex;align-items:center;gap:5px;padding:14px 12px;font-size:.875rem;font-weight:500;color:var(--black);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:color 150ms,border-color 150ms;white-space:nowrap;}
+    .dd-b-item.open > button,.dd-b-item > button:hover{color:var(--green);border-bottom-color:var(--green);}
+    .dd-b-item > button .chevron{font-size:.6rem;transition:transform 150ms;}
+    .dd-b-item.open > button .chevron{transform:rotate(180deg);}
+    .dd-b-panel{position:absolute;top:calc(100% + 2px);left:0;min-width:220px;background:#fff;border:1px solid var(--grey-300);border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,0.10);display:none;z-index:50;}
+    .dd-b-item.open .dd-b-panel{display:block;}
+    .dd-b-panel a{display:block;padding:11px 18px;font-size:.85rem;color:var(--grey-700);text-decoration:none;transition:background 150ms,color 150ms;border-left:3px solid transparent;}
+    .dd-b-panel a:hover{background:var(--green-light);color:var(--green);border-left-color:var(--green);}
+
+    /* C — Mega menu */
+    .dd-c-item{position:relative;}
+    .dd-c-item > a{display:flex;align-items:center;gap:5px;padding:14px 12px;font-size:.875rem;font-weight:500;color:var(--black);text-decoration:none;border-bottom:3px solid transparent;transition:color 150ms,border-color 150ms;white-space:nowrap;}
+    .dd-c-item:hover > a{color:var(--green);border-bottom-color:var(--green);}
+    .dd-c-item > a .chevron{font-size:.6rem;transition:transform 150ms;}
+    .dd-c-item:hover > a .chevron{transform:rotate(180deg);}
+    .dd-c-panel{position:absolute;top:calc(100% + 2px);left:-100px;width:560px;background:#fff;border:1px solid var(--grey-300);border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,0.10);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity 200ms ease,transform 200ms ease,visibility 200ms;z-index:50;padding:24px;}
+    .dd-c-item:hover .dd-c-panel{opacity:1;visibility:visible;transform:translateY(0);}
+    .dd-c-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+    .dd-c-link{display:flex;flex-direction:column;padding:12px 14px;border-radius:4px;text-decoration:none;transition:background 150ms;border:1px solid transparent;}
+    .dd-c-link:hover{background:var(--green-light);border-color:var(--green-light);}
+    .dd-c-link .dd-c-title{font-size:.875rem;font-weight:600;color:var(--black);margin-bottom:2px;}
+    .dd-c-link:hover .dd-c-title{color:var(--green);}
+    .dd-c-link .dd-c-desc{font-size:.75rem;color:var(--grey-500);line-height:1.4;}
+    .dd-c-footer{margin-top:16px;padding-top:16px;border-top:1px solid var(--grey-300);display:flex;align-items:center;justify-content:space-between;}
+    .dd-c-footer-link{font-size:.8rem;font-weight:600;color:var(--green);text-decoration:none;}
+    .dd-c-footer-link:hover{text-decoration:underline;}
+
+    /* D — Bottom sheet (mobile) */
+    .dd-d-trigger{display:flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid var(--grey-300);border-radius:4px;background:#fff;cursor:pointer;font-size:.875rem;font-weight:500;color:var(--black);width:220px;justify-content:space-between;}
+    .dd-d-trigger .chevron{font-size:.6rem;transition:transform 150ms;}
+    .dd-d-trigger.open .chevron{transform:rotate(180deg);}
+    .dd-d-sheet{display:none;border:1px solid var(--grey-300);border-top:none;border-radius:0 0 4px 4px;background:#fff;overflow:hidden;}
+    .dd-d-sheet.open{display:block;}
+    .dd-d-sheet a{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;font-size:.875rem;color:var(--grey-700);text-decoration:none;border-bottom:1px solid var(--grey-100);transition:background 150ms;}
+    .dd-d-sheet a:last-child{border-bottom:none;}
+    .dd-d-sheet a:hover{background:var(--green-light);color:var(--green);}
+    .dd-d-sheet a span{font-size:.75rem;color:var(--grey-300);}
+
+  </style>
+</head>
+<body>
+
+<div class="poc-header">
+  <div>
+    <h1>CAF Design — Component Sandbox</h1>
+    <p>Test components here before applying to real pages. Branch: visual-design-v1</p>
+  </div>
+  <span class="poc-badge">POC</span>
+</div>
+
+<nav class="poc-nav">
+  <a href="#lang" class="active">Language Switcher</a>
+  <a href="#cta-blocks">CTA Blocks</a>
+  <a href="#btn-colors">Button Colors</a>
+  <a href="#dropdowns">Dropdowns</a>
+  <a href="#buttons">Buttons</a>
+  <a href="#stats">Stat Cards</a>
+  <a href="#sliders">Sliders</a>
+  <a href="#typography">Typography</a>
+  <a href="#scripture">Scripture</a>
+  <a href="#colors">Colors</a>
+</nav>
+
+<!-- ═══════════════════════════════════ -->
+<!-- BUTTON COLOR LAB                   -->
+<!-- ═══════════════════════════════════ -->
+<div class="poc-section" id="btn-colors">
+  <h2>Donate Button Color Options — Gold &amp; Green variations</h2>
+
+  <style>
+    /* ── Shared button base ── */
+    .poc-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 52px; padding: 14px 36px;
+      font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600;
+      letter-spacing: .04em; text-transform: uppercase;
+      border-radius: 4px; border: 2px solid transparent;
+      cursor: pointer; text-decoration: none;
+      transition: background 150ms, color 150ms, transform 150ms, box-shadow 150ms;
+    }
+    .poc-btn:hover { transform: translateY(-1px); }
+
+    /* ── GOLD OPTIONS ── */
+    /* A: Dark gold, white text */
+    .btn-gold-a { background: #a07c2a; color: #fff; box-shadow: 0 4px 14px rgba(160,124,42,.30); }
+    .btn-gold-a:hover { background: #8a6a20; color: #fff; }
+
+    /* B: Mid gold, dark text */
+    .btn-gold-b { background: #c8a84b; color: #231f20; box-shadow: 0 4px 14px rgba(200,168,75,.30); }
+    .btn-gold-b:hover { background: #b8962e; color: #231f20; }
+
+    /* C: Gold outline, dark text (on white bg) */
+    .btn-gold-c { background: transparent; color: #a07c2a; border-color: #c8a84b; }
+    .btn-gold-c:hover { background: #fdf8ec; color: #8a6a20; }
+
+    /* D: Gold outline, light text (on dark bg) */
+    .btn-gold-d { background: transparent; color: #fdf3d8; border-color: #c8a84b; }
+    .btn-gold-d:hover { background: rgba(200,168,75,.15); color: #fff; }
+
+    /* ── GREEN OPTIONS ── */
+    /* E: Primary green, white text */
+    .btn-green-e { background: #06a64f; color: #fff; box-shadow: 0 4px 14px rgba(6,166,79,.25); }
+    .btn-green-e:hover { background: #057a3a; color: #fff; }
+
+    /* F: Dark green, white text */
+    .btn-green-f { background: #057a3a; color: #fff; box-shadow: 0 4px 14px rgba(5,122,58,.25); }
+    .btn-green-f:hover { background: #045c2c; color: #fff; }
+
+    /* G: Green outline, green text (on white bg) */
+    .btn-green-g { background: transparent; color: #06a64f; border-color: #06a64f; }
+    .btn-green-g:hover { background: #e8f5ee; color: #057a3a; }
+
+    /* H: Green outline, light text (on dark bg) */
+    .btn-green-h { background: transparent; color: #e8f5ee; border-color: #06a64f; }
+    .btn-green-h:hover { background: rgba(6,166,79,.15); color: #fff; }
+
+    /* ── Context backgrounds ── */
+    .ctx-white { background: #fff; padding: 32px; border: 1px solid #e5e7eb; border-radius: 4px; }
+    .ctx-green-gradient { background: linear-gradient(135deg, #06a64f 0%, #1e2460 100%); padding: 32px; border-radius: 4px; }
+    .ctx-dark { background: #1e2460; padding: 32px; border-radius: 4px; }
+    .ctx-cream { background: #fdfaf5; padding: 32px; border: 1px solid #e5e7eb; border-radius: 4px; }
+
+    .ctx-label { font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 16px; display: block; opacity: .6; }
+    .ctx-white .ctx-label { color: #374151; }
+    .ctx-green-gradient .ctx-label, .ctx-dark .ctx-label { color: rgba(255,255,255,.6); }
+    .ctx-cream .ctx-label { color: #6b7280; }
+
+    .btn-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .btn-col { display: flex; flex-direction: column; gap: 8px; }
+    .btn-name { font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #6b7280; }
+
+    /* Current (red) for reference */
+    .btn-red-ref { background: #ec2227; color: #fff; box-shadow: 0 4px 14px rgba(236,34,39,.30); }
+    .btn-red-ref:hover { background: #c8191e; color: #fff; }
+  </style>
+
+  <!-- REFERENCE: Current red -->
+  <div style="margin-bottom:40px;">
+    <p class="poc-label" style="margin-bottom:16px;">Current (red — for reference)</p>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start;">
+      <div class="ctx-white" style="flex:1;min-width:200px;">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-red-ref" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-green-gradient" style="flex:1;min-width:200px;">
+        <span class="ctx-label">On hero gradient</span>
+        <a class="poc-btn btn-red-ref" href="#">Donate Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOLD OPTIONS -->
+  <p class="poc-label" style="margin-bottom:20px;">Gold Options</p>
+  <div class="btn-grid" style="margin-bottom:40px;">
+
+    <div class="btn-col">
+      <span class="btn-name">A — Dark gold, white text</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-gold-a" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-green-gradient">
+        <span class="ctx-label">On hero</span>
+        <a class="poc-btn btn-gold-a" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-cream">
+        <span class="ctx-label">On cream</span>
+        <a class="poc-btn btn-gold-a" href="#">Donate Now</a>
+      </div>
+    </div>
+
+    <div class="btn-col">
+      <span class="btn-name">B — Mid gold, dark text</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-gold-b" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-green-gradient">
+        <span class="ctx-label">On hero</span>
+        <a class="poc-btn btn-gold-b" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-cream">
+        <span class="ctx-label">On cream</span>
+        <a class="poc-btn btn-gold-b" href="#">Donate Now</a>
+      </div>
+    </div>
+
+    <div class="btn-col">
+      <span class="btn-name">C — Gold outline, dark text</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-gold-c" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-green-gradient">
+        <span class="ctx-label">On hero</span>
+        <a class="poc-btn btn-gold-d" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-cream">
+        <span class="ctx-label">On cream</span>
+        <a class="poc-btn btn-gold-c" href="#">Donate Now</a>
+      </div>
+    </div>
+
+    <div class="btn-col">
+      <span class="btn-name">D — Gold filled + outline combo</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-gold-b" href="#" style="border-color:#c8a84b;">Donate Now</a>
+      </div>
+      <div class="ctx-dark">
+        <span class="ctx-label">On dark blue</span>
+        <a class="poc-btn btn-gold-b" href="#" style="border-color:#c8a84b;">Donate Now</a>
+      </div>
+      <div class="ctx-cream">
+        <span class="ctx-label">On cream</span>
+        <a class="poc-btn btn-gold-a" href="#" style="border-color:#a07c2a;">Donate Now</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- GREEN OPTIONS -->
+  <p class="poc-label" style="margin-bottom:20px;">Green Options</p>
+  <div class="btn-grid">
+
+    <div class="btn-col">
+      <span class="btn-name">E — Primary green, white text</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-green-e" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-green-gradient">
+        <span class="ctx-label">On hero</span>
+        <a class="poc-btn btn-green-e" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-cream">
+        <span class="ctx-label">On cream</span>
+        <a class="poc-btn btn-green-e" href="#">Donate Now</a>
+      </div>
+    </div>
+
+    <div class="btn-col">
+      <span class="btn-name">F — Dark green, white text</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-green-f" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-green-gradient">
+        <span class="ctx-label">On hero</span>
+        <a class="poc-btn btn-green-f" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-cream">
+        <span class="ctx-label">On cream</span>
+        <a class="poc-btn btn-green-f" href="#">Donate Now</a>
+      </div>
+    </div>
+
+    <div class="btn-col">
+      <span class="btn-name">G — Green outline, green text</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-green-g" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-green-gradient">
+        <span class="ctx-label">On hero</span>
+        <a class="poc-btn btn-green-h" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-cream">
+        <span class="ctx-label">On cream</span>
+        <a class="poc-btn btn-green-g" href="#">Donate Now</a>
+      </div>
+    </div>
+
+    <div class="btn-col">
+      <span class="btn-name">H — White fill on dark bg</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white (N/A)</span>
+        <span style="font-size:.75rem;color:#9ca3af;font-style:italic;">Not applicable</span>
+      </div>
+      <div class="ctx-green-gradient">
+        <span class="ctx-label">On hero</span>
+        <a class="poc-btn" href="#" style="background:#fff;color:#06a64f;font-weight:700;">Donate Now</a>
+      </div>
+      <div class="ctx-dark">
+        <span class="ctx-label">On dark blue</span>
+        <a class="poc-btn" href="#" style="background:#fff;color:#06a64f;font-weight:700;">Donate Now</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- CTA BLOCKS                         -->
+<!-- ═══════════════════════════════════ -->
+<div class="poc-section" id="cta-blocks">
+  <h2>CTA Block Variants</h2>
+
+  <style>
+    /* Shared CTA base */
+    .poc-cta { padding: 56px 48px; text-align: center; margin-bottom: 8px; }
+    .poc-cta h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; font-weight: 600; margin: 0 0 14px; line-height: 1.2; }
+    .poc-cta p { font-size: 1rem; line-height: 1.75; margin: 0 auto 28px; max-width: 520px; }
+    .poc-cta-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 14px 40px; font-family: 'Inter', sans-serif; font-size: .9rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; border-radius: 4px; border: 2px solid transparent; cursor: pointer; text-decoration: none; transition: background 150ms, transform 150ms; }
+    .poc-cta-btn:hover { transform: translateY(-1px); text-decoration: none; }
+
+    /* Current (for reference) */
+    .cta-ref { background: #e8f5ee; border: 1px solid #06a64f; }
+    .cta-ref h2 { color: #06a64f; }
+    .cta-ref p { color: #374151; }
+    .btn-ref { background: #c8a84b; color: #231f20; box-shadow: 0 4px 14px rgba(200,168,75,.3); }
+    .btn-ref:hover { background: #b8962e; color: #231f20; }
+
+    /* A: White bg, no border, black serif h2 */
+    .cta-A { background: #ffffff; border: none; }
+    .cta-A h2 { color: #231f20; }
+    .cta-A p { color: #6b7280; }
+    .btn-gold-mid { background: #c8a84b; color: #231f20; box-shadow: 0 4px 14px rgba(200,168,75,.28); }
+    .btn-gold-mid:hover { background: #b8962e; color: #231f20; }
+
+    /* B: Deep green bg, all white */
+    .cta-B { background: #057a3a; }
+    .cta-B h2 { color: #ffffff; }
+    .cta-B p { color: rgba(255,255,255,.82); }
+    .btn-white-dark { background: #ffffff; color: #231f20; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+    .btn-white-dark:hover { background: #f0f0f0; color: #231f20; }
+
+    /* C: Cream bg, mid gold thin border, dark gold h2 */
+    .cta-C { background: #fdfaf5; border: 1px solid #c8a84b; }
+    .cta-C h2 { color: #a07c2a; }
+    .cta-C p { color: #374151; }
+
+    /* D: Cream bg, dark gold thin border, dark gold h2 */
+    .cta-D { background: #fdfaf5; border: 1px solid #a07c2a; }
+    .cta-D h2 { color: #a07c2a; }
+    .cta-D p { color: #374151; }
+
+    /* E: Gold-light bg, gold left border accent only */
+    .cta-E { background: #fdf8ec; border-left: 4px solid #c8a84b; text-align: left; padding-left: 48px; }
+    .cta-E h2 { color: #a07c2a; }
+    .cta-E p { color: #374151; margin-left: 0; }
+
+    /* F: Near-black bg, gold h2, white p */
+    .cta-F { background: #1a1612; }
+    .cta-F h2 { color: #c8a84b; }
+    .cta-F p { color: rgba(255,255,255,.72); }
+
+    /* G: Off-white, no border, very subtle shadow */
+    .cta-G { background: #f9f9f7; box-shadow: 0 2px 24px rgba(0,0,0,.06); }
+    .cta-G h2 { color: #231f20; }
+    .cta-G p { color: #6b7280; }
+
+    /* H: Deep blue, gold h2, white p */
+    .cta-H { background: #1e2460; }
+    .cta-H h2 { color: #c8a84b; }
+    .cta-H p { color: rgba(255,255,255,.78); }
+
+    .poc-variant-label { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #9ca3af; margin-bottom: 4px; display: block; }
+    .poc-cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #e5e7eb; border: 1px solid #e5e7eb; border-radius: 4px; overflow: hidden; }
+    .poc-cta-grid-item { background: #fff; }
+  </style>
+
+  <!-- Reference -->
+  <div style="margin-bottom:32px;">
+    <span class="poc-variant-label">Current (for reference)</span>
+    <div class="poc-cta cta-ref">
+      <h2>Your Gift Reaches Egypt This Month</h2>
+      <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+      <a href="#" class="poc-cta-btn btn-ref">Make a Donation</a>
+    </div>
+  </div>
+
+  <div class="poc-cta-grid">
+
+    <!-- A -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">A — White, black serif h2, gold button</span>
+      <div class="poc-cta cta-A">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-gold-mid">Make a Donation</a>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">B — Deep green, white text, white button</span>
+      <div class="poc-cta cta-B">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-white-dark">Make a Donation</a>
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">C — Cream, mid gold thin border, dark gold h2</span>
+      <div class="poc-cta cta-C">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-gold-mid">Make a Donation</a>
+      </div>
+    </div>
+
+    <!-- D -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">D — Cream, dark gold thin border, dark gold h2</span>
+      <div class="poc-cta cta-D">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-gold-mid">Make a Donation</a>
+      </div>
+    </div>
+
+    <!-- E -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">E — Gold-light bg, left accent border, left-aligned</span>
+      <div class="poc-cta cta-E">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-gold-mid">Make a Donation</a>
+      </div>
+    </div>
+
+    <!-- F -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">F — Near-black bg, gold h2, white p</span>
+      <div class="poc-cta cta-F">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-gold-mid">Make a Donation</a>
+      </div>
+    </div>
+
+    <!-- G -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">G — Off-white, subtle shadow, black h2</span>
+      <div class="poc-cta cta-G">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-gold-mid">Make a Donation</a>
+      </div>
+    </div>
+
+    <!-- H -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">H — Deep blue, gold h2, white p</span>
+      <div class="poc-cta cta-H">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-gold-mid">Make a Donation</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- LANGUAGE SWITCHER                  -->
+<!-- ═══════════════════════════════════ -->
+<div class="poc-section" id="lang">
+  <h2>Language Switcher — 5 variants (EN · FR · AR)</h2>
+  <div class="poc-row">
+
+    <div class="poc-item">
+      <span class="poc-label">A — Underline only</span>
+      <div class="lang-a">
+        <a href="#" class="active">EN</a>
+        <a href="#">FR</a>
+        <a href="#">AR</a>
+      </div>
+      <span class="poc-label" style="color:#aaa;">In nav context:</span>
+      <div class="nav-preview">
+        <span class="nav-preview-logo">Coptic Aid Foundation</span>
+        <div class="lang-a">
+          <a href="#" class="active">EN</a>
+          <a href="#">FR</a>
+          <a href="#">AR</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="poc-item">
+      <span class="poc-label">B — Pill group (recommended)</span>
+      <div class="lang-b">
+        <a href="#" class="active">EN</a>
+        <a href="#">FR</a>
+        <a href="#">AR</a>
+      </div>
+      <span class="poc-label" style="color:#aaa;">In nav context:</span>
+      <div class="nav-preview">
+        <span class="nav-preview-logo">Coptic Aid Foundation</span>
+        <div class="lang-b">
+          <a href="#" class="active">EN</a>
+          <a href="#">FR</a>
+          <a href="#">AR</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="poc-item">
+      <span class="poc-label">C — Outlined separate (current)</span>
+      <div class="lang-c">
+        <a href="#" class="active">EN</a>
+        <a href="#">FR</a>
+        <a href="#">AR</a>
+      </div>
+      <span class="poc-label" style="color:#aaa;">In nav context:</span>
+      <div class="nav-preview">
+        <span class="nav-preview-logo">Coptic Aid Foundation</span>
+        <div class="lang-c">
+          <a href="#" class="active">EN</a>
+          <a href="#">FR</a>
+          <a href="#">AR</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="poc-item">
+      <span class="poc-label">D — Slash separator</span>
+      <div class="lang-d">
+        <a href="#" class="active">EN</a>
+        <span>/</span>
+        <a href="#">FR</a>
+        <span>/</span>
+        <a href="#">AR</a>
+      </div>
+      <span class="poc-label" style="color:#aaa;">In nav context:</span>
+      <div class="nav-preview">
+        <span class="nav-preview-logo">Coptic Aid Foundation</span>
+        <div class="lang-d">
+          <a href="#" class="active">EN</a>
+          <span>/</span>
+          <a href="#">FR</a>
+          <span>/</span>
+          <a href="#">AR</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="poc-item">
+      <span class="poc-label">E — Green outline active</span>
+      <div class="lang-e">
+        <a href="#" class="active">EN</a>
+        <a href="#">FR</a>
+        <a href="#">AR</a>
+      </div>
+      <span class="poc-label" style="color:#aaa;">In nav context:</span>
+      <div class="nav-preview">
+        <span class="nav-preview-logo">Coptic Aid Foundation</span>
+        <div class="lang-e">
+          <a href="#" class="active">EN</a>
+          <a href="#">FR</a>
+          <a href="#">AR</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- BUTTONS                            -->
+<!-- ═══════════════════════════════════ -->
+<div class="poc-section" id="buttons">
+  <h2>Buttons</h2>
+  <div class="poc-row">
+    <div class="poc-item"><span class="poc-label">Primary (Donate)</span><a href="#" class="btn btn-primary">Donate Now</a></div>
+    <div class="poc-item"><span class="poc-label">Green</span><a href="#" class="btn btn-green">Our Story</a></div>
+    <div class="poc-item"><span class="poc-label">Outline Green</span><a href="#" class="btn btn-outline-green">Learn More</a></div>
+    <div class="poc-item"><span class="poc-label">Ghost</span><a href="#" class="btn btn-ghost">Cancel</a></div>
+    <div class="poc-item"><span class="poc-label">Small</span><a href="#" class="btn btn-primary btn-sm">Donate</a></div>
+    <div class="poc-item"><span class="poc-label">Large</span><a href="#" class="btn btn-primary btn-lg">Make a Donation</a></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- STAT CARDS                         -->
+<!-- ═══════════════════════════════════ -->
+<div class="poc-section" id="stats">
+  <h2>Stat Cards — 3 variants</h2>
+  <div class="poc-row">
+    <div class="poc-item">
+      <span class="poc-label">A — Glass (hero, dark bg)</span>
+      <div style="background:var(--blue-dark);padding:20px;border-radius:8px;">
+        <div class="stat-card-a">
+          <div class="num">7,150<span style="font-size:1.4rem;">+</span></div>
+          <div class="lbl">Families receiving <span class="accent">monthly support</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="poc-item">
+      <span class="poc-label">B — White card, green top border</span>
+      <div class="stat-card-b">
+        <div class="num">728+</div>
+        <div class="lbl">University Students</div>
+      </div>
+    </div>
+    <div class="poc-item">
+      <span class="poc-label">C — Green light bg</span>
+      <div class="stat-card-c">
+        <div class="num">98¢</div>
+        <div class="lbl">Of every dollar reaches families in Egypt</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- TYPOGRAPHY                         -->
+<!-- ═══════════════════════════════════ -->
+<div class="poc-section" id="typography">
+  <h2>Typography Scale</h2>
+  <div style="max-width:700px;">
+    <div class="type-sample">
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:3.5rem;font-weight:700;line-height:1.1;">Caring for Egypt's Most Vulnerable</div>
+      <p class="type-meta">H1 — Cormorant Garamond 700 — 3.5rem / 63px</p>
+    </div>
+    <div class="type-sample">
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2.2rem;font-weight:600;line-height:1.2;">Your Gift Reaches Egypt This Month</div>
+      <p class="type-meta">H2 — Cormorant Garamond 600 — 2.2rem / 39.6px</p>
+    </div>
+    <div class="type-sample">
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.3rem;font-weight:600;">Monthly Financial Aid</div>
+      <p class="type-meta">H3 — Cormorant Garamond 600 — 1.3rem / 23.4px</p>
+    </div>
+    <div class="type-sample">
+      <div style="font-family:'Inter',sans-serif;font-size:1rem;line-height:1.75;color:#374151;">We support needy Coptic families, orphans, widows, and university students in Egypt — through monthly aid, education support, and emergency relief. A Montreal charity, run entirely by volunteers since 1989.</div>
+      <p class="type-meta">Body — Inter 400 — 1rem / 18px — line-height 1.75</p>
+    </div>
+    <div class="type-sample">
+      <div style="font-family:'Inter',sans-serif;font-size:.875rem;color:#6b7280;">Supporting over 35 years of service. BN 868786054RC0001</div>
+      <p class="type-meta">Small — Inter 400 — 0.875rem / 15.75px</p>
+    </div>
+    <div class="type-sample">
+      <div style="font-family:'Inter',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#06a64f;">What We Do</div>
+      <p class="type-meta">Label — Inter 700 — 0.75rem — uppercase + tracking</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- SCRIPTURE                          -->
+<!-- ═══════════════════════════════════ -->
+<div class="poc-section" id="scripture">
+  <h2>Scripture Quote — 2 variants</h2>
+  <div class="poc-row" style="align-items:flex-start;">
+    <div class="poc-item" style="flex:1;min-width:280px;">
+      <span class="poc-label">A — Left border (inline)</span>
+      <div class="scripture-a">
+        <blockquote>
+          "Religion that God our Father accepts as pure and faultless is this: to look after orphans and widows in their distress."
+          <cite>— James 1:27</cite>
+        </blockquote>
+      </div>
+    </div>
+    <div class="poc-item" style="flex:1;min-width:280px;">
+      <span class="poc-label">B — Centered (section)</span>
+      <div class="scripture-b">
+        <div class="mark">"</div>
+        <blockquote>
+          "Religion that God our Father accepts as pure and faultless is this: to look after orphans and widows in their distress."
+          <cite>— James 1:27</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- COLORS                             -->
+<!-- ═══════════════════════════════════ -->
+<div class="poc-section" id="colors">
+  <h2>Color Palette</h2>
+  <div class="poc-row">
+    <div class="color-item"><div class="color-swatch" style="background:#06a64f;"></div><span class="color-name">Green</span><span class="color-hex">#06a64f</span></div>
+    <div class="color-item"><div class="color-swatch" style="background:#057a3a;"></div><span class="color-name">Green Dark</span><span class="color-hex">#057a3a</span></div>
+    <div class="color-item"><div class="color-swatch" style="background:#e8f5ee;"></div><span class="color-name">Green Light</span><span class="color-hex">#e8f5ee</span></div>
+    <div class="color-item"><div class="color-swatch" style="background:#2e3690;"></div><span class="color-name">Blue</span><span class="color-hex">#2e3690</span></div>
+    <div class="color-item"><div class="color-swatch" style="background:#1e2460;"></div><span class="color-name">Blue Dark</span><span class="color-hex">#1e2460</span></div>
+    <div class="color-item"><div class="color-swatch" style="background:#ec2227;"></div><span class="color-name">Red (CTA)</span><span class="color-hex">#ec2227</span></div>
+    <div class="color-item"><div class="color-swatch" style="background:#c8a84b;"></div><span class="color-name">Gold</span><span class="color-hex">#c8a84b</span></div>
+    <div class="color-item"><div class="color-swatch" style="background:#fdf8ec;"></div><span class="color-name">Gold Light</span><span class="color-hex">#fdf8ec</span></div>
+    <div class="color-item"><div class="color-swatch" style="background:#231f20;"></div><span class="color-name">Black</span><span class="color-hex">#231f20</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- DROPDOWNS                          -->
+<!-- ═══════════════════════════════════ -->
+<div class="poc-section" id="dropdowns">
+  <h2>Dropdown Menus — 4 types</h2>
+  <div class="poc-row" style="flex-direction:column; gap:40px;">
+
+    <!-- A: Hover dropdown -->
+    <div class="poc-item" style="width:100%;">
+      <span class="poc-label">A — Hover dropdown (desktop)</span>
+      <div class="dd-nav" style="width:fit-content; gap:4px;">
+        <a href="#" style="padding:14px 12px;font-size:.875rem;font-weight:500;color:var(--black);text-decoration:none;border-bottom:3px solid transparent;">Home</a>
+        <div class="dd-a-item active">
+          <a href="#">About Us <span class="chevron">▼</span></a>
+          <div class="dd-a-panel">
+            <a href="#">Our Story</a>
+            <a href="#">Who We Serve</a>
+            <a href="#">Our Team</a>
+            <div class="dd-divider"></div>
+            <a href="#">Transparency</a>
+          </div>
+        </div>
+        <div class="dd-a-item">
+          <a href="#">Our Work <span class="chevron">▼</span></a>
+          <div class="dd-a-panel">
+            <a href="#">Monthly Financial Aid</a>
+            <a href="#">Education Support</a>
+            <a href="#">Emergency Relief</a>
+            <a href="#">Medical Support</a>
+            <a href="#">Small Business Projects</a>
+            <a href="#">Community Support</a>
+          </div>
+        </div>
+        <a href="#" style="padding:14px 12px;font-size:.875rem;font-weight:500;color:var(--black);text-decoration:none;border-bottom:3px solid transparent;">Donate</a>
+        <a href="#" style="padding:14px 12px;font-size:.875rem;font-weight:500;color:var(--black);text-decoration:none;border-bottom:3px solid transparent;">Contact</a>
+      </div>
+      <p style="font-size:.75rem;color:var(--grey-500);margin-top:8px;">Hover over "About Us" or "Our Work" to see the dropdown.</p>
+    </div>
+
+    <!-- B: Click dropdown -->
+    <div class="poc-item" style="width:100%;">
+      <span class="poc-label">B — Click dropdown (accessible, keyboard-friendly)</span>
+      <div class="dd-nav" style="width:fit-content; gap:4px;">
+        <a href="#" style="padding:14px 12px;font-size:.875rem;font-weight:500;color:var(--black);text-decoration:none;border-bottom:3px solid transparent;">Home</a>
+        <div class="dd-b-item" id="dd-b-about">
+          <button onclick="toggleClickDD('dd-b-about')" aria-expanded="false" aria-haspopup="true">About Us <span class="chevron">▼</span></button>
+          <div class="dd-b-panel" role="menu">
+            <a href="#" role="menuitem">Our Story</a>
+            <a href="#" role="menuitem">Who We Serve</a>
+            <a href="#" role="menuitem">Our Team</a>
+            <a href="#" role="menuitem">Transparency</a>
+          </div>
+        </div>
+        <div class="dd-b-item" id="dd-b-work">
+          <button onclick="toggleClickDD('dd-b-work')" aria-expanded="false" aria-haspopup="true">Our Work <span class="chevron">▼</span></button>
+          <div class="dd-b-panel" role="menu">
+            <a href="#" role="menuitem">Monthly Financial Aid</a>
+            <a href="#" role="menuitem">Education Support</a>
+            <a href="#" role="menuitem">Emergency Relief</a>
+            <a href="#" role="menuitem">Medical Support</a>
+            <a href="#" role="menuitem">Small Business</a>
+            <a href="#" role="menuitem">Community Support</a>
+          </div>
+        </div>
+        <a href="#" style="padding:14px 12px;font-size:.875rem;font-weight:500;color:var(--black);text-decoration:none;border-bottom:3px solid transparent;">Donate</a>
+      </div>
+      <p style="font-size:.75rem;color:var(--grey-500);margin-top:8px;">Click "About Us" or "Our Work". Closes when clicking outside.</p>
+    </div>
+
+    <!-- C: Mega menu -->
+    <div class="poc-item" style="width:100%;">
+      <span class="poc-label">C — Mega menu (grouped with descriptions)</span>
+      <div class="dd-nav" style="width:fit-content; gap:4px;">
+        <a href="#" style="padding:14px 12px;font-size:.875rem;font-weight:500;color:var(--black);text-decoration:none;border-bottom:3px solid transparent;">Home</a>
+        <div class="dd-c-item">
+          <a href="#">Our Work <span class="chevron">▼</span></a>
+          <div class="dd-c-panel">
+            <div class="dd-c-grid">
+              <a href="#" class="dd-c-link"><span class="dd-c-title">Monthly Financial Aid</span><span class="dd-c-desc">Regular support to 7,150+ families across Egypt</span></a>
+              <a href="#" class="dd-c-link"><span class="dd-c-title">Education Support</span><span class="dd-c-desc">728+ university students currently supported</span></a>
+              <a href="#" class="dd-c-link"><span class="dd-c-title">Emergency Relief</span><span class="dd-c-desc">Rapid response to crisis and acute need</span></a>
+              <a href="#" class="dd-c-link"><span class="dd-c-title">Medical Support</span><span class="dd-c-desc">Healthcare for families who cannot afford treatment</span></a>
+              <a href="#" class="dd-c-link"><span class="dd-c-title">Small Business Projects</span><span class="dd-c-desc">$200–$500 CAD micro-projects for independence</span></a>
+              <a href="#" class="dd-c-link"><span class="dd-c-title">Community Support</span><span class="dd-c-desc">Marriage and housing support for 10+ years</span></a>
+            </div>
+            <div class="dd-c-footer">
+              <span style="font-size:.8rem;color:var(--grey-500);">Serving Egypt since the 1980s</span>
+              <a href="#" class="dd-c-footer-link">See all programs →</a>
+            </div>
+          </div>
+        </div>
+        <a href="#" style="padding:14px 12px;font-size:.875rem;font-weight:500;color:var(--black);text-decoration:none;border-bottom:3px solid transparent;">Donate</a>
+        <a href="#" style="padding:14px 12px;font-size:.875rem;font-weight:500;color:var(--black);text-decoration:none;border-bottom:3px solid transparent;">Contact</a>
+      </div>
+      <p style="font-size:.75rem;color:var(--grey-500);margin-top:8px;">Hover "Our Work" to see the mega menu with descriptions.</p>
+    </div>
+
+    <!-- D: Bottom sheet / accordion (mobile style) -->
+    <div class="poc-item">
+      <span class="poc-label">D — Accordion / bottom sheet (mobile nav style)</span>
+      <div style="width:260px;">
+        <div onclick="toggleSheet('dd-d-about')" class="dd-d-trigger" id="dd-d-about-trigger">
+          <span>About Us</span><span class="chevron">▼</span>
+        </div>
+        <div class="dd-d-sheet" id="dd-d-about">
+          <a href="#">Our Story <span>→</span></a>
+          <a href="#">Who We Serve <span>→</span></a>
+          <a href="#">Our Team <span>→</span></a>
+          <a href="#">Transparency <span>→</span></a>
+        </div>
+        <div onclick="toggleSheet('dd-d-work')" class="dd-d-trigger" id="dd-d-work-trigger" style="margin-top:8px;">
+          <span>Our Work</span><span class="chevron">▼</span>
+        </div>
+        <div class="dd-d-sheet" id="dd-d-work">
+          <a href="#">Monthly Financial Aid <span>→</span></a>
+          <a href="#">Education Support <span>→</span></a>
+          <a href="#">Emergency Relief <span>→</span></a>
+          <a href="#">Medical Support <span>→</span></a>
+          <a href="#">Small Business <span>→</span></a>
+          <a href="#">Community Support <span>→</span></a>
+        </div>
+      </div>
+      <p style="font-size:.75rem;color:var(--grey-500);margin-top:8px;">Click to expand/collapse — mobile hamburger menu style.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- SLIDERS                            -->
+<!-- ═══════════════════════════════════ -->
+<div class="poc-section" id="sliders">
+  <h2>Sliders — 4 types</h2>
+
+  <!-- A: Card Carousel -->
+  <div class="poc-item" style="width:100%; margin-bottom:48px;">
+    <span class="poc-label">A — Card Carousel (program cards / news)</span>
+    <div class="carousel" id="carousel-a">
+      <div class="carousel-track" id="carousel-a-track">
+        <div class="carousel-card"><div class="carousel-card-tag">Program 1</div><h4>Monthly Financial Aid</h4><p>Regular monthly support to 7,150+ needy families, widows, and orphans across Egypt.</p></div>
+        <div class="carousel-card"><div class="carousel-card-tag">Program 2</div><h4>Education Support</h4><p>728+ university students currently receiving monthly support. Thousands of graduates over the decades.</p></div>
+        <div class="carousel-card"><div class="carousel-card-tag">Program 3</div><h4>Emergency Relief</h4><p>When crisis strikes we mobilize quickly to provide emergency funds and essentials.</p></div>
+        <div class="carousel-card"><div class="carousel-card-tag">Program 4</div><h4>Medical Support</h4><p>Medicine and healthcare for families facing serious illness beyond their means.</p></div>
+        <div class="carousel-card"><div class="carousel-card-tag">Program 5</div><h4>Small Business Projects</h4><p>$200–$500 CAD micro-projects — sewing machines, livestock, tools for independence.</p></div>
+        <div class="carousel-card"><div class="carousel-card-tag">Program 6</div><h4>Community Support</h4><p>Marriage support and housing needs — helping families through life's pivotal moments.</p></div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" onclick="carouselPrev('carousel-a')" aria-label="Previous">&#8592;</button>
+        <div class="carousel-dots" id="carousel-a-dots"></div>
+        <button class="carousel-btn" onclick="carouselNext('carousel-a')" aria-label="Next">&#8594;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- B: Hero Banner Slider -->
+  <div class="poc-item" style="width:100%; margin-bottom:48px;">
+    <span class="poc-label">B — Hero Banner Slider (full-width rotating)</span>
+    <div class="hero-slider" id="hero-slider">
+      <div class="hero-slide active" style="background:linear-gradient(135deg,#06a64f,#1e2460);">
+        <div class="hero-slide-inner">
+          <span class="hero-slide-eyebrow">Since the 1980s</span>
+          <h2 style="color:#fff;font-size:2rem;">Caring for Egypt's Most Vulnerable</h2>
+          <p style="color:rgba(255,255,255,.85);">7,150+ families receiving monthly support across Egypt.</p>
+          <a href="#" class="slider-btn-primary">Donate Now</a>
+        </div>
+      </div>
+      <div class="hero-slide" style="background:linear-gradient(135deg,#1e2460,#2e3690);">
+        <div class="hero-slide-inner">
+          <span class="hero-slide-eyebrow">Education</span>
+          <h2 style="color:#fff;font-size:2rem;">728+ Students. Thousands of Graduates.</h2>
+          <p style="color:rgba(255,255,255,.85);">Education is the most lasting investment in a family's future.</p>
+          <a href="#" class="slider-btn-primary">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-slide" style="background:linear-gradient(135deg,#c8a84b,#057a3a);">
+        <div class="hero-slide-inner">
+          <span class="hero-slide-eyebrow">Transparency</span>
+          <h2 style="color:#fff;font-size:2rem;">98¢ of Every Dollar Reaches Families</h2>
+          <p style="color:rgba(255,255,255,.85);">100% volunteer board. Less than 2% covers administration.</p>
+          <a href="#" class="slider-btn-outline">Our Story</a>
+        </div>
+      </div>
+      <div class="hero-slider-nav">
+        <button class="hero-slider-dot active" onclick="heroSlide(0, this)"></button>
+        <button class="hero-slider-dot" onclick="heroSlide(1, this)"></button>
+        <button class="hero-slider-dot" onclick="heroSlide(2, this)"></button>
+      </div>
+      <button class="hero-slider-arrow left" onclick="heroSliderPrev()" aria-label="Previous slide">&#8592;</button>
+      <button class="hero-slider-arrow right" onclick="heroSliderNext()" aria-label="Next slide">&#8594;</button>
+    </div>
+  </div>
+
+  <!-- C: Quote/Testimonial Slider -->
+  <div class="poc-item" style="width:100%; margin-bottom:48px;">
+    <span class="poc-label">C — Quote / Scripture Slider</span>
+    <div class="quote-slider" id="quote-slider">
+      <div class="quote-track" id="quote-track">
+        <div class="quote-slide active">
+          <div class="quote-mark">&ldquo;</div>
+          <blockquote class="quote-text">"Religion that God our Father accepts as pure and faultless is this: to look after orphans and widows in their distress."</blockquote>
+          <cite class="quote-cite">— James 1:27</cite>
+        </div>
+        <div class="quote-slide">
+          <div class="quote-mark">&ldquo;</div>
+          <blockquote class="quote-text">"Anyone who oppresses the poor is insulting God who made them. To help the poor is to honour God."</blockquote>
+          <cite class="quote-cite">— Proverbs 14:31</cite>
+        </div>
+        <div class="quote-slide">
+          <div class="quote-mark">&ldquo;</div>
+          <blockquote class="quote-text">"When you help the poor you are lending to the Lord — and He pays wonderful interest on your loan."</blockquote>
+          <cite class="quote-cite">— Proverbs 19:17</cite>
+        </div>
+      </div>
+      <div class="quote-controls">
+        <button class="carousel-btn" onclick="quotePrev()" aria-label="Previous quote">&#8592;</button>
+        <div class="quote-dots" id="quote-dots"></div>
+        <button class="carousel-btn" onclick="quoteNext()" aria-label="Next quote">&#8594;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- D: Donation Amount Range Slider -->
+  <div class="poc-item" style="width:100%; max-width:560px;">
+    <span class="poc-label">D — Donation Amount Selector</span>
+    <div class="donation-slider-box">
+      <p style="font-size:.85rem;color:#6b7280;margin-bottom:16px;">Choose your monthly gift:</p>
+      <div class="donation-presets" id="donation-presets">
+        <button class="donation-preset" onclick="setDonation(10, this)">$10</button>
+        <button class="donation-preset active" onclick="setDonation(25, this)">$25</button>
+        <button class="donation-preset" onclick="setDonation(50, this)">$50</button>
+        <button class="donation-preset" onclick="setDonation(100, this)">$100</button>
+        <button class="donation-preset" onclick="setDonation(250, this)">$250</button>
+      </div>
+      <div class="donation-range-wrap">
+        <input type="range" id="donation-range" min="5" max="500" step="5" value="25" oninput="updateDonationRange(this.value)" class="donation-range" />
+        <div class="donation-range-labels">
+          <span>$5</span><span>$500</span>
+        </div>
+      </div>
+      <div class="donation-display">
+        <span class="donation-amount" id="donation-amount">$25</span>
+        <span class="donation-note">/ month &nbsp;&middot;&nbsp; tax receipt issued</span>
+      </div>
+      <a href="#" class="btn-donate-now">Donate $<span id="donate-btn-amt">25</span>/month</a>
+      <p class="donation-impact" id="donation-impact">At $25/month, your gift helps support a family in Egypt each year.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- POC NAV CLICK HANDLER -->
+<script>
+  document.querySelectorAll('.poc-nav a').forEach(link => {
+    link.addEventListener('click', function() {
+      document.querySelectorAll('.poc-nav a').forEach(a => a.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // ── B: Click dropdown ─────────────────────────────
+  function toggleClickDD(id) {
+    const item = document.getElementById(id);
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.dd-b-item').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('button').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      item.querySelector('button').setAttribute('aria-expanded', 'true');
+    }
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dd-b-item')) {
+      document.querySelectorAll('.dd-b-item').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('button').setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  // ── D: Accordion sheet ────────────────────────────
+  function toggleSheet(id) {
+    const sheet = document.getElementById(id);
+    const trigger = document.getElementById(id + '-trigger');
+    const isOpen = sheet.classList.contains('open');
+    sheet.classList.toggle('open', !isOpen);
+    trigger.classList.toggle('open', !isOpen);
+  }
+
+  // ── POC nav click handler ─────────────────────────
+  document.querySelectorAll('.lang-a a, .lang-b a, .lang-c a, .lang-d a, .lang-e a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const parent = this.closest('.lang-a, .lang-b, .lang-c, .lang-d, .lang-e');
+      parent.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // ── A: Card Carousel ──────────────────────────────
+  const carousels = {};
+  function initCarousel(id) {
+    const track = document.getElementById(id + '-track');
+    const cards = track.querySelectorAll('.carousel-card');
+    const dotsEl = document.getElementById(id + '-dots');
+    const visible = 3;
+    const total = Math.ceil(cards.length / visible);
+    carousels[id] = { current: 0, total, visible, cards: cards.length };
+    dotsEl.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const d = document.createElement('button');
+      d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Slide ' + (i+1));
+      d.onclick = () => goCarousel(id, i);
+      dotsEl.appendChild(d);
+    }
+  }
+  function goCarousel(id, idx) {
+    const c = carousels[id];
+    c.current = Math.max(0, Math.min(idx, c.total - 1));
+    const track = document.getElementById(id + '-track');
+    const cardW = track.querySelector('.carousel-card').offsetWidth + 24;
+    track.style.transform = `translateX(-${c.current * c.visible * cardW}px)`;
+    document.getElementById(id + '-dots').querySelectorAll('.carousel-dot').forEach((d,i) => d.classList.toggle('active', i === c.current));
+  }
+  function carouselPrev(id) { goCarousel(id, carousels[id].current - 1); }
+  function carouselNext(id) { goCarousel(id, carousels[id].current + 1); }
+  initCarousel('carousel-a');
+
+  // ── B: Hero Slider ────────────────────────────────
+  let heroIdx = 0;
+  const heroSlides = document.querySelectorAll('.hero-slide');
+  const heroDots = document.querySelectorAll('.hero-slider-dot');
+  let heroTimer = setInterval(() => heroSliderNext(), 4000);
+
+  function heroSlide(idx) {
+    heroSlides.forEach(s => s.classList.remove('active'));
+    heroDots.forEach(d => d.classList.remove('active'));
+    heroIdx = idx;
+    heroSlides[heroIdx].classList.add('active');
+    heroDots[heroIdx].classList.add('active');
+    clearInterval(heroTimer);
+    heroTimer = setInterval(() => heroSliderNext(), 4000);
+  }
+  function heroSliderNext() { heroSlide((heroIdx + 1) % heroSlides.length); }
+  function heroSliderPrev() { heroSlide((heroIdx - 1 + heroSlides.length) % heroSlides.length); }
+
+  // ── C: Quote Slider ───────────────────────────────
+  let quoteIdx = 0;
+  const quoteSlides = document.querySelectorAll('.quote-slide');
+  const quoteDots = document.getElementById('quote-dots');
+  quoteSlides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'quote-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Quote ' + (i+1));
+    d.onclick = () => goQuote(i);
+    quoteDots.appendChild(d);
+  });
+  function goQuote(idx) {
+    quoteSlides.forEach(s => s.classList.remove('active'));
+    quoteDots.querySelectorAll('.quote-dot').forEach((d,i) => d.classList.toggle('active', i === idx));
+    quoteIdx = idx;
+    quoteSlides[quoteIdx].classList.add('active');
+  }
+  function quoteNext() { goQuote((quoteIdx + 1) % quoteSlides.length); }
+  function quotePrev() { goQuote((quoteIdx - 1 + quoteSlides.length) % quoteSlides.length); }
+
+  // ── D: Donation Slider ────────────────────────────
+  const impacts = {
+    5: 'At $5/month, every contribution matters.',
+    10: 'At $10/month, you help cover monthly essentials for a child.',
+    25: 'At $25/month, your gift helps support a family in Egypt each year.',
+    50: 'At $50/month, you support a family and contribute to a student stipend.',
+    100: 'At $100/month, your gift supports multiple families and students.',
+    250: 'At $250/month, you make a transformative difference across Egypt.',
+    500: 'At $500/month, you are one of our most impactful donors. Thank you.'
+  };
+  function updateDonationRange(val) {
+    const v = parseInt(val);
+    document.getElementById('donation-amount').textContent = '$' + v;
+    document.getElementById('donate-btn-amt').textContent = v;
+    document.querySelectorAll('.donation-preset').forEach(b => b.classList.remove('active'));
+    const match = [...document.querySelectorAll('.donation-preset')].find(b => parseInt(b.textContent.replace('$','')) === v);
+    if (match) match.classList.add('active');
+    const closest = Object.keys(impacts).reduce((a, b) => Math.abs(b - v) < Math.abs(a - v) ? b : a);
+    document.getElementById('donation-impact').textContent = impacts[closest];
+  }
+  function setDonation(val, btn) {
+    document.getElementById('donation-range').value = val;
+    updateDonationRange(val);
+  }
+</script>
+
+</body>
+</html>

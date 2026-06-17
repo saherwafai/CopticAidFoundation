@@ -84,71 +84,62 @@
     ]
   }
   </script>
-
   <title>Donate | Coptic Aid Foundation | Canadian Registered Charity</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .page-subnav {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 185px;
-      z-index: 89;
-      background: var(--white);
-      border-bottom: 2px solid var(--green-light);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-    }
-    .page-subnav ul { list-style:none; display:flex; gap:0; padding:0; margin:0; overflow-x:auto; }
-    .page-subnav ul li a {
-      display:block; padding:12px 24px; font-size:13px; font-weight:600;
-      letter-spacing:0.04em; text-transform:uppercase; color:var(--grey-dark);
-      text-decoration:none; border-bottom:3px solid transparent;
-      white-space:nowrap; transition:color 0.2s,border-color 0.2s;
-    }
-    .page-subnav ul li a:hover { color:var(--green); border-bottom-color:var(--green); }
-    .page-subnav ul li a.active { color:var(--green); border-bottom-color:var(--green); }
-    .anchor-target { scroll-margin-top: 240px; }
-  </style>
+  <link rel="stylesheet" href="theme.css" />
 </head>
 <body>
-<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:4px;z-index:999;padding:8px 16px;background:var(--green);color:#fff;font-size:14px;border-radius:2px;text-decoration:none;">Skip to main content</a>
-
-<nav>
-  <div class="container nav-top">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-top">
     <div class="nav-brand">
-      <a href="index.html"><img src="CAF_Logo_Hor.svg" alt="Coptic Aid Foundation" class="nav-logo" /></a>
-      <span class="site-tagline">Caring for Egypt's most vulnerable since the 1980s</span>
+      <a href="index.html" aria-label="Coptic Aid Foundation — Home">
+        <img src="CAF_Logo_Hor.svg" alt="Coptic Aid Foundation" class="nav-logo" />
+      </a>
+      <span class="nav-tagline">Caring for Egypt&rsquo;s most vulnerable since the 1980s</span>
     </div>
-    <div class="lang-switcher">
-      <a href="#" class="active">EN</a>
-      <a href="#">FR</a>
-      <a href="#">AR</a>
+    <div class="nav-controls">
+      <div class="nav-lang" role="navigation" aria-label="Language selector">
+        <a href="donate.html" class="active" aria-current="true">EN</a>
+        <span class="sep">/</span>
+        <a href="#">FR</a>
+        <span class="sep">/</span>
+        <a href="#">AR</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" onclick="toggleNav(this)">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button class="nav-hamburger" aria-label="Menu" onclick="toggleNav(this)">
-      <span></span><span></span><span></span>
-    </button>
   </div>
-  <div class="container nav-bottom" id="nav-bottom">
+  <div class="nav-bottom" id="nav-bottom" role="navigation" aria-label="Site navigation">
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="about-us.html">About Us</a></li>
       <li><a href="our-work.html">Our Work</a></li>
-      <li><a href="donate.html" class="active">Donate</a></li>
+      <li><a href="donate.html" class="active" aria-current="page">Donate</a></li>
       <li><a href="get-involved.html">Get Involved</a></li>
       <li><a href="news.html">News &amp; Media</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
+    <div class="mobile-lang" aria-label="Language selector">
+      <span>Language:</span>
+      <div class="nav-lang nav-lang-mobile-wrap">
+        <a href="donate.html" class="active">EN</a>
+        <span class="sep">/</span><a href="#">FR</a>
+        <span class="sep">/</span><a href="#">AR</a>
+      </div>
+    </div>
   </div>
 </nav>
-
+<main>
 <!-- PAGE HEADER -->
-<section class="page-header" style="border-bottom-color: var(--red);">
+<section id="main-content" class="page-header">
   <div class="container">
-    <h1 style="color:var(--red);">Make a Donation</h1>
-    <p style="font-size:1.1rem; color:#444;">98¢ of every dollar goes directly to families in Egypt. Our board is 100% volunteer — less than 2% covers administration costs.</p>
-    <ul style="list-style:none; padding:0; margin-top:16px; display:flex; gap:32px; flex-wrap:wrap;">
-      <li style="font-size:14px; font-weight:600; color:var(--green);">&#10003;&nbsp; Canadian registered charity</li>
-      <li style="font-size:14px; font-weight:600; color:var(--green);">&#10003;&nbsp; Aid disbursed monthly without interruption</li>
-      <li style="font-size:14px; font-weight:600; color:var(--green);">&#10003;&nbsp; Tax receipts issued for all Canadian donations</li>
+    <h1>Make a Donation</h1>
+    <p>98¢ of every dollar goes directly to families in Egypt. Our board is 100% volunteer — less than 2% covers administration costs.</p>
+    <ul class="trust-indicators">
+      <li >&#10003;&nbsp; Canadian registered charity</li>
+      <li >&#10003;&nbsp; Aid disbursed monthly without interruption</li>
+      <li >&#10003;&nbsp; Tax receipts issued for all Canadian donations</li>
     </ul>
   </div>
 </section>
@@ -172,10 +163,10 @@
     <div class="donate-method">
       <h3>Option 1 — Credit Card or PayPal</h3>
       <p>Donate securely online using any major credit card or your PayPal account.</p>
-      <div class="placeholder-photo" style="height:80px; display:flex; align-items:center; justify-content:center;">
+      <div class="placeholder-photo" class="placeholder placeholder-sm">
         [BUTTON: PayPal Donate button — to be embedded. PayPal hosted button ID: XHJU69N8X8RLU]
       </div>
-      <p style="font-size:14px; color:#888; margin-top:8px;">You will be redirected to PayPal's secure payment page. You do not need a PayPal account to donate by credit card.</p>
+      <p class="helper-text">You will be redirected to PayPal's secure payment page. You do not need a PayPal account to donate by credit card.</p>
     </div>
 
     <!-- METHOD 2: INTERAC -->
@@ -183,14 +174,14 @@
       <h3>Option 2 — Interac e-Transfer (Canada)</h3>
       <p>Send an e-Transfer directly from your Canadian bank account — no fees, no third party.</p>
       <ol class="steps">
-        <li>Log in to your online banking and select <strong>Interac e-Transfer</strong>.</li>
-        <li>In the <strong>Recipient</strong> field, enter: <strong>Coptic Aid Foundation</strong></li>
-        <li>Enter the <strong>amount</strong> you wish to contribute.</li>
-        <li>Select the account you want to send from (Savings or Chequing).</li>
-        <li>Click <strong>Verify</strong>.</li>
-        <li>Enter the recipient email: <strong>donate@copticaidfoundation.org</strong></li>
-        <li>In the <strong>Message</strong> field, include your full name, mailing address, email, and phone number. This is required to issue your tax receipt.</li>
-        <li><strong>Do not set a security question.</strong> Donations are accepted automatically via auto-deposit into the Coptic Aid Foundation account.</li>
+        <li><span>Log in to your online banking and select <strong>Interac e-Transfer</strong>.</span></li>
+        <li><span>In the <strong>Recipient</strong> field, enter: <strong>Coptic Aid Foundation</strong></span></li>
+        <li><span>Enter the <strong>amount</strong> you wish to contribute.</span></li>
+        <li><span>Select the account you want to send from (Savings or Chequing).</span></li>
+        <li><span>Click <strong>Verify</strong>.</span></li>
+        <li><span>Enter the recipient email: <strong>donate@copticaidfoundation.org</strong></span></li>
+        <li><span>In the <strong>Message</strong> field, include your full name, mailing address, email, and phone number. This is required to issue your tax receipt.</span></li>
+        <li><span><strong>Do not set a security question.</strong> Donations are accepted automatically via auto-deposit into the Coptic Aid Foundation account.</span></li>
       </ol>
     </div>
 
@@ -198,7 +189,7 @@
     <div class="donate-method">
       <h3>Option 3 — Cheque by Mail</h3>
       <p>Make cheques payable to <strong>Coptic Aid Foundation</strong> and mail to:</p>
-      <p style="margin-left:16px; line-height:2;">
+      <p class="address-block">
         Coptic Aid Foundation<br/>
         9520 Boul. de l'Acadie, Bureau 229<br/>
         Montreal, QC H4N 1L8<br/>
@@ -218,7 +209,7 @@
       <li>Receipts are issued annually and mailed to the address on file</li>
       <li>For credit card / PayPal donations, ensure your mailing address is current</li>
       <li>For e-Transfer donations, include your address in the message field</li>
-      <li>Questions about your receipt? Call us at <strong>(514) 334-9792</strong></li>
+      <li>Questions about your receipt? Call us at <strong><a href="tel:+15143349792">(514) 334-9792</a></strong></li>
     </ul>
 
     <h3>Registration Details</h3>
@@ -229,16 +220,15 @@
       <tr><td><strong>Status</strong></td><td>Active</td></tr>
       <tr><td><strong>Governing Legislation</strong></td><td>Canada Not-for-profit Corporations Act (2014-07-17)</td></tr>
     </table>
-    <p style="margin-top:16px;">
+    <p >
       You can independently verify our registration through:
     </p>
     <ul>
       <li><a href="https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyRprtngPrd/868786054RR0001" target="_blank" rel="noopener">Canada Revenue Agency — Charity Filing Search ↗</a></li>
-      <li><a href="https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/chrtydtls/868786054RR0001",
-      "https://maps.app.goo.gl/BnTFoNmPxT5uoN34A" target="_blank" rel="noopener">Canada Revenue Agency — Charity Details ↗</a></li>
+      <li><a href="https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/chrtydtls/868786054RR0001" target="_blank" rel="noopener">Canada Revenue Agency — Charity Details ↗</a></li>
       <li><a href="https://www.revenuquebec.ca/en/businesses/life-cycle/starting-a-business/how-the-legal-form-of-a-business-affects-its-tax-obligations/public-service-body/charity/list-of-registered-charities/" target="_blank" rel="noopener">Revenu Québec — List of Registered Charities ↗</a></li>
     </ul>
-    <p style="font-size:14px; color:#555; margin-top:12px;">Quebec donors are eligible for both a federal and provincial tax credit on charitable donations.</p>
+    <p class="helper-text">Quebec donors are eligible for both a federal and provincial tax credit on charitable donations.</p>
   </div>
 </section>
 
@@ -247,96 +237,85 @@
   <div class="container">
     <h2>Frequently Asked Questions</h2>
 
-    <h3>Does my entire donation reach the families?</h3>
-    <p>Yes. Our board of directors is entirely volunteer. No member receives a salary or compensation. Less than 2% of funds cover administration — 98¢ of every dollar reaches the families we serve in Egypt.</p>
+    <div class="faq-list">
 
-    <h3>Can I make a recurring monthly gift?</h3>
-    <p>Yes. Through PayPal you can set up a recurring monthly donation. For Interac, you can set up a recurring e-Transfer through your bank. Contact us if you need help setting this up.</p>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          Does my entire donation reach the families?
+        </button>
+        <div class="faq-a">
+          <p>Yes. Our board of directors is entirely volunteer. No member receives a salary or compensation. Less than 2% of funds cover administration — 98¢ of every dollar reaches the families we serve in Egypt.</p>
+        </div>
+      </div>
 
-    <h3>Can I sponsor a specific family?</h3>
-    <p>Yes. Contact us at <a href="mailto:info@copticaidfoundation.org">info@copticaidfoundation.org</a> or call (514) 334-9792 to discuss family sponsorship.</p>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          Can I make a recurring monthly gift?
+        </button>
+        <div class="faq-a">
+          <p>Yes. Through PayPal you can set up a recurring monthly donation. For Interac, you can set up a recurring e-Transfer through your bank. Contact us if you need help setting this up.</p>
+        </div>
+      </div>
 
-    <h3>What if I miss a month?</h3>
-    <p>Families continue to receive their monthly aid even if a sponsor is late or unable to give. The Foundation ensures no family is left without support due to a donor delay.</p>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          Can I sponsor a specific family?
+        </button>
+        <div class="faq-a">
+          <p>Yes. Contact us at <a href="mailto:info@copticaidfoundation.org">info@copticaidfoundation.org</a> or call <a href="tel:+15143349792">(514) 334-9792</a> to discuss family sponsorship.</p>
+        </div>
+      </div>
 
-    <h3>Can I donate in memory or honour of someone?</h3>
-    <p>Yes. The Coptic Aid Foundation welcomes in memoriam and tribute gifts. To make a donation in memory or honour of a loved one, please include their name in the message field of your e-Transfer, or contact us by email at <a href="mailto:info@copticaidfoundation.org">info@copticaidfoundation.org</a> or by phone at (514) 334-9792.</p>
-    <p style="color:#888; font-size:14px;">[PLACEHOLDER: Confirm process details with board — e.g. is an acknowledgement card sent to the family? Is there a minimum amount? Add details once confirmed.]</p>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          What if I miss a month?
+        </button>
+        <div class="faq-a">
+          <p>Families continue to receive their monthly aid even if a sponsor is late or unable to give. The Foundation ensures no family is left without support due to a donor delay.</p>
+        </div>
+      </div>
 
-    <h3>How much of the 2025 aid went to Egypt?</h3>
-    <p style="color:#888; font-size:14px;">[PLACEHOLDER: Total annual aid disbursed to Egypt in 2025 — to be confirmed with board and updated here.]</p>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          Can I donate in memory or honour of someone?
+        </button>
+        <div class="faq-a">
+          <p>Yes. The Coptic Aid Foundation welcomes in memoriam and tribute gifts. Please include the person's name in the message field of your e-Transfer, or contact us by email at <a href="mailto:info@copticaidfoundation.org">info@copticaidfoundation.org</a> or by phone at <a href="tel:+15143349792">(514) 334-9792</a>.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          Is the Coptic Aid Foundation a registered Canadian charity?
+        </button>
+        <div class="faq-a">
+          <p>Yes. We are a registered Canadian charity recognized by both the federal and provincial governments. Our Business Number is <strong>868786054RC0001</strong>. Tax receipts are issued for all donations. You can <a href="https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/chrtydtls/868786054RR0001" target="_blank" rel="noopener">verify our registration on the CRA website ↗</a>.</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section>
   <div class="container">
-    <div class="cta-block">
+    <div class="cta-block cta-block--primary">
       <h2>"When you help the poor you are lending to the Lord."</h2>
-      <p style="font-size:0.9rem; color:#666; margin-bottom:4px;">— Proverbs 19:17</p>
-      <p style="margin-top:16px;">Every gift, every month, changes a life. Thank you.</p>
-      <a href="#" class="cta-primary" style="margin-top:16px;">Donate by PayPal</a>
+      <p class="helper-text">— Proverbs 19:17</p>
+      <p >Every gift, every month, changes a life. Thank you.</p>
+      <a href="#" class="cta-primary" >Donate by PayPal</a>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div>
-        <h4>Coptic Aid Foundation</h4>
-        <p>
-          Coptic Aid Foundation<br/>
-          Fondation d'Aide Copte<br/>
-          <span lang="ar" dir="rtl">جمعية المعونة القبطية</span>
-        </p>
-        <p style="margin-top:8px;">Caring for Egypt's most vulnerable since the 1980s.<br/>Canadian registered charity.</p>
-        <a href="donate.html" class="footer-donate">Donate</a>
-      </div>
-      <div>
-        <h4>Navigate</h4>
-        <ul>
-          <li><a href="about-us.html">About Us</a></li>
-          <li><a href="our-work.html">Our Work</a></li>
-          <li><a href="donate.html">Donate</a></li>
-          <li><a href="get-involved.html">Get Involved</a></li>
-          <li><a href="news.html">News &amp; Media</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <p>9520 Boul. de l'Acadie, Bureau 229<br/>Montreal, QC H4N 1L8<br/>Tel: (514) 334-9792<br/><a href="mailto:info@copticaidfoundation.org">info@copticaidfoundation.org</a><br/><a href="https://maps.app.goo.gl/BnTFoNmPxT5uoN34A" target="_blank" rel="noopener">Google Maps ↗</a></p>
-      </div>
-      <div>
-        <h4>Follow Us</h4>
-        <ul>
-          <li><a href="https://www.facebook.com/copticaidfoundation" target="_blank" rel="noopener">Facebook ↗</a></li>
-          <li><span style="color:#666;">YouTube — coming soon</span></li>
-        </ul>
-        <h4 style="margin-top:16px;">Language</h4>
-        <div class="lang-switcher" style="flex-direction:column; gap:6px;">
-          <a href="#" class="active">English</a>
-          <a href="#">Français</a>
-          <a href="#">العربية</a>
-        </div>
-      </div>
-    </div>
-    <div class="copyright">
-      &copy; 2026 Coptic Aid Foundation. All rights reserved. Registered Canadian Charity — BN 868786054RC0001 <span style="float:right;"><a href="wiki/index.html" style="color:#555; text-decoration:none;">Wiki</a></span>
-    </div>
-  </div>
-</footer>
-
-<script>
-  function toggleNav(btn) {
-    btn.classList.toggle('open');
-    document.getElementById('nav-bottom').classList.toggle('open');
-  }
-</script>
-
 <!-- Back to top button -->
-<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 <script>
   (function() {
     const btn = document.getElementById('backToTop');
@@ -377,6 +356,190 @@
       });
     }, { passive: true });
   })();
+</script>
+<script>
+  // Position sub-nav flush below main nav
+  (function() {
+    function positionSubNav() {
+      const nav = document.querySelector('.site-nav');
+      const subNav = document.querySelector('.page-subnav');
+      if (nav && subNav) {
+        const navH = nav.getBoundingClientRect().height;
+        subNav.style.top = navH + 'px';
+        subNav.dataset.navH = navH;
+      }
+    }
+    positionSubNav();
+    window.addEventListener('resize', positionSubNav);
+    // Also update scroll-margin-top on anchors
+    function updateScrollMargin() {
+      const nav = document.querySelector('.site-nav');
+      const subNav = document.querySelector('.page-subnav');
+      if (!nav || !subNav) return;
+      const offset = nav.getBoundingClientRect().height + subNav.getBoundingClientRect().height + 8;
+      document.querySelectorAll('.anchor-target').forEach(el => {
+        el.style.scrollMarginTop = offset + 'px';
+      });
+    }
+    setTimeout(updateScrollMargin, 100);
+    window.addEventListener('resize', updateScrollMargin);
+  })();
+</script>
+</main>
+<footer class="site-footer" aria-label="Site footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-names">Coptic Aid Foundation &middot; Fondation d&rsquo;Aide Copte &middot; <span lang="ar" dir="rtl">&#x62C;&#x645;&#x639;&#x64A;&#x629; &#x627;&#x644;&#x645;&#x639;&#x648;&#x646;&#x629; &#x627;&#x644;&#x642;&#x628;&#x637;&#x64A;&#x629;</span></div>
+      <p>Caring for Egypt&rsquo;s most vulnerable since the 1980s.<br/>Canadian registered charity.</p>
+      <a href="donate.html" class="footer-donate-btn">Donate</a>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="our-work.html">Our Work</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="news.html">News &amp; Media</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>9520 Boul. de l&rsquo;Acadie, Bureau 229</li>
+        <li>Montreal, QC H4N&nbsp;1L8</li>
+        <li><a href="tel:+15143349792">(514) 334-9792</a></li>
+        <li><a href="mailto:info@copticaidfoundation.org">info@copticaidfoundation.org</a></li>
+        <li><a href="https://maps.app.goo.gl/BnTFoNmPxT5uoN34A" target="_blank" rel="noopener">Google Maps &#x2197;</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <ul>
+        <li><a href="https://www.facebook.com/copticaidfoundation" target="_blank" rel="noopener">Facebook &#x2197;</a></li>
+        <li><span class="text-muted">YouTube &mdash; coming soon</span></li>
+      </ul>
+      <h4 class="mt">Language</h4>
+      <ul>
+        <li><a href="#">English</a></li>
+        <li><a href="#">Français</a></li>
+        <li><a href="#">&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Coptic Aid Foundation. All rights reserved. Registered Canadian Charity &mdash; BN 868786054RC0001</span>
+    <a href="wiki/index.html">Wiki</a>
+  </div>
+</footer>
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+</button>
+<script>
+  function toggleNav(btn) {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    btn.classList.toggle('open');
+    document.getElementById('nav-bottom').classList.toggle('open');
+  }
+  // Sub-nav: position + scroll spy
+  (function() {
+    function getOffset() {
+      const nav = document.querySelector('.site-nav');
+      const sub = document.querySelector('.page-subnav');
+      const navH = nav ? nav.getBoundingClientRect().height : 0;
+      const subH = sub ? sub.getBoundingClientRect().height : 0;
+      return navH + subH;
+    }
+    function positionSubNav() {
+      const nav = document.querySelector('.site-nav');
+      const sub = document.querySelector('.page-subnav');
+      if (!nav || !sub) return;
+      sub.style.top = nav.getBoundingClientRect().height + 'px';
+      const offset = getOffset() + 12;
+      document.querySelectorAll('.anchor-target').forEach(el => {
+        el.style.scrollMarginTop = offset + 'px';
+      });
+    }
+    positionSubNav();
+    window.addEventListener('resize', positionSubNav);
+
+    // Scroll spy — update active sub-nav item
+    const subLinks = document.querySelectorAll('.page-subnav a[href^="#"]');
+    function updateActive() {
+      if (!subLinks.length) return;
+      const offset = getOffset() + 20;
+      const sections = Array.from(subLinks).map(a => {
+        const id = a.getAttribute('href').slice(1);
+        return document.getElementById(id);
+      }).filter(Boolean);
+
+      let current = sections[0];
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top <= offset) current = section;
+      });
+
+      subLinks.forEach(a => {
+        const id = a.getAttribute('href').slice(1);
+        a.classList.toggle('active', current && current.id === id);
+      });
+    }
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+
+    // Smooth scroll on sub-nav click
+    subLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const offset = getOffset() + 8;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+  })();
+  // Back to top
+  (function() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+    function check() {
+      const s = window.scrollY || document.documentElement.scrollTop || 0;
+      btn.classList.toggle('visible', s > 300);
+    }
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  })();
+  // Preview ribbon toggle
+  function rbnToggle() {
+    document.getElementById('rbn-btn').classList.toggle('open');
+    document.getElementById('rbn-drop').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.ribbon-switcher')) {
+      const b = document.getElementById('rbn-btn');
+      const d = document.getElementById('rbn-drop');
+      if (b) b.classList.remove('open');
+      if (d) d.classList.remove('open');
+    }
+  });
+  // Add has-ribbon class when ribbon present
+  if (document.querySelector('.preview-ribbon')) {
+    document.body.classList.add('has-ribbon');
+  }
+</script>
+<!-- FAQ accordion -->
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const answer = this.nextElementSibling;
+      const isOpen = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', String(!isOpen));
+      answer.classList.toggle('open', !isOpen);
+    });
+  });
 </script>
 </body>
 </html>
