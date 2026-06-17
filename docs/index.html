@@ -10,7 +10,7 @@
     "@context": "https://schema.org",
     "@type": "NonprofitOrganization",
     "name": "Coptic Aid Foundation",
-    "alternateName": ["Fondation d'Aide Copte", "\u062c\u0645\u0639\u064a\u0629 \u0627\u0644\u0645\u0639\u0648\u0646\u0629 \u0627\u0644\u0642\u0628\u0637\u064a\u0629"],
+    "alternateName": ["Fondation d'Aide Copte", "جمعية المعونة القبطية"],
     "url": "https://copticaidfoundation.org",
     "logo": "https://copticaidfoundation.org/CAF_Logo_Hor.svg",
     "description": "Montreal-based Canadian registered charity supporting needy Coptic families, orphans, widows, and university students in Egypt since the 1980s.",
@@ -27,7 +27,7 @@
       "@type": "ContactPoint",
       "telephone": "+1-514-334-9792",
       "contactType": "customer service",
-      "availableLanguage": ["English", "French", "Arabic"]
+      "availableLanguage": ["English", "Arabic"]
     },
     "sameAs": [
       "https://www.facebook.com/copticaidfoundation",
@@ -37,38 +37,231 @@
   }
   </script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Coptic Aid Foundation",
-    "url": "https://copticaidfoundation.org"
-  }
+  {"@context":"https://schema.org","@type":"WebSite","name":"Coptic Aid Foundation","url":"https://copticaidfoundation.org"}
   </script>
 
   <title>Coptic Aid Foundation | Help Coptic Families in Egypt</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* TOKENS */
+    :root {
+      --green:#06a64f; --green-dark:#057a3a; --green-light:#e8f5ee; --green-xlight:#f4faf7;
+      --blue:#2e3690; --blue-dark:#1e2460;
+      --red:#ec2227; --red-dark:#c8191e;
+      --gold:#c8a84b; --gold-light:#fdf8ec;
+      --black:#231f20; --grey-700:#374151; --grey-500:#6b7280; --grey-300:#d1d5db; --grey-100:#f3f4f6; --white:#ffffff;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --sans:'Inter',system-ui,-apple-system,sans-serif;
+      --max-w:1200px; --radius:4px;
+      --shadow-sm:0 1px 3px rgba(0,0,0,0.08); --shadow-md:0 4px 16px rgba(0,0,0,0.10);
+      --t:150ms ease;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:18px;scroll-behavior:smooth;overflow-x:clip;}
+    body{font-family:var(--sans);font-size:1rem;line-height:1.75;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased;}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:0.01ms!important;animation-duration:0.01ms!important;}html{scroll-behavior:auto;}}
+
+    /* ACCESSIBILITY */
+    .skip-link{position:absolute;left:-9999px;top:8px;z-index:9999;background:var(--green);color:var(--white);padding:10px 20px;font-size:.875rem;font-weight:600;border-radius:var(--radius);text-decoration:none;}
+    .skip-link:focus{left:16px;}
+    *:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:2px;}
+
+    /* LAYOUT */
+    .container{max-width:var(--max-w);margin:0 auto;padding:0 32px;}
+    section{border-bottom:1px solid var(--grey-300);}
+    section:last-of-type{border-bottom:none;}
+
+    /* TYPE */
+    h1,h2,h3{font-family:var(--serif);line-height:1.2;color:var(--black);}
+    h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:700;letter-spacing:-0.01em;}
+    h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;}
+    h3{font-size:1.2rem;font-weight:600;}
+    p{margin-bottom:1rem;}p:last-child{margin-bottom:0;}
+    a{color:var(--green);text-decoration:none;}
+    a:hover{color:var(--green-dark);text-decoration:underline;}
+    ul,ol{padding-left:1.5rem;}li{margin-bottom:.4rem;}
+
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:14px 32px;font-family:var(--sans);font-size:1rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;border-radius:var(--radius);border:2px solid transparent;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t),transform var(--t),box-shadow var(--t);}
+    .btn:hover{transform:translateY(-1px);text-decoration:none;}.btn:active{transform:translateY(0);}
+    .btn-primary{background:var(--red);color:var(--white);box-shadow:0 4px 14px rgba(236,34,39,.30);}
+    .btn-primary:hover{background:var(--red-dark);color:var(--white);box-shadow:0 6px 20px rgba(236,34,39,.40);}
+    .btn-outline{background:transparent;color:var(--white);border-color:rgba(255,255,255,.6);}
+    .btn-outline:hover{background:rgba(255,255,255,.12);color:var(--white);border-color:var(--white);}
+    .btn-green{background:var(--green);color:var(--white);box-shadow:0 4px 14px rgba(6,166,79,.25);}
+    .btn-green:hover{background:var(--green-dark);color:var(--white);}
+
+    /* NAV */
+    .site-nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:2px solid var(--green);box-shadow:var(--shadow-sm);}
+    .nav-top{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;border-bottom:1px solid var(--grey-300);max-width:var(--max-w);margin:0 auto;}
+    .nav-brand{display:flex;align-items:center;gap:20px;}
+    .nav-logo{height:56px;width:auto;display:block;}
+    .nav-tagline{font-size:.78rem;color:var(--grey-500);font-style:italic;letter-spacing:.01em;}
+    .nav-lang{display:flex;align-items:center;gap:0;}
+    .nav-lang a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:6px 10px;font-size:.8rem;font-weight:600;letter-spacing:.06em;color:var(--grey-500);text-decoration:none;transition:color var(--t);}
+    .nav-lang a:hover{color:var(--black);text-decoration:none;}
+    .nav-lang a.active{color:var(--green);font-weight:700;}
+    .nav-lang .sep{color:var(--grey-300);font-size:.7rem;line-height:1;user-select:none;}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;min-width:44px;min-height:44px;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;padding:8px;}
+    .nav-hamburger span{display:block;width:22px;height:2px;background:var(--black);transition:all 200ms ease;}
+    .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .nav-hamburger.open span:nth-child(2){opacity:0;}
+    .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .nav-bottom{max-width:var(--max-w);margin:0 auto;padding:0 32px;}
+    .nav-bottom ul{list-style:none;padding:0;display:flex;justify-content:space-between;}
+    .nav-bottom ul li a{display:block;padding:14px 10px;font-size:.875rem;font-weight:500;letter-spacing:.02em;color:var(--black);text-decoration:none;border-bottom:3px solid transparent;transition:color var(--t),border-color var(--t);white-space:nowrap;}
+    .nav-bottom ul li a:hover{color:var(--green);border-bottom-color:var(--green);text-decoration:none;}
+    .nav-bottom ul li a.active{color:var(--green);border-bottom-color:var(--green);font-weight:600;}
+
+    /* HERO */
+    .hero{position:relative;background:linear-gradient(135deg,var(--green) 0%,var(--blue-dark) 100%);color:var(--white);padding:96px 32px 80px;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E") repeat;pointer-events:none;}
+    .hero-inner{position:relative;max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+    .hero-eyebrow{display:inline-block;font-family:var(--sans);font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:16px;}
+    .hero h1{color:var(--white);margin-bottom:20px;font-weight:700;}
+    .hero-tagline{font-size:1.1rem;color:rgba(255,255,255,.88);line-height:1.7;margin-bottom:36px;max-width:520px;}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+    .hero-trust{margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,.2);display:flex;gap:24px;flex-wrap:wrap;}
+    .hero-trust-item{font-family:var(--sans);font-size:.8rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:6px;}
+    .hero-stat-card{background:rgba(255,255,255,.10);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:20px 24px;display:flex;align-items:center;gap:16px;margin-bottom:12px;}
+    .hero-stat-card:last-child{margin-bottom:0;}
+    .hero-stat-number{font-family:var(--serif);font-size:2.4rem;font-weight:700;color:var(--white);line-height:1;flex-shrink:0;min-width:90px;}
+    .hero-stat-label{font-family:var(--sans);font-size:.875rem;color:rgba(255,255,255,.82);line-height:1.4;}
+    .hero-stat-accent{color:#7ee8a2;font-weight:700;}
+
+    /* MISSION STRIP */
+    .mission-strip{background:var(--green-xlight);padding:40px 32px;border-bottom:1px solid var(--grey-300);}
+    .mission-strip-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;gap:48px;flex-wrap:wrap;}
+    .mission-motto{flex-shrink:0;text-align:center;padding:16px 24px;border-left:4px solid var(--green);}
+    .mission-motto-en{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--green);}
+    .mission-motto-ar{font-size:1.4rem;color:var(--green);margin-top:4px;font-family:'Segoe UI',Tahoma,Arial,sans-serif;}
+    .mission-text{flex:1;min-width:260px;}
+    .mission-text p{font-size:1.05rem;color:var(--grey-700);margin:0;line-height:1.7;}
+
+    /* PHOTO */
+    .photo-placeholder{width:100%;height:360px;background:var(--grey-100);border:2px dashed var(--grey-300);display:flex;align-items:center;justify-content:center;color:var(--grey-500);font-size:.9rem;font-style:italic;text-align:center;padding:24px;}
+
+    /* PILLARS */
+    .pillars-section{padding:80px 32px;}
+    .pillars-inner{max-width:var(--max-w);margin:0 auto;}
+    .section-label{font-family:var(--sans);font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
+    .section-heading{margin-bottom:48px;}
+    .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+    .pillar{padding:32px;border:1px solid var(--grey-300);border-top:4px solid var(--green);border-radius:var(--radius);transition:box-shadow var(--t),transform var(--t);}
+    .pillar:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+    .pillar-icon{width:48px;height:48px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+    .pillar-icon svg{width:24px;height:24px;color:var(--green);}
+    .pillar h3{font-family:var(--serif);font-size:1.3rem;margin-bottom:12px;color:var(--black);}
+    .pillar p{font-size:.95rem;color:var(--grey-700);margin-bottom:20px;}
+    .pillar-link{font-size:.875rem;font-weight:600;color:var(--green);display:inline-flex;align-items:center;gap:4px;text-decoration:none;min-height:44px;}
+    .pillar-link:hover{color:var(--green-dark);text-decoration:underline;}
+
+    /* SCRIPTURE */
+    .scripture-section{padding:64px 32px;background:var(--gold-light);}
+    .scripture-inner{max-width:760px;margin:0 auto;text-align:center;}
+    .scripture-mark{font-family:var(--serif);font-size:5rem;color:var(--gold);line-height:.5;margin-bottom:16px;opacity:.5;}
+    .scripture-text{font-family:var(--serif);font-size:1.4rem;font-style:italic;line-height:1.65;color:var(--black);margin-bottom:16px;}
+    .scripture-cite{font-family:var(--sans);font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-500);}
+
+    /* DONOR CTA */
+    .cta-section{padding:80px 32px;background:var(--white);}
+    .cta-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+    .cta-text h2{margin-bottom:16px;}
+    .cta-text p{font-size:1.05rem;color:var(--grey-700);margin-bottom:12px;}
+    .cta-trust-list{list-style:none;padding:0;margin:24px 0 32px;display:flex;flex-direction:column;gap:10px;}
+    .cta-trust-list li{display:flex;align-items:center;gap:10px;font-size:.95rem;color:var(--grey-700);margin:0;}
+    .cta-trust-list li svg{flex-shrink:0;color:var(--green);}
+    .cta-methods{display:flex;flex-direction:column;gap:16px;}
+    .cta-method{border:1px solid var(--grey-300);border-radius:8px;padding:20px 24px;transition:border-color var(--t),box-shadow var(--t);}
+    .cta-method:hover{border-color:var(--green);box-shadow:0 0 0 3px rgba(6,166,79,.08);}
+    .cta-method-title{font-family:var(--sans);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:4px;}
+    .cta-method p{font-size:.9rem;color:var(--grey-700);margin:0;}
+
+    /* ANNOUNCEMENTS */
+    .announcements-section{padding:48px 32px;background:var(--grey-100);}
+    .announcements-inner{max-width:var(--max-w);margin:0 auto;}
+    .announcement-item{padding:16px 20px;background:var(--white);border-left:4px solid var(--green);border-radius:0 var(--radius) var(--radius) 0;font-size:.95rem;color:var(--grey-700);}
+
+    /* FOOTER */
+    .site-footer{background:#0d1a0d;color:rgba(255,255,255,.7);padding:56px 32px 28px;font-size:.875rem;}
+    .footer-grid{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:28px;}
+    .footer-brand p{margin-top:12px;line-height:1.6;font-size:.85rem;}
+    .footer-brand .footer-names{font-size:.8rem;opacity:.6;margin-bottom:16px;}
+    .footer-donate-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 24px;background:var(--red);color:var(--white);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:var(--radius);text-decoration:none;margin-top:16px;transition:background var(--t);}
+    .footer-donate-btn:hover{background:var(--red-dark);color:var(--white);text-decoration:none;}
+    .footer-col h4{font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--white);margin-bottom:14px;}
+    .footer-col ul{list-style:none;padding:0;}
+    .footer-col ul li{margin-bottom:8px;}
+    .footer-col ul li a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.875rem;transition:color var(--t);}
+    .footer-col ul li a:hover{color:var(--white);text-decoration:none;}
+    .footer-bottom{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:.78rem;color:rgba(255,255,255,.35);}
+    .footer-bottom a{color:rgba(255,255,255,.4);text-decoration:none;}
+    .footer-bottom a:hover{color:rgba(255,255,255,.7);}
+
+    /* BACK TO TOP */
+    .back-to-top{position:fixed;bottom:32px;right:32px;width:48px;height:48px;background:var(--green);color:var(--white);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity 300ms ease,transform 300ms ease,visibility 300ms,background 150ms;z-index:500;box-shadow:0 4px 14px rgba(0,0,0,.18);}
+    .back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0);}
+    .back-to-top:hover{background:var(--green-dark);}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero-inner{grid-template-columns:1fr;gap:40px;}
+      .hero-visual{display:none;}
+      .pillars-grid{grid-template-columns:1fr;}
+      .cta-inner{grid-template-columns:1fr;gap:40px;}
+      .footer-grid{grid-template-columns:1fr 1fr;}
+    }
+    /* Hide mobile lang on desktop */
+    .mobile-lang{display:none;}
+    @media(max-width:768px){
+      html{font-size:16px;}
+      .nav-bottom{display:none;}
+      .nav-bottom.open{display:flex;flex-direction:column;}
+      .nav-bottom ul{flex-direction:column;}
+      .nav-bottom ul li a{padding:14px 20px;border-bottom:1px solid var(--grey-300);}
+      .mobile-lang{display:flex;align-items:center;gap:12px;padding:16px 20px;border-top:2px solid var(--grey-300);}
+      .mobile-lang span{font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--grey-500);}
+      .mobile-lang .nav-lang{display:inline-flex;}
+      .nav-lang{display:none;}
+      .nav-hamburger{display:flex;}
+      .hero{padding:64px 20px 56px;}
+      .section-heading{margin-bottom:32px;}
+      .footer-grid{grid-template-columns:1fr;gap:32px;}
+      .back-to-top{bottom:20px;right:20px;width:44px;height:44px;}
+    }
+  </style>
 </head>
 <body>
-<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:4px;z-index:999;padding:8px 16px;background:var(--green);color:#fff;font-size:14px;border-radius:2px;text-decoration:none;">Skip to main content</a>
 
-<nav>
-  <div class="container nav-top">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-top">
     <div class="nav-brand">
-      <a href="index.html"><img src="CAF_Logo_Hor.svg" alt="Coptic Aid Foundation" class="nav-logo" /></a>
-      <span class="site-tagline">Caring for Egypt's most vulnerable since the 1980s</span>
+      <a href="index.html" aria-label="Coptic Aid Foundation — Home">
+        <img src="CAF_Logo_Hor.svg" alt="Coptic Aid Foundation" class="nav-logo" />
+      </a>
+      <span class="nav-tagline">Caring for Egypt's most vulnerable since the 1980s</span>
     </div>
-    <div class="lang-switcher">
-      <a href="#" class="active">EN</a>
-      <a href="#">FR</a>
-      <a href="#">AR</a>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div class="nav-lang" role="navigation" aria-label="Language selector">
+        <a href="index.html" class="active" aria-current="true">EN</a>
+        <span class="sep">/</span>
+        <a href="#">FR</a>
+        <span class="sep">/</span>
+        <a href="#">AR</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" onclick="toggleNav(this)">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button class="nav-hamburger" aria-label="Menu" onclick="toggleNav(this)">
-      <span></span><span></span><span></span>
-    </button>
   </div>
-  <div class="container nav-bottom" id="nav-bottom">
+  <div class="nav-bottom" id="nav-bottom" role="navigation" aria-label="Site navigation">
     <ul>
-      <li><a href="index.html"  class="active">Home</a></li>
+      <li><a href="index.html" class="active" aria-current="page">Home</a></li>
       <li><a href="about-us.html">About Us</a></li>
       <li><a href="our-work.html">Our Work</a></li>
       <li><a href="donate.html">Donate</a></li>
@@ -76,184 +269,261 @@
       <li><a href="news.html">News &amp; Media</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
+    <div class="mobile-lang" aria-label="Language selector">
+      <span>Language:</span>
+      <div class="nav-lang" style="display:inline-flex;">
+        <a href="index.html" class="active" aria-current="true">EN</a>
+        <span class="sep">/</span>
+        <a href="#">FR</a>
+        <span class="sep">/</span>
+        <a href="#">AR</a>
+      </div>
+    </div>
   </div>
 </nav>
 
+<main id="main-content">
+
 <!-- HERO -->
-<div id="main-content" class="hero">
-  <div class="container">
-    <h1>Caring for Egypt's Most Vulnerable</h1>
-    <p class="tagline">The Coptic Aid Foundation supports needy Coptic families, orphans, widows, and university students in Egypt — through monthly aid, education support, and emergency relief. A Montreal charity, run entirely by volunteers since 1989.</p>
-    <a href="donate.html" class="cta-primary">Donate Now</a>
-  </div>
-</div>
-
-<!-- IMPACT BAR -->
-<div class="impact-bar">
-  <div class="container">
-    <div class="stat">
-      <span class="stat-number">7,150+</span>
-      <span class="stat-label">Families Supported</span>
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-eyebrow">Coptic Aid Foundation &middot; Since the 1980s</span>
+      <h1 id="hero-heading">Caring for Egypt's Most Vulnerable</h1>
+      <p class="hero-tagline">We support needy Coptic families, orphans, widows, and university students in Egypt — through monthly aid, education support, and emergency relief. A Montreal charity, run entirely by volunteers since 1989.</p>
+      <div class="hero-actions">
+        <a href="donate.html" class="btn btn-primary">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          Donate Now
+        </a>
+        <a href="about-us.html" class="btn btn-outline">Our Story</a>
+      </div>
+      <div class="hero-trust" aria-label="Trust indicators">
+        <div class="hero-trust-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Canadian registered charity
+        </div>
+        <div class="hero-trust-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          98&cent; of every dollar to families
+        </div>
+        <div class="hero-trust-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Tax receipts issued
+        </div>
+      </div>
     </div>
-    <div class="stat">
-      <span class="stat-number">728+</span>
-      <span class="stat-label">University Students</span>
-    </div>
-    <div class="stat">
-      <span class="stat-number">48+</span>
-      <span class="stat-label">Regions Across Egypt</span>
-    </div>
-    <div class="stat">
-      <span class="stat-number">98¢</span>
-      <span class="stat-label">Of Every Dollar to Families</span>
-    </div>
-    <div class="stat">
-      <span class="stat-number">100%</span>
-      <span class="stat-label">Volunteer Board</span>
-    </div>
-    <div class="stat">
-      <span class="stat-number">1980s</span>
-      <span class="stat-label">Serving Since</span>
-    </div>
-  </div>
-</div>
-
-<!-- PLACEHOLDER PHOTO HERO -->
-<section style="padding: 0; border-bottom: none;">
-  <div class="container" style="padding-top: 40px; padding-bottom: 8px;">
-    <div class="placeholder-photo" style="height: 280px; display: flex; align-items: center; justify-content: center;">
-      [PHOTO: Families or communities in Egypt — warm, dignified, real. Approximately 1200×500px. To be provided.]
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-stat-card">
+        <div class="hero-stat-number">7,150<span style="font-size:1.4rem;">+</span></div>
+        <div class="hero-stat-label">Families receiving <span class="hero-stat-accent">monthly support</span> across Egypt</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-number">728<span style="font-size:1.4rem;">+</span></div>
+        <div class="hero-stat-label">University students <span class="hero-stat-accent">currently supported</span></div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-number">98&cent;</div>
+        <div class="hero-stat-label">Of every dollar <span class="hero-stat-accent">reaches families</span> &mdash; less than 2% admin</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-number">48<span style="font-size:1.4rem;">+</span></div>
+        <div class="hero-stat-label">Regions across Egypt, <span class="hero-stat-accent">since the 1980s</span></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- THREE PILLARS -->
-<section>
-  <div class="container">
-    <h2>What We Do</h2>
-    <div class="pillars">
-      <div class="pillar">
-        <div class="placeholder-photo">[ICON or PHOTO: Financial aid / family]</div>
+<!-- MISSION STRIP -->
+<div class="mission-strip" role="complementary" aria-label="Foundation motto">
+  <div class="mission-strip-inner">
+    <div class="mission-motto">
+      <div class="mission-motto-en">Aid for the Poor</div>
+      <div class="mission-motto-ar" lang="ar" dir="rtl">&#x645;&#x639;&#x648;&#x646;&#x629; &#x644;&#x644;&#x645;&#x633;&#x627;&#x643;&#x64A;&#x646;</div>
+    </div>
+    <div class="mission-text">
+      <p>Our name and motto come directly from the Divine Liturgy &mdash; a prayer every Coptic Christian knows by heart. <em>&ldquo;Bless the fullness of the year out of your goodness, for the sake of the poor of your people, for the widow, the orphan, the stranger&hellip;&rdquo;</em></p>
+    </div>
+    <a href="about-us.html" class="btn btn-green" style="flex-shrink:0;">Our Story</a>
+  </div>
+</div>
+
+<!-- PHOTO -->
+<div role="img" aria-label="Photo placeholder: Families or communities in Egypt — to be provided">
+  <div class="photo-placeholder">[PHOTO: Families or communities in Egypt &mdash; warm, dignified, real. ~1200&times;400px. To be provided.]</div>
+</div>
+
+<!-- PILLARS -->
+<section class="pillars-section" aria-labelledby="pillars-heading">
+  <div class="pillars-inner">
+    <div class="section-heading">
+      <p class="section-label">What We Do</p>
+      <h2 id="pillars-heading">Three Ways Your Gift Reaches Egypt</h2>
+    </div>
+    <div class="pillars-grid">
+      <article class="pillar">
+        <div class="pillar-icon" aria-hidden="true">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
         <h3>Monthly Financial Aid</h3>
-        <p>We send regular monthly support to needy families, widows, and orphans selected by clergy of the Coptic Orthodox Church across Egypt.</p>
-        <a href="our-work.html">Learn more →</a>
-      </div>
-      <div class="pillar">
-        <div class="placeholder-photo">[ICON or PHOTO: Students / university]</div>
+        <p>Regular monthly support to 7,150+ needy families, widows, and orphans &mdash; identified by clergy of the Coptic Orthodox Church. Disbursed every month without interruption.</p>
+        <a href="our-work.html#monthly-aid" class="pillar-link" aria-label="Learn more about Monthly Financial Aid">
+          Learn more <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+      <article class="pillar">
+        <div class="pillar-icon" aria-hidden="true">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
         <h3>University Student Support</h3>
-        <p>We support 728+ university students from low-income Coptic families — giving them the chance to build a future and lift their families out of poverty.</p>
-        <a href="our-work.html">Learn more →</a>
-      </div>
-      <div class="pillar">
-        <div class="placeholder-photo">[ICON or PHOTO: Emergency / relief]</div>
+        <p>728+ students are currently receiving monthly support. Over the decades, thousands have graduated and found employment &mdash; lifting their entire families out of poverty for good.</p>
+        <a href="our-work.html#education" class="pillar-link" aria-label="Learn more about University Student Support">
+          Learn more <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+      <article class="pillar">
+        <div class="pillar-icon" aria-hidden="true">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
         <h3>Emergency Relief</h3>
-        <p>When crisis strikes, we mobilize quickly to provide emergency funds, medicine, and essentials to the most vulnerable.</p>
-        <a href="our-work.html">Learn more →</a>
-      </div>
+        <p>When crisis strikes &mdash; illness, disaster, or displacement &mdash; we mobilize quickly to provide emergency funds, medicine, and essentials to the families who need it most.</p>
+        <a href="our-work.html#emergency-relief" class="pillar-link" aria-label="Learn more about Emergency Relief">
+          Learn more <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="our-work.html" class="btn btn-green">See All 6 Programs</a>
     </div>
   </div>
 </section>
 
 <!-- SCRIPTURE -->
-<section>
-  <div class="container">
-    <blockquote class="scripture">
-      "Religion that God our Father accepts as pure and faultless is this: to look after orphans and widows in their distress."
-      <cite>— James 1:27</cite>
+<section class="scripture-section" aria-label="Scripture quote">
+  <div class="scripture-inner">
+    <div class="scripture-mark" aria-hidden="true">&ldquo;</div>
+    <blockquote>
+      <p class="scripture-text">Religion that God our Father accepts as pure and faultless is this: to look after orphans and widows in their distress.</p>
+      <footer><cite class="scripture-cite">&mdash; James 1:27</cite></footer>
     </blockquote>
   </div>
 </section>
 
 <!-- DONOR CTA -->
-<section>
-  <div class="container">
-    <div class="cta-block">
-      <h2>Your Gift Reaches Egypt This Month</h2>
-      <p>Every dollar you give is sent directly to families in need. Our board is entirely volunteer — no salaries, no overhead deductions. You give, they receive.</p>
-      <p><strong>Tax receipts issued for all Canadian donations.</strong></p>
-      <a href="donate.html" class="cta-primary">Make a Donation</a>
+<section class="cta-section" aria-labelledby="cta-heading">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <p class="section-label">Make a Difference</p>
+      <h2 id="cta-heading">Your Gift Reaches Egypt This Month</h2>
+      <p>Every donation goes directly to a family in need. Our board is entirely volunteer &mdash; 98&cent; of every dollar you give reaches those we serve.</p>
+      <ul class="cta-trust-list" aria-label="Trust signals">
+        <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Canadian registered charity &mdash; BN 868786054RC0001</li>
+        <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Tax receipts issued for all Canadian donations</li>
+        <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>100% volunteer board &mdash; less than 2% covers administration</li>
+        <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Aid disbursed every month without interruption</li>
+      </ul>
+      <a href="donate.html" class="btn btn-primary">Make a Donation</a>
+    </div>
+    <div class="cta-methods" aria-label="Ways to donate">
+      <div class="cta-method">
+        <div class="cta-method-title">Credit Card or PayPal</div>
+        <p>Donate securely online &mdash; no PayPal account needed to pay by credit card.</p>
+      </div>
+      <div class="cta-method">
+        <div class="cta-method-title">Interac e-Transfer</div>
+        <p>Send directly from your Canadian bank to <strong>donate@copticaidfoundation.org</strong> &mdash; no security question needed.</p>
+      </div>
+      <div class="cta-method">
+        <div class="cta-method-title">Cheque by Mail</div>
+        <p>Payable to <strong>Coptic Aid Foundation</strong>, 9520 Boul. de l&rsquo;Acadie, Bureau 229, Montreal, QC H4N&nbsp;1L8.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ANNOUNCEMENTS -->
-<section>
-  <div class="container">
-    <h2>Announcements</h2>
-    <p><strong>2025 Tax Receipts:</strong> All 2025 tax receipts have been issued and mailed. If you have not received yours, please call (514) 334-9792.</p>
-    <p style="color:#888; font-size:14px;">This section is used for tax receipt notices, Annual General Assembly announcements, annual reports, and other donor communications.</p>
+<section class="announcements-section" aria-labelledby="announcements-heading">
+  <div class="announcements-inner">
+    <h2 id="announcements-heading" style="font-size:1.3rem;margin-bottom:16px;">Announcements</h2>
+    <div class="announcement-item" role="article">
+      <strong>2025 Tax Receipts:</strong> All 2025 tax receipts have been issued and mailed. If you have not received yours, please call (514)&nbsp;334-9792.
+    </div>
   </div>
 </section>
 
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div>
-        <h4>Coptic Aid Foundation</h4>
-        <p>
-          Coptic Aid Foundation<br/>
-          Fondation d'Aide Copte<br/>
-          <span lang="ar" dir="rtl">جمعية المعونة القبطية</span>
-        </p>
-        <p style="margin-top:8px;">Caring for Egypt's most vulnerable since the 1980s.<br/>Canadian registered charity.</p>
-        <a href="donate.html" class="footer-donate">Donate</a>
-      </div>
-      <div>
-        <h4>Navigate</h4>
-        <ul>
-          <li><a href="about-us.html">About Us</a></li>
-          <li><a href="our-work.html">Our Work</a></li>
-          <li><a href="donate.html">Donate</a></li>
-          <li><a href="get-involved.html">Get Involved</a></li>
-          <li><a href="news.html">News &amp; Media</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <p>9520 Boul. de l'Acadie, Bureau 229<br/>Montreal, QC H4N 1L8<br/>Tel: (514) 334-9792<br/><a href="mailto:info@copticaidfoundation.org">info@copticaidfoundation.org</a><br/><a href="https://maps.app.goo.gl/BnTFoNmPxT5uoN34A" target="_blank" rel="noopener">Google Maps ↗</a></p>
-      </div>
-      <div>
-        <h4>Follow Us</h4>
-        <ul>
-          <li><a href="https://www.facebook.com/copticaidfoundation" target="_blank" rel="noopener">Facebook ↗</a></li>
-          <li><span style="color:#666;">YouTube — coming soon</span></li>
-        </ul>
-        <h4 style="margin-top:16px;">Language</h4>
-        <div class="lang-switcher" style="flex-direction:column; gap:6px;">
-          <a href="#" class="active">English</a>
-          <a href="#">Français</a>
-          <a href="#">العربية</a>
-        </div>
-      </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer" aria-label="Site footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-names">Coptic Aid Foundation &nbsp;&middot;&nbsp; Fondation d&rsquo;Aide Copte &nbsp;&middot;&nbsp; <span lang="ar" dir="rtl">&#x62C;&#x645;&#x639;&#x64A;&#x629; &#x627;&#x644;&#x645;&#x639;&#x648;&#x646;&#x629; &#x627;&#x644;&#x642;&#x628;&#x637;&#x64A;&#x629;</span></div>
+      <p>Caring for Egypt&rsquo;s most vulnerable since the 1980s. Canadian registered charity.</p>
+      <a href="donate.html" class="footer-donate-btn">Donate</a>
     </div>
-    <div class="copyright">
-      &copy; 2026 Coptic Aid Foundation. All rights reserved. Registered Canadian Charity — BN 868786054RC0001 <span style="float:right;"><a href="wiki/index.html" style="color:#555; text-decoration:none;">Wiki</a></span>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="our-work.html">Our Work</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="news.html">News &amp; Media</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>9520 Boul. de l&rsquo;Acadie, Bureau 229</li>
+        <li>Montreal, QC H4N&nbsp;1L8</li>
+        <li><a href="tel:+15143349792">(514) 334-9792</a></li>
+        <li><a href="mailto:info@copticaidfoundation.org">info@copticaidfoundation.org</a></li>
+        <li><a href="https://maps.app.goo.gl/BnTFoNmPxT5uoN34A" target="_blank" rel="noopener">Google Maps &#x2197;</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <ul>
+        <li><a href="https://www.facebook.com/copticaidfoundation" target="_blank" rel="noopener">Facebook &#x2197;</a></li>
+        <li><span style="opacity:.4;">YouTube &mdash; coming soon</span></li>
+      </ul>
+      <h4 style="margin-top:20px;">Language</h4>
+      <ul>
+        <li><a href="index.html" aria-current="true">English</a></li>
+        <li><a href="#">&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Coptic Aid Foundation. All rights reserved. Registered Canadian Charity &mdash; BN 868786054RC0001</span>
+    <a href="wiki/index.html">Wiki</a>
   </div>
 </footer>
 
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+</button>
+
 <script>
   function toggleNav(btn) {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
     btn.classList.toggle('open');
     document.getElementById('nav-bottom').classList.toggle('open');
   }
-</script>
-
-<!-- Back to top button -->
-<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
-<script>
   (function() {
     const btn = document.getElementById('backToTop');
     if (!btn) return;
     function checkScroll() {
-      const scrolled = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      btn.classList.toggle('visible', scrolled > 300);
+      const s = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      btn.classList.toggle('visible', s > 300);
     }
     window.addEventListener('scroll', checkScroll, { passive: true });
     document.addEventListener('scroll', checkScroll, { passive: true });
     checkScroll();
   })();
 </script>
+
 </body>
 </html>
