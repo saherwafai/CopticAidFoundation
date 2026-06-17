@@ -280,6 +280,8 @@
 
 <nav class="poc-nav">
   <a href="#lang" class="active">Language Switcher</a>
+  <a href="#cta-blocks">CTA Blocks</a>
+  <a href="#btn-colors">Button Colors</a>
   <a href="#dropdowns">Dropdowns</a>
   <a href="#buttons">Buttons</a>
   <a href="#stats">Stat Cards</a>
@@ -288,6 +290,400 @@
   <a href="#scripture">Scripture</a>
   <a href="#colors">Colors</a>
 </nav>
+
+<!-- ═══════════════════════════════════ -->
+<!-- BUTTON COLOR LAB                   -->
+<!-- ═══════════════════════════════════ -->
+<div class="poc-section" id="btn-colors">
+  <h2>Donate Button Color Options — Gold &amp; Green variations</h2>
+
+  <style>
+    /* ── Shared button base ── */
+    .poc-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 52px; padding: 14px 36px;
+      font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600;
+      letter-spacing: .04em; text-transform: uppercase;
+      border-radius: 4px; border: 2px solid transparent;
+      cursor: pointer; text-decoration: none;
+      transition: background 150ms, color 150ms, transform 150ms, box-shadow 150ms;
+    }
+    .poc-btn:hover { transform: translateY(-1px); }
+
+    /* ── GOLD OPTIONS ── */
+    /* A: Dark gold, white text */
+    .btn-gold-a { background: #a07c2a; color: #fff; box-shadow: 0 4px 14px rgba(160,124,42,.30); }
+    .btn-gold-a:hover { background: #8a6a20; color: #fff; }
+
+    /* B: Mid gold, dark text */
+    .btn-gold-b { background: #c8a84b; color: #231f20; box-shadow: 0 4px 14px rgba(200,168,75,.30); }
+    .btn-gold-b:hover { background: #b8962e; color: #231f20; }
+
+    /* C: Gold outline, dark text (on white bg) */
+    .btn-gold-c { background: transparent; color: #a07c2a; border-color: #c8a84b; }
+    .btn-gold-c:hover { background: #fdf8ec; color: #8a6a20; }
+
+    /* D: Gold outline, light text (on dark bg) */
+    .btn-gold-d { background: transparent; color: #fdf3d8; border-color: #c8a84b; }
+    .btn-gold-d:hover { background: rgba(200,168,75,.15); color: #fff; }
+
+    /* ── GREEN OPTIONS ── */
+    /* E: Primary green, white text */
+    .btn-green-e { background: #06a64f; color: #fff; box-shadow: 0 4px 14px rgba(6,166,79,.25); }
+    .btn-green-e:hover { background: #057a3a; color: #fff; }
+
+    /* F: Dark green, white text */
+    .btn-green-f { background: #057a3a; color: #fff; box-shadow: 0 4px 14px rgba(5,122,58,.25); }
+    .btn-green-f:hover { background: #045c2c; color: #fff; }
+
+    /* G: Green outline, green text (on white bg) */
+    .btn-green-g { background: transparent; color: #06a64f; border-color: #06a64f; }
+    .btn-green-g:hover { background: #e8f5ee; color: #057a3a; }
+
+    /* H: Green outline, light text (on dark bg) */
+    .btn-green-h { background: transparent; color: #e8f5ee; border-color: #06a64f; }
+    .btn-green-h:hover { background: rgba(6,166,79,.15); color: #fff; }
+
+    /* ── Context backgrounds ── */
+    .ctx-white { background: #fff; padding: 32px; border: 1px solid #e5e7eb; border-radius: 4px; }
+    .ctx-green-gradient { background: linear-gradient(135deg, #06a64f 0%, #1e2460 100%); padding: 32px; border-radius: 4px; }
+    .ctx-dark { background: #1e2460; padding: 32px; border-radius: 4px; }
+    .ctx-cream { background: #fdfaf5; padding: 32px; border: 1px solid #e5e7eb; border-radius: 4px; }
+
+    .ctx-label { font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 16px; display: block; opacity: .6; }
+    .ctx-white .ctx-label { color: #374151; }
+    .ctx-green-gradient .ctx-label, .ctx-dark .ctx-label { color: rgba(255,255,255,.6); }
+    .ctx-cream .ctx-label { color: #6b7280; }
+
+    .btn-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .btn-col { display: flex; flex-direction: column; gap: 8px; }
+    .btn-name { font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #6b7280; }
+
+    /* Current (red) for reference */
+    .btn-red-ref { background: #ec2227; color: #fff; box-shadow: 0 4px 14px rgba(236,34,39,.30); }
+    .btn-red-ref:hover { background: #c8191e; color: #fff; }
+  </style>
+
+  <!-- REFERENCE: Current red -->
+  <div style="margin-bottom:40px;">
+    <p class="poc-label" style="margin-bottom:16px;">Current (red — for reference)</p>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start;">
+      <div class="ctx-white" style="flex:1;min-width:200px;">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-red-ref" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-green-gradient" style="flex:1;min-width:200px;">
+        <span class="ctx-label">On hero gradient</span>
+        <a class="poc-btn btn-red-ref" href="#">Donate Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOLD OPTIONS -->
+  <p class="poc-label" style="margin-bottom:20px;">Gold Options</p>
+  <div class="btn-grid" style="margin-bottom:40px;">
+
+    <div class="btn-col">
+      <span class="btn-name">A — Dark gold, white text</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-gold-a" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-green-gradient">
+        <span class="ctx-label">On hero</span>
+        <a class="poc-btn btn-gold-a" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-cream">
+        <span class="ctx-label">On cream</span>
+        <a class="poc-btn btn-gold-a" href="#">Donate Now</a>
+      </div>
+    </div>
+
+    <div class="btn-col">
+      <span class="btn-name">B — Mid gold, dark text</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-gold-b" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-green-gradient">
+        <span class="ctx-label">On hero</span>
+        <a class="poc-btn btn-gold-b" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-cream">
+        <span class="ctx-label">On cream</span>
+        <a class="poc-btn btn-gold-b" href="#">Donate Now</a>
+      </div>
+    </div>
+
+    <div class="btn-col">
+      <span class="btn-name">C — Gold outline, dark text</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-gold-c" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-green-gradient">
+        <span class="ctx-label">On hero</span>
+        <a class="poc-btn btn-gold-d" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-cream">
+        <span class="ctx-label">On cream</span>
+        <a class="poc-btn btn-gold-c" href="#">Donate Now</a>
+      </div>
+    </div>
+
+    <div class="btn-col">
+      <span class="btn-name">D — Gold filled + outline combo</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-gold-b" href="#" style="border-color:#c8a84b;">Donate Now</a>
+      </div>
+      <div class="ctx-dark">
+        <span class="ctx-label">On dark blue</span>
+        <a class="poc-btn btn-gold-b" href="#" style="border-color:#c8a84b;">Donate Now</a>
+      </div>
+      <div class="ctx-cream">
+        <span class="ctx-label">On cream</span>
+        <a class="poc-btn btn-gold-a" href="#" style="border-color:#a07c2a;">Donate Now</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- GREEN OPTIONS -->
+  <p class="poc-label" style="margin-bottom:20px;">Green Options</p>
+  <div class="btn-grid">
+
+    <div class="btn-col">
+      <span class="btn-name">E — Primary green, white text</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-green-e" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-green-gradient">
+        <span class="ctx-label">On hero</span>
+        <a class="poc-btn btn-green-e" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-cream">
+        <span class="ctx-label">On cream</span>
+        <a class="poc-btn btn-green-e" href="#">Donate Now</a>
+      </div>
+    </div>
+
+    <div class="btn-col">
+      <span class="btn-name">F — Dark green, white text</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-green-f" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-green-gradient">
+        <span class="ctx-label">On hero</span>
+        <a class="poc-btn btn-green-f" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-cream">
+        <span class="ctx-label">On cream</span>
+        <a class="poc-btn btn-green-f" href="#">Donate Now</a>
+      </div>
+    </div>
+
+    <div class="btn-col">
+      <span class="btn-name">G — Green outline, green text</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white</span>
+        <a class="poc-btn btn-green-g" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-green-gradient">
+        <span class="ctx-label">On hero</span>
+        <a class="poc-btn btn-green-h" href="#">Donate Now</a>
+      </div>
+      <div class="ctx-cream">
+        <span class="ctx-label">On cream</span>
+        <a class="poc-btn btn-green-g" href="#">Donate Now</a>
+      </div>
+    </div>
+
+    <div class="btn-col">
+      <span class="btn-name">H — White fill on dark bg</span>
+      <div class="ctx-white">
+        <span class="ctx-label">On white (N/A)</span>
+        <span style="font-size:.75rem;color:#9ca3af;font-style:italic;">Not applicable</span>
+      </div>
+      <div class="ctx-green-gradient">
+        <span class="ctx-label">On hero</span>
+        <a class="poc-btn" href="#" style="background:#fff;color:#06a64f;font-weight:700;">Donate Now</a>
+      </div>
+      <div class="ctx-dark">
+        <span class="ctx-label">On dark blue</span>
+        <a class="poc-btn" href="#" style="background:#fff;color:#06a64f;font-weight:700;">Donate Now</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- CTA BLOCKS                         -->
+<!-- ═══════════════════════════════════ -->
+<div class="poc-section" id="cta-blocks">
+  <h2>CTA Block Variants</h2>
+
+  <style>
+    /* Shared CTA base */
+    .poc-cta { padding: 56px 48px; text-align: center; margin-bottom: 8px; }
+    .poc-cta h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; font-weight: 600; margin: 0 0 14px; line-height: 1.2; }
+    .poc-cta p { font-size: 1rem; line-height: 1.75; margin: 0 auto 28px; max-width: 520px; }
+    .poc-cta-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 14px 40px; font-family: 'Inter', sans-serif; font-size: .9rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; border-radius: 4px; border: 2px solid transparent; cursor: pointer; text-decoration: none; transition: background 150ms, transform 150ms; }
+    .poc-cta-btn:hover { transform: translateY(-1px); text-decoration: none; }
+
+    /* Current (for reference) */
+    .cta-ref { background: #e8f5ee; border: 1px solid #06a64f; }
+    .cta-ref h2 { color: #06a64f; }
+    .cta-ref p { color: #374151; }
+    .btn-ref { background: #c8a84b; color: #231f20; box-shadow: 0 4px 14px rgba(200,168,75,.3); }
+    .btn-ref:hover { background: #b8962e; color: #231f20; }
+
+    /* A: White bg, no border, black serif h2 */
+    .cta-A { background: #ffffff; border: none; }
+    .cta-A h2 { color: #231f20; }
+    .cta-A p { color: #6b7280; }
+    .btn-gold-mid { background: #c8a84b; color: #231f20; box-shadow: 0 4px 14px rgba(200,168,75,.28); }
+    .btn-gold-mid:hover { background: #b8962e; color: #231f20; }
+
+    /* B: Deep green bg, all white */
+    .cta-B { background: #057a3a; }
+    .cta-B h2 { color: #ffffff; }
+    .cta-B p { color: rgba(255,255,255,.82); }
+    .btn-white-dark { background: #ffffff; color: #231f20; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+    .btn-white-dark:hover { background: #f0f0f0; color: #231f20; }
+
+    /* C: Cream bg, mid gold thin border, dark gold h2 */
+    .cta-C { background: #fdfaf5; border: 1px solid #c8a84b; }
+    .cta-C h2 { color: #a07c2a; }
+    .cta-C p { color: #374151; }
+
+    /* D: Cream bg, dark gold thin border, dark gold h2 */
+    .cta-D { background: #fdfaf5; border: 1px solid #a07c2a; }
+    .cta-D h2 { color: #a07c2a; }
+    .cta-D p { color: #374151; }
+
+    /* E: Gold-light bg, gold left border accent only */
+    .cta-E { background: #fdf8ec; border-left: 4px solid #c8a84b; text-align: left; padding-left: 48px; }
+    .cta-E h2 { color: #a07c2a; }
+    .cta-E p { color: #374151; margin-left: 0; }
+
+    /* F: Near-black bg, gold h2, white p */
+    .cta-F { background: #1a1612; }
+    .cta-F h2 { color: #c8a84b; }
+    .cta-F p { color: rgba(255,255,255,.72); }
+
+    /* G: Off-white, no border, very subtle shadow */
+    .cta-G { background: #f9f9f7; box-shadow: 0 2px 24px rgba(0,0,0,.06); }
+    .cta-G h2 { color: #231f20; }
+    .cta-G p { color: #6b7280; }
+
+    /* H: Deep blue, gold h2, white p */
+    .cta-H { background: #1e2460; }
+    .cta-H h2 { color: #c8a84b; }
+    .cta-H p { color: rgba(255,255,255,.78); }
+
+    .poc-variant-label { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #9ca3af; margin-bottom: 4px; display: block; }
+    .poc-cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #e5e7eb; border: 1px solid #e5e7eb; border-radius: 4px; overflow: hidden; }
+    .poc-cta-grid-item { background: #fff; }
+  </style>
+
+  <!-- Reference -->
+  <div style="margin-bottom:32px;">
+    <span class="poc-variant-label">Current (for reference)</span>
+    <div class="poc-cta cta-ref">
+      <h2>Your Gift Reaches Egypt This Month</h2>
+      <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+      <a href="#" class="poc-cta-btn btn-ref">Make a Donation</a>
+    </div>
+  </div>
+
+  <div class="poc-cta-grid">
+
+    <!-- A -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">A — White, black serif h2, gold button</span>
+      <div class="poc-cta cta-A">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-gold-mid">Make a Donation</a>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">B — Deep green, white text, white button</span>
+      <div class="poc-cta cta-B">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-white-dark">Make a Donation</a>
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">C — Cream, mid gold thin border, dark gold h2</span>
+      <div class="poc-cta cta-C">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-gold-mid">Make a Donation</a>
+      </div>
+    </div>
+
+    <!-- D -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">D — Cream, dark gold thin border, dark gold h2</span>
+      <div class="poc-cta cta-D">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-gold-mid">Make a Donation</a>
+      </div>
+    </div>
+
+    <!-- E -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">E — Gold-light bg, left accent border, left-aligned</span>
+      <div class="poc-cta cta-E">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-gold-mid">Make a Donation</a>
+      </div>
+    </div>
+
+    <!-- F -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">F — Near-black bg, gold h2, white p</span>
+      <div class="poc-cta cta-F">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-gold-mid">Make a Donation</a>
+      </div>
+    </div>
+
+    <!-- G -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">G — Off-white, subtle shadow, black h2</span>
+      <div class="poc-cta cta-G">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-gold-mid">Make a Donation</a>
+      </div>
+    </div>
+
+    <!-- H -->
+    <div class="poc-cta-grid-item">
+      <span class="poc-variant-label" style="padding:16px 16px 0;">H — Deep blue, gold h2, white p</span>
+      <div class="poc-cta cta-H">
+        <h2>Your Gift Reaches Egypt This Month</h2>
+        <p>Every donation goes directly to families in need. Our board is entirely volunteer — 98¢ of every dollar reaches those we serve.</p>
+        <a href="#" class="poc-cta-btn btn-gold-mid">Make a Donation</a>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════ -->
 <!-- LANGUAGE SWITCHER                  -->

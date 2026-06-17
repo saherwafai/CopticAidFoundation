@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" style="scroll-behavior: smooth;">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,86 +36,58 @@
     ]
   }
   </script>
-
-  <title>About Us | Coptic Aid Foundation | Since the 1980s</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* ── Page sub-nav ── */
-    .page-subnav {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 185px;
-      z-index: 89;
-      background: var(--white);
-      border-bottom: 2px solid var(--green-light);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-    }
-    .page-subnav ul {
-      list-style: none;
-      display: flex;
-      gap: 0;
-      padding: 0;
-      margin: 0;
-      overflow-x: auto;
-    }
-    .page-subnav ul li a {
-      display: block;
-      padding: 12px 24px;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--grey-dark);
-      text-decoration: none;
-      border-bottom: 3px solid transparent;
-      white-space: nowrap;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .page-subnav ul li a:hover { color: var(--green); border-bottom-color: var(--green); }
-    .page-subnav ul li a.active { color: var(--green); border-bottom-color: var(--green); }
-
-    /* ── Section anchors pushed below sticky nav + subnav ── */
-    .anchor-target {
-      scroll-margin-top: var(--scroll-offset, 165px);
-    }
-  </style>
+  <title>About Us | Coptic Aid Foundation</title>
+  <link rel="stylesheet" href="theme.css" />
 </head>
 <body>
-<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:4px;z-index:999;padding:8px 16px;background:var(--green);color:#fff;font-size:14px;border-radius:2px;text-decoration:none;">Skip to main content</a>
-
-<nav>
-  <div class="container nav-top">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-top">
     <div class="nav-brand">
-      <a href="index.html"><img src="CAF_Logo_Hor.svg" alt="Coptic Aid Foundation" class="nav-logo" /></a>
-      <span class="site-tagline">Caring for Egypt's most vulnerable since the 1980s</span>
+      <a href="index.html" aria-label="Coptic Aid Foundation — Home">
+        <img src="CAF_Logo_Hor.svg" alt="Coptic Aid Foundation" class="nav-logo" />
+      </a>
+      <span class="nav-tagline">Caring for Egypt&rsquo;s most vulnerable since the 1980s</span>
     </div>
-    <div class="lang-switcher">
-      <a href="about-us.html" class="active">EN</a>
-      <a href="#">FR</a>
-      <a href="#">AR</a>
+    <div class="nav-controls">
+      <div class="nav-lang" role="navigation" aria-label="Language selector">
+        <a href="about-us.html" class="active" aria-current="true">EN</a>
+        <span class="sep">/</span>
+        <a href="#">FR</a>
+        <span class="sep">/</span>
+        <a href="#">AR</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" onclick="toggleNav(this)">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button class="nav-hamburger" aria-label="Menu" onclick="toggleNav(this)">
-      <span></span><span></span><span></span>
-    </button>
   </div>
-  <div class="container nav-bottom" id="nav-bottom">
+  <div class="nav-bottom" id="nav-bottom" role="navigation" aria-label="Site navigation">
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="about-us.html" class="active">About Us</a></li>
+      <li><a href="about-us.html" class="active" aria-current="page">About Us</a></li>
       <li><a href="our-work.html">Our Work</a></li>
       <li><a href="donate.html">Donate</a></li>
       <li><a href="get-involved.html">Get Involved</a></li>
       <li><a href="news.html">News &amp; Media</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
+    <div class="mobile-lang" aria-label="Language selector">
+      <span>Language:</span>
+      <div class="nav-lang nav-lang-mobile-wrap">
+        <a href="about-us.html" class="active">EN</a>
+        <span class="sep">/</span><a href="#">FR</a>
+        <span class="sep">/</span><a href="#">AR</a>
+      </div>
+    </div>
   </div>
 </nav>
-
+<main>
 <!-- PAGE HEADER -->
 <section id="main-content" class="page-header">
   <div class="container">
     <h1>About Us</h1>
-    <p style="font-size:1.1rem; color:#444;">A transparent, all-volunteer Canadian charity serving Egypt's most vulnerable since the 1980s.</p>
+    <p>A transparent, all-volunteer Canadian charity serving Egypt's most vulnerable since the 1980s.</p>
   </div>
 </section>
 
@@ -138,11 +110,11 @@
   <div class="container">
     <h2>Our Story</h2>
 
-    <div style="margin: 0 0 32px; padding: 24px 32px; background: var(--green-light); border-left: 5px solid var(--green); text-align: center;">
-      <p style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3rem; margin-bottom: 8px; color: var(--green);">Our Motto — from the Divine Liturgy</p>
-      <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 4px;">Aid for the Poor</p>
-      <p style="font-size: 1.1rem; margin-bottom: 4px; font-style: italic;">Aide aux Pauvres</p>
-      <p style="font-size: 1.3rem; margin-bottom: 0;" lang="ar" dir="rtl">معونة للمساكين</p>
+    <div class="callout-box">
+      <p class="callout-box-title">Our Motto — from the Divine Liturgy</p>
+      <p class="callout-box-subtitle">Aid for the Poor</p>
+      <p class="callout-box-italic">Aide aux Pauvres</p>
+      <p class="callout-box-arabic" lang="ar" dir="rtl">معونة للمساكين</p>
     </div>
 
     <div class="placeholder-photo">[PHOTO: Founding members or early work in Tanta — archival if available]</div>
@@ -190,7 +162,7 @@
 <!-- ═══════════════════════════════════════════════════ -->
 <!-- SECTION 2: WHO WE SERVE                            -->
 <!-- ═══════════════════════════════════════════════════ -->
-<section id="who-we-serve" class="anchor-target" style="background: var(--grey-light);">
+<section id="who-we-serve" class="anchor-target">
   <div class="container">
     <h2>Who We Serve</h2>
     <div class="placeholder-photo">[PHOTO: Upper Egypt landscape or community — dignified, not poverty-exploiting]</div>
@@ -229,7 +201,7 @@
     <p>The Coptic Aid Foundation is run entirely by volunteers. Every member of the board of directors — from the President to the IT coordinator — gives their time freely. No one receives a salary or compensation of any kind.</p>
 
     <h3>Board of Directors</h3>
-    <p style="color:#888; font-size:14px;">[NOTE: Please confirm this list reflects the current board before publishing. Directors serve two-year terms.]</p>
+    <!-- TODO:[NOTE: Please confirm this list reflects the current board before publishing. Directors serve two-year terms.] -->
     <table>
       <tr><th>Name</th><th>Role</th></tr>
       <tr><td>Saad Ghali</td><td>President and Chair of the Board</td></tr>
@@ -266,17 +238,17 @@
 <!-- ═══════════════════════════════════════════════════ -->
 <!-- SECTION 4: TRANSPARENCY                            -->
 <!-- ═══════════════════════════════════════════════════ -->
-<section id="transparency" class="anchor-target" style="background: var(--grey-light);">
+<section id="transparency" class="anchor-target">
   <div class="container">
     <h2>Transparency</h2>
     <p>We believe donors deserve full visibility into how their money is used and how the Foundation is governed. Everything you need to verify our legitimacy is here in one place.</p>
 
     <!-- 98c stat -->
-    <div style="background: var(--green); color: #fff; padding: 28px 32px; margin: 24px 0; display:flex; align-items:center; gap:32px; flex-wrap:wrap;">
-      <div style="font-family:'Cormorant Garamond',Georgia,serif; font-size:3.5rem; font-weight:700; color:#fff; line-height:1;">98¢</div>
+    <div class="stat-highlight">
+      <div class="stat-highlight-number">98¢</div>
       <div>
-        <p style="font-size:1.15rem; font-weight:600; margin:0 0 4px;">of every dollar you donate reaches a family in Egypt.</p>
-        <p style="font-size:14px; opacity:0.85; margin:0;">Less than 2% covers administration. Our board is 100% volunteer — no salaries, no overhead.</p>
+        <p class="stat-highlight-label">of every dollar you donate reaches a family in Egypt.</p>
+        <p class="stat-highlight-note">Less than 2% covers administration. Our board is 100% volunteer — no salaries, no overhead.</p>
       </div>
     </div>
 
@@ -296,8 +268,7 @@
     <p>You can independently verify our status through official government sources:</p>
     <ul>
       <li><a href="https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyRprtngPrd/868786054RR0001" target="_blank" rel="noopener">Canada Revenue Agency — Charity Filing Search ↗</a></li>
-      <li><a href="https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/chrtydtls/868786054RR0001",
-      "https://maps.app.goo.gl/BnTFoNmPxT5uoN34A" target="_blank" rel="noopener">Canada Revenue Agency — Charity Details ↗</a></li>
+      <li><a href="https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/chrtydtls/868786054RR0001" target="_blank" rel="noopener">Canada Revenue Agency — Charity Details ↗</a></li>
       <li><a href="https://www.revenuquebec.ca/en/businesses/life-cycle/starting-a-business/how-the-legal-form-of-a-business-affects-its-tax-obligations/public-service-body/charity/list-of-registered-charities/" target="_blank" rel="noopener">Revenu Québec — List of Registered Charities ↗</a></li>
     </ul>
     <p style="font-size:14px; color:#555;">Quebec donors are eligible for both a federal and provincial tax credit on charitable donations.</p>
@@ -307,7 +278,7 @@
       <li>Annual tax receipts are mailed to all donors at the address on file</li>
       <li>For credit card / PayPal donations, ensure your mailing address is current</li>
       <li>For Interac e-Transfer donations, include your name and address in the message field</li>
-      <li>Questions about your receipt? Call us at <strong>(514) 334-9792</strong></li>
+      <li>Questions about your receipt? Call us at <strong><a href="tel:+15143349792">(514) 334-9792</a></strong></li>
     </ul>
 
     <h3 style="margin-top:28px;">Governance</h3>
@@ -321,7 +292,7 @@
     </ul>
 
     <h3 style="margin-top:28px;">Annual Report &amp; Financials</h3>
-    <p style="color:#888; font-size:14px;">[PLACEHOLDER: Link to annual report and CRA T3010 filing when available — to be added.]</p>
+    <!-- TODO:[PLACEHOLDER: Link to annual report and CRA T3010 filing when available — to be added.] -->
 
     <h3 style="margin-top:28px;">Accomplishments Since the 1980s</h3>
     <ul>
@@ -333,7 +304,7 @@
       <li>Operated with a <strong>100% volunteer board</strong> since inception — less than 2% covers administration costs</li>
       <li>Earned the blessing and endorsement of <strong>Pope Shenouda III, Pope Tawadros II</strong>, and over 10 bishops</li>
     </ul>
-    <p style="color:#888; font-size:14px;">[PLACEHOLDER: Add total annual aid disbursed in 2025 once confirmed with board.]</p>
+    <!-- TODO:[PLACEHOLDER: Add total annual aid disbursed in 2025 once confirmed with board.] -->
 
     <div class="cta-block" style="margin-top:32px;">
       <h2>Ready to Give?</h2>
@@ -343,110 +314,7 @@
   </div>
 </section>
 
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div>
-        <h4>Coptic Aid Foundation</h4>
-        <p>
-          Coptic Aid Foundation<br/>
-          Fondation d'Aide Copte<br/>
-          <span lang="ar" dir="rtl">جمعية المعونة القبطية</span>
-        </p>
-        <p style="margin-top:8px;">Caring for Egypt's most vulnerable since the 1980s.<br/>Canadian registered charity.</p>
-        <a href="donate.html" class="footer-donate">Donate</a>
-      </div>
-      <div>
-        <h4>Navigate</h4>
-        <ul>
-          <li><a href="about-us.html">About Us</a></li>
-          <li><a href="our-work.html">Our Work</a></li>
-          <li><a href="donate.html">Donate</a></li>
-          <li><a href="get-involved.html">Get Involved</a></li>
-          <li><a href="news.html">News &amp; Media</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <p>9520 Boul. de l'Acadie, Bureau 229<br/>Montreal, QC H4N 1L8<br/>Tel: (514) 334-9792<br/><a href="mailto:info@copticaidfoundation.org">info@copticaidfoundation.org</a><br/><a href="https://maps.app.goo.gl/BnTFoNmPxT5uoN34A" target="_blank" rel="noopener">Google Maps ↗</a></p>
-      </div>
-      <div>
-        <h4>Follow Us</h4>
-        <ul>
-          <li><a href="https://www.facebook.com/copticaidfoundation" target="_blank" rel="noopener">Facebook ↗</a></li>
-          <li><span style="color:#666;">YouTube — coming soon</span></li>
-        </ul>
-        <h4 style="margin-top:16px;">Language</h4>
-        <div class="lang-switcher" style="flex-direction:column; gap:6px;">
-          <a href="about-us.html" class="active">English</a>
-          <a href="#">Français</a>
-          <a href="#">العربية</a>
-        </div>
-      </div>
-    </div>
-    <div class="copyright">
-      &copy; 2026 Coptic Aid Foundation. All rights reserved. Registered Canadian Charity — BN 868786054RC0001 <span style="float:right;"><a href="wiki/index.html" style="color:#555; text-decoration:none;">Wiki</a></span>
-    </div>
-  </div>
-</footer>
-
-<script>
-  function toggleNav(btn) {
-    btn.classList.toggle('open');
-    document.getElementById('nav-bottom').classList.toggle('open');
-  }
-
-    // Measure nav height and set CSS variables dynamically
-  function setNavOffsets() {
-    const nav = document.querySelector('nav');
-    const navH = nav ? nav.getBoundingClientRect().height : 110;
-    document.documentElement.style.setProperty('--nav-height', navH + 'px');
-    document.documentElement.style.setProperty('--scroll-offset', (navH + 50) + 'px');
-  }
-  setNavOffsets();
-  window.addEventListener('resize', setNavOffsets);
-
-  // Smooth scroll with offset on sub-nav link clicks
-  document.querySelectorAll('.page-subnav a').forEach(link => {
-    link.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (!href || href === '#') return;
-      const target = document.querySelector(href);
-      if (!target) return;
-      e.preventDefault();
-      const navH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 110;
-      const subNavH = document.querySelector('.page-subnav').getBoundingClientRect().height || 44;
-      const targetTop = target.getBoundingClientRect().top + window.scrollY - navH - subNavH - 8;
-      window.scrollTo({ top: targetTop, behavior: 'smooth' });
-    });
-  });
-
-  // Highlight active sub-nav on scroll
-  const sections = ['our-story','who-we-serve','our-team','transparency'];
-  const subLinks = document.querySelectorAll('.page-subnav a');
-  window.addEventListener('scroll', () => {
-    const navH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 110;
-    const subNavH = document.querySelector('.page-subnav').getBoundingClientRect().height || 44;
-    const offset = navH + subNavH + 10;
-    let current = sections[0];
-    sections.forEach(id => {
-      const el = document.getElementById(id);
-      if (el && window.scrollY >= el.offsetTop - offset) current = id;
-    });
-    subLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-    });
-  });
-    subLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-    });
-  });
-</script>
-
-
 <!-- Back to top button -->
-<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 <script>
   (function() {
     const btn = document.getElementById('backToTop');
@@ -459,6 +327,179 @@
     document.addEventListener('scroll', checkScroll, { passive: true });
     checkScroll();
   })();
+</script>
+<script>
+  // Position sub-nav flush below main nav
+  (function() {
+    function positionSubNav() {
+      const nav = document.querySelector('.site-nav');
+      const subNav = document.querySelector('.page-subnav');
+      if (nav && subNav) {
+        const navH = nav.getBoundingClientRect().height;
+        subNav.style.top = navH + 'px';
+        subNav.dataset.navH = navH;
+      }
+    }
+    positionSubNav();
+    window.addEventListener('resize', positionSubNav);
+    // Also update scroll-margin-top on anchors
+    function updateScrollMargin() {
+      const nav = document.querySelector('.site-nav');
+      const subNav = document.querySelector('.page-subnav');
+      if (!nav || !subNav) return;
+      const offset = nav.getBoundingClientRect().height + subNav.getBoundingClientRect().height + 8;
+      document.querySelectorAll('.anchor-target').forEach(el => {
+        el.style.scrollMarginTop = offset + 'px';
+      });
+    }
+    setTimeout(updateScrollMargin, 100);
+    window.addEventListener('resize', updateScrollMargin);
+  })();
+</script>
+</main>
+<footer class="site-footer" aria-label="Site footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-names">Coptic Aid Foundation &middot; Fondation d&rsquo;Aide Copte &middot; <span lang="ar" dir="rtl">&#x62C;&#x645;&#x639;&#x64A;&#x629; &#x627;&#x644;&#x645;&#x639;&#x648;&#x646;&#x629; &#x627;&#x644;&#x642;&#x628;&#x637;&#x64A;&#x629;</span></div>
+      <p>Caring for Egypt&rsquo;s most vulnerable since the 1980s.<br/>Canadian registered charity.</p>
+      <a href="donate.html" class="footer-donate-btn">Donate</a>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="our-work.html">Our Work</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="news.html">News &amp; Media</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>9520 Boul. de l&rsquo;Acadie, Bureau 229</li>
+        <li>Montreal, QC H4N&nbsp;1L8</li>
+        <li><a href="tel:+15143349792">(514) 334-9792</a></li>
+        <li><a href="mailto:info@copticaidfoundation.org">info@copticaidfoundation.org</a></li>
+        <li><a href="https://maps.app.goo.gl/BnTFoNmPxT5uoN34A" target="_blank" rel="noopener">Google Maps &#x2197;</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <ul>
+        <li><a href="https://www.facebook.com/copticaidfoundation" target="_blank" rel="noopener">Facebook &#x2197;</a></li>
+        <li><span class="text-muted">YouTube &mdash; coming soon</span></li>
+      </ul>
+      <h4 class="mt">Language</h4>
+      <ul>
+        <li><a href="#">English</a></li>
+        <li><a href="#">Français</a></li>
+        <li><a href="#">&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Coptic Aid Foundation. All rights reserved. Registered Canadian Charity &mdash; BN 868786054RC0001</span>
+    <a href="wiki/index.html">Wiki</a>
+  </div>
+</footer>
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+</button>
+<script>
+  function toggleNav(btn) {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    btn.classList.toggle('open');
+    document.getElementById('nav-bottom').classList.toggle('open');
+  }
+  // Sub-nav: position + scroll spy
+  (function() {
+    function getOffset() {
+      const nav = document.querySelector('.site-nav');
+      const sub = document.querySelector('.page-subnav');
+      const navH = nav ? nav.getBoundingClientRect().height : 0;
+      const subH = sub ? sub.getBoundingClientRect().height : 0;
+      return navH + subH;
+    }
+    function positionSubNav() {
+      const nav = document.querySelector('.site-nav');
+      const sub = document.querySelector('.page-subnav');
+      if (!nav || !sub) return;
+      sub.style.top = nav.getBoundingClientRect().height + 'px';
+      const offset = getOffset() + 12;
+      document.querySelectorAll('.anchor-target').forEach(el => {
+        el.style.scrollMarginTop = offset + 'px';
+      });
+    }
+    positionSubNav();
+    window.addEventListener('resize', positionSubNav);
+
+    // Scroll spy — update active sub-nav item
+    const subLinks = document.querySelectorAll('.page-subnav a[href^="#"]');
+    function updateActive() {
+      if (!subLinks.length) return;
+      const offset = getOffset() + 20;
+      const sections = Array.from(subLinks).map(a => {
+        const id = a.getAttribute('href').slice(1);
+        return document.getElementById(id);
+      }).filter(Boolean);
+
+      let current = sections[0];
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top <= offset) current = section;
+      });
+
+      subLinks.forEach(a => {
+        const id = a.getAttribute('href').slice(1);
+        a.classList.toggle('active', current && current.id === id);
+      });
+    }
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+
+    // Smooth scroll on sub-nav click
+    subLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const offset = getOffset() + 8;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+  })();
+  // Back to top
+  (function() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+    function check() {
+      const s = window.scrollY || document.documentElement.scrollTop || 0;
+      btn.classList.toggle('visible', s > 300);
+    }
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  })();
+  // Preview ribbon toggle
+  function rbnToggle() {
+    document.getElementById('rbn-btn').classList.toggle('open');
+    document.getElementById('rbn-drop').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.ribbon-switcher')) {
+      const b = document.getElementById('rbn-btn');
+      const d = document.getElementById('rbn-drop');
+      if (b) b.classList.remove('open');
+      if (d) d.classList.remove('open');
+    }
+  });
+  // Add has-ribbon class when ribbon present
+  if (document.querySelector('.preview-ribbon')) {
+    document.body.classList.add('has-ribbon');
+  }
 </script>
 </body>
 </html>
