@@ -321,49 +321,6 @@
     btn.classList.add('active');
   }
 </script>
-
-<!-- Back to top button -->
-<script>
-  (function() {
-    const btn = document.getElementById('backToTop');
-    if (!btn) return;
-    function checkScroll() {
-      const scrolled = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      btn.classList.toggle('visible', scrolled > 300);
-    }
-    window.addEventListener('scroll', checkScroll, { passive: true });
-    document.addEventListener('scroll', checkScroll, { passive: true });
-    checkScroll();
-  })();
-</script>
-<script>
-  // Position sub-nav flush below main nav
-  (function() {
-    function positionSubNav() {
-      const nav = document.querySelector('.site-nav');
-      const subNav = document.querySelector('.page-subnav');
-      if (nav && subNav) {
-        const navH = nav.getBoundingClientRect().height;
-        subNav.style.top = navH + 'px';
-        subNav.dataset.navH = navH;
-      }
-    }
-    positionSubNav();
-    window.addEventListener('resize', positionSubNav);
-    // Also update scroll-margin-top on anchors
-    function updateScrollMargin() {
-      const nav = document.querySelector('.site-nav');
-      const subNav = document.querySelector('.page-subnav');
-      if (!nav || !subNav) return;
-      const offset = nav.getBoundingClientRect().height + subNav.getBoundingClientRect().height + 8;
-      document.querySelectorAll('.anchor-target').forEach(el => {
-        el.style.scrollMarginTop = offset + 'px';
-      });
-    }
-    setTimeout(updateScrollMargin, 100);
-    window.addEventListener('resize', updateScrollMargin);
-  })();
-</script>
 </main>
 <footer class="site-footer" aria-label="Site footer">
   <div class="footer-inner">
@@ -422,64 +379,6 @@
     btn.classList.toggle('open');
     document.getElementById('nav-bottom').classList.toggle('open');
   }
-  // Sub-nav: position + scroll spy
-  (function() {
-    function getOffset() {
-      const nav = document.querySelector('.site-nav');
-      const sub = document.querySelector('.page-subnav');
-      const navH = nav ? nav.getBoundingClientRect().height : 0;
-      const subH = sub ? sub.getBoundingClientRect().height : 0;
-      return navH + subH;
-    }
-    function positionSubNav() {
-      const nav = document.querySelector('.site-nav');
-      const sub = document.querySelector('.page-subnav');
-      if (!nav || !sub) return;
-      sub.style.top = nav.getBoundingClientRect().height + 'px';
-      const offset = getOffset() + 12;
-      document.querySelectorAll('.anchor-target').forEach(el => {
-        el.style.scrollMarginTop = offset + 'px';
-      });
-    }
-    positionSubNav();
-    window.addEventListener('resize', positionSubNav);
-
-    // Scroll spy — update active sub-nav item
-    const subLinks = document.querySelectorAll('.page-subnav a[href^="#"]');
-    function updateActive() {
-      if (!subLinks.length) return;
-      const offset = getOffset() + 20;
-      const sections = Array.from(subLinks).map(a => {
-        const id = a.getAttribute('href').slice(1);
-        return document.getElementById(id);
-      }).filter(Boolean);
-
-      let current = sections[0];
-      sections.forEach(section => {
-        const top = section.getBoundingClientRect().top;
-        if (top <= offset) current = section;
-      });
-
-      subLinks.forEach(a => {
-        const id = a.getAttribute('href').slice(1);
-        a.classList.toggle('active', current && current.id === id);
-      });
-    }
-    window.addEventListener('scroll', updateActive, { passive: true });
-    updateActive();
-
-    // Smooth scroll on sub-nav click
-    subLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (!target) return;
-        e.preventDefault();
-        const offset = getOffset() + 8;
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      });
-    });
-  })();
   // Back to top
   (function() {
     const btn = document.getElementById('backToTop');
@@ -504,7 +403,6 @@
       if (d) d.classList.remove('open');
     }
   });
-  // Add has-ribbon class when ribbon present
   if (document.querySelector('.preview-ribbon')) {
     document.body.classList.add('has-ribbon');
   }

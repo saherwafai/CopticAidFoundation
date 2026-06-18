@@ -477,7 +477,7 @@ section:has(.impact-bar) { border-bottom: none; }
 
 .faq-q {
   width: 100%; display: flex; align-items: center; gap: 14px;
-  padding: 18px 0; background: none; border: none; cursor: pointer;
+  padding: 22px 0; background: none; border: none; cursor: pointer;
   font-family: var(--sans); font-size: 1rem; font-weight: 500;
   color: var(--black); text-align: left;
   transition: color var(--t);
@@ -918,6 +918,72 @@ body.has-ribbon { padding-top: 36px; }
 /* ─────────────────────────────────────────────
    24. RESPONSIVE
 ───────────────────────────────────────────── */
+
+/* ── Table card-layout on mobile ──
+   Tables reflow into stacked cards at ≤600px.
+   Each row becomes a card; each td shows its column
+   label via data-label="…" on the cell. */
+@media (max-width: 600px) {
+  table { font-size: 0.9rem; }
+  table thead { display: none; } /* hide column headers — labels come from data-label */
+  table tr {
+    display: block;
+    background: var(--white);
+    border: 1px solid var(--grey-300);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    padding: 4px 0;
+  }
+  table tr:hover td { background: transparent; }
+  table td {
+    display: flex;
+    gap: 10px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--grey-100);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  table td:last-child { border-bottom: none; }
+  table td[data-label]::before {
+    content: attr(data-label);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    min-width: 80px;
+    flex-shrink: 0;
+    padding-top: 3px;
+  }
+  /* Transparency table: 2-col (Label / Value) — no header row so td already acts as label */
+  .transparency-table td:first-child {
+    font-weight: 600;
+    min-width: 0;
+    flex-shrink: 0;
+    color: var(--grey-700);
+  }
+  .transparency-table td:first-child strong { font-weight: 700; }
+}
+
+@media (max-width: 480px) {
+  /* Sub-nav: reduce padding so 6-item our-work nav fits */
+  .page-subnav ul li a { padding: 9px 10px; font-size: 0.68rem; }
+
+  /* Subscribe form: stack input + button vertically */
+  .subscribe-form { flex-direction: column; }
+  .subscribe-form input[type="email"] { min-width: 100%; width: 100%; }
+  .subscribe-form button { width: 100%; }
+
+  /* Mission strip: stack vertically */
+  .mission-strip-inner { flex-direction: column; text-align: center; gap: 24px; }
+  .mission-motto { border-left: none; border-top: 4px solid var(--green); padding: 16px; }
+
+  /* Hero actions: stack buttons full width */
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn, .hero-actions a { text-align: center; }
+}
+
+
 @media (max-width: 1024px) {
   .footer-grid, .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
