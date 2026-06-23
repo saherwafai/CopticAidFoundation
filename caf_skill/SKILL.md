@@ -349,7 +349,7 @@ CopticAidFoundation/
 
 ---
 
-## Design System Rules (visual-design-v1 branch)
+## Design System Rules
 
 ### Shared stylesheet
 All styles live in `docs/theme.css` — never add inline styles or `<style>` blocks to HTML pages. Every visual change is a component class change in theme.css.
@@ -440,6 +440,40 @@ The footer is copy-pasted across all 7 pages. Until WordPress, every change must
 23. **All 7 nav items** — Home · About Us · Our Work · Donate · Get Involved · News & Media · Contact
 24. **Mobile lang switcher** — same 3 languages as desktop, appears at bottom of hamburger menu
 25. **Logo link** — points to `index.html` on all website pages, `./index.html` on wiki pages
+
+### Responsive CSS breakpoints (in theme.css)
+
+| Breakpoint | Rule |
+|---|---|
+| `max-width: 1024px` | Footer goes 2-column |
+| `max-width: 900px` | Hero goes 1-col, pillars grid goes 1-col, CTA inner goes 1-col |
+| `max-width: 768px` | Full mobile: 16px base font, hamburger nav, footer 1-col |
+| `max-width: 600px` | Tables reflow to stacked card layout (see below) |
+| `max-width: 480px` | Sub-nav padding tightened, subscribe form stacks, hero buttons stack, mission strip stacks |
+
+### Table mobile card-layout pattern
+Tables reflow at ≤600px. Each row becomes a bordered card. Column labels appear via CSS `::before` using the `data-label` attribute on each `<td>`.
+
+**Rules when adding or editing tables:**
+1. Always add `<thead>/<tbody>` structure
+2. Add `data-label="Column Name"` to every `<td>` in `<tbody>`
+3. For 2-column label/value tables (no header), add `class="transparency-table"` — first cell acts as the label automatically
+
+**Example:**
+```html
+<table>
+  <thead><tr><th>Name</th><th>Role</th></tr></thead>
+  <tbody>
+    <tr>
+      <td data-label="Name">Saad Ghali</td>
+      <td data-label="Role">President</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### FAQ touch target
+`.faq-q` must have `padding: 22px 0` to meet WCAG 2.5.5 minimum 44px touch target.
 
 ---
 
